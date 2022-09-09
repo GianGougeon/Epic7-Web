@@ -1,0 +1,81 @@
+.body {
+    position: relative;
+}
+.background {
+    height: 100%;
+    width: 100%;
+    background: url("https://static.smilegatemegaport.com/event/live/epic7/brand/v2/images/common/bg_section07_1.jpg")
+        50% 50% / cover;
+    background-position: center top;
+    background-size: auto auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+.heros {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 1rem;
+    grid-auto-rows: minmax(100px, auto);
+    > div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: antiquewhite;
+        position: relative;
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 20px;
+        height: 100%;
+        display: flex;
+        justify-content: end;
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+            cursor: pointer;
+        }
+        > picture {
+            display: flex;
+            > img {
+                height: 100%;
+                position: absolute;
+                top: 0;
+                right: 0;
+            }
+        }
+    }
+
+    h2 {
+        display: flex;
+        font-size: 1.2rem;
+    }
+    .hero-rol {
+        z-index: 4;
+        position: absolute;
+        top: 0;
+        left: 0;
+        > div {
+            display: flex;
+            align-items: center;
+            padding-left: 5px;
+            > picture {
+                > img {
+                    padding: 5px;
+                }
+            }
+        }
+    }
+}
+.star {
+    padding: 0px 5px;
+    display: flex;
+    > div > img {
+        width: 20px;
+        display: flex;
+    }
+}
+.hero-attribute {
+    display: flex;
+    > img {
+        padding: 0px 5px;
+    }
+}
