@@ -12,7 +12,7 @@ const rarity = (data, key, alt) => {
     let arr = [];
     for (let i = 0; i < data; i++) {
         arr.push(
-            <div key={key}>
+            <div>
                 <Image
                     src="https://static.wikia.nocookie.net/epic-seven/images/2/2e/Star.png"
                     alt={alt}

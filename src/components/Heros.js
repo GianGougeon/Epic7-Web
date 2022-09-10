@@ -1,21 +1,22 @@
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { findElement, findRole, rarity } from "./ElemetsIcons";
-const Api = () => {
-    const [data, setData] = useState([]);
+import Pagination from "./pagination/Pagination";
+const Heros = ( {Epic7Api} ) => {
+    let PageSize = 20;
+    const [currentPage, setCurrentPage] = useState(1);
 
-    useEffect(() => {
-        fetch("https://api.epicsevendb.com/hero")
-            .then((response) => response.json())
-            .then((data) => setData(data.results));
-    }, []);
-
+    const currentTableData = useMemo(() => {
+        const firstPageIndex = (currentPage - 1) * PageSize;
+        const lastPageIndex = firstPageIndex + PageSize;
+        return Epic7Api.slice(firstPageIndex, lastPageIndex);
+    }, [currentPage, PageSize, Epic7Api]);
 
     return (
         <>
             <section>
-                <div className="heros">
-                    {data.map((hero) => (
+                <div className="heros container2">
+                    {currentTableData.map((hero) => (
                         <div key={hero.id}>
                             <div className="hero-rol">
                                 <div>
@@ -54,9 +55,16 @@ const Api = () => {
                         </div>
                     ))}
                 </div>
+                <Pagination
+                    className="pagination-bar"
+                    currentPage={currentPage}
+                    totalCount={Epic7Api.length}
+                    pageSize={PageSize}
+                    onPageChange={(page) => setCurrentPage(page)}
+                />
             </section>
         </>
     );
 };
 
-export default Api;
+export default Heros;
