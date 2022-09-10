@@ -1,22 +1,31 @@
-.body {
-    position: relative;
+body {
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
-     -khtml-user-select: none; /* Konqueror HTML */
-       -moz-user-select: none; /* Old versions of Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
-            user-select: none; /* Non-prefixed version, currently
-                                  supported by Chrome, Edge, Opera and Firefox */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+    supported by Chrome, Edge, Opera and Firefox */
 }
 .background {
     height: 100%;
     width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
     background: url("https://static.smilegatemegaport.com/event/live/epic7/brand/v2/images/common/bg_section07_1.jpg")
-        50% 50% / cover;
+        50% 50% / cover no-repeat;
     background-position: center top;
     background-size: auto auto;
     position: fixed;
     top: 0;
     left: 0;
     z-index: -1;
+}
+.background--full {
+    &::after{
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+    }
 }
