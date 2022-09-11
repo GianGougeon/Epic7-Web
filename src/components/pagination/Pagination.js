@@ -10,6 +10,7 @@ const Pagination = (props) => {
         currentPage,
         pageSize,
         className,
+        hola,
     } = props;
 
     const paginationRange = usePagination({
@@ -17,6 +18,7 @@ const Pagination = (props) => {
         totalCount,
         siblingCount,
         pageSize,
+        hola,
     });
 
     if (currentPage === 0 || paginationRange.length < 2) {
@@ -32,7 +34,9 @@ const Pagination = (props) => {
     };
 
     let lastPage = paginationRange[paginationRange.length - 1];
+
     return (
+        <div className="pagination">
         <ul
             className={classnames("pagination-container", {
                 [className]: className,
@@ -71,6 +75,7 @@ const Pagination = (props) => {
                 <div className="arrow right" />
             </li>
         </ul>
+        </div>
     );
 };
 

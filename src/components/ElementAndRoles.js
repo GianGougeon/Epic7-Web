@@ -1,4 +1,4 @@
-import { elementAndRoles } from "./../data/dataProp";
+import { elementAndRoles } from "../data/dataProp";
 import Image from "next/image";
 
 const findElement = (heroEl) => {
@@ -8,7 +8,7 @@ const findRole = (heroRole) => {
     return elementAndRoles.find((el) => el.name === heroRole).img;
 };
 
-const rarity = (data, key, alt) => {
+const rarity = (data, alt) => {
     let arr = [];
     for (let i = 0; i < data; i++) {
         arr.push(

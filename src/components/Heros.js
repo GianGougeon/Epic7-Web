@@ -1,25 +1,23 @@
 import Image from "next/image";
 import React, { useEffect, useState, useMemo } from "react";
-import { findElement, findRole, rarity } from "./ElemetsIcons";
+import { findElement, findRole, rarity } from "./ElementAndRoles";
 import Pagination from "./pagination/Pagination";
 import { useAppContext } from "./context/AppContext";
 import Loader from "./Loader";
 import ReactImageFallback from "react-image-fallback";
 
-
-const Heros = ({ Epic7Api }) => {
+const Heros = () => {
     const [currentPage, setCurrentPage] = useState(1);
-    const { loader } = useAppContext();
+    const { loader, showHero, setShowHero } = useAppContext();
 
-    let PageSize = 20;
+    let PageSize = 16;
 
     const currentTableData = useMemo(() => {
         const firstPageIndex = (currentPage - 1) * PageSize;
         const lastPageIndex = firstPageIndex + PageSize;
-        return Epic7Api.slice(firstPageIndex, lastPageIndex);
-    }, [currentPage, PageSize, Epic7Api]);
+        return showHero.slice(firstPageIndex, lastPageIndex);
+    }, [currentPage, showHero, loader]);
 
-    
     return (
         <>
             <section>
@@ -63,7 +61,7 @@ const Heros = ({ Epic7Api }) => {
                                             src={hero.assets.icon}
                                             fallbackImage="https://toppng.com/public/uploads/thumbnail/epic-seven-logo-11562865023mn7s1k4x0a.png"
                                             alt={hero.name}
-                                            ></ReactImageFallback>
+                                        ></ReactImageFallback>
                                     </picture>
                                 </div>
                             ))}
@@ -71,14 +69,13 @@ const Heros = ({ Epic7Api }) => {
                         <Pagination
                             className="pagination-bar"
                             currentPage={currentPage}
-                            totalCount={Epic7Api.length}
+                            totalCount={showHero.length}
                             pageSize={PageSize}
                             onPageChange={(page) => setCurrentPage(page)}
                         />
                     </>
                 ) : (
                     <Loader />
-                    
                 )}
             </section>
         </>

@@ -13,6 +13,7 @@ export const AppContext = createContext(null);
 export const AppContextProvider = ({ children }) => {
     const [epic7Api, setEpic7Api] = useState([]);
     const [loader, setLoader] = useState(false);
+    const [showHero, setShowHero] = useState([]);
 
     //ComponentDidMouunt
     useEffect(() => {
@@ -23,12 +24,20 @@ export const AppContextProvider = ({ children }) => {
             .finally(() => setLoader(true));
     }, []);
 
+    // Actualiza el estado de showHero
+    useEffect(() => {
+        setShowHero(epic7Api);
+    }, [epic7Api]);
+
     //
     const values = useMemo(
         () => ({
-          epic7Api, loader // States que seran visibles en el contexto.
-        }),
-        [epic7Api, loader]
+            epic7Api,
+            loader,
+            showHero,
+            setShowHero,
+        }), // States que seran visibles en el contexto.
+        [epic7Api, loader, showHero, setShowHero]
     ); // States que serán visibles en el contexto.
 
     // Interface donde será expuesto como proveedor y envolverá la App.

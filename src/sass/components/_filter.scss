@@ -1,0 +1,125 @@
+.filters {
+    display: flex;
+    justify-content: space-between;
+    padding: 50px;
+    > div {
+        > form {
+            > div {
+                display: inline-flex;
+                > div:last-child {
+                    > label {
+                        border-right: 1px solid black;
+                    }
+                }
+            }
+        }
+    }
+    .form-check-filterRole {
+        position: relative;
+        height: 40px;
+        width: 40px;
+        vertical-align: top;
+        display: inline-flex;
+        > input {
+            cursor: pointer;
+            height: 40px;
+            width: 40px;
+            top: 0;
+            left: 0;
+            // disable checkbox style
+            opacity: 0;
+            background-color: #40355c;
+
+            &:checked + label {
+                background-color: #40355c;
+            }
+        }
+
+        > label {
+            padding: 0;
+            display: inline-flex;
+            cursor: pointer;
+            height: 40px;
+            width: 40px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            align-items: center;
+            justify-content: center;
+            font-family: Arial, Helvetica, sans-serif;
+
+            border-top: 1px solid black;
+            border-bottom: 1px solid black;
+            border-left: 1px solid black;
+
+            &:hover {
+                background-color: rgba(0, 0, 0, 0.5);
+            }
+            > img {
+                width: 30px;
+                height: 30px;
+                display: flex;
+                justify-content: center;
+                margin: auto;
+                align-items: center;
+                // center
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+    }
+}
+.form-check-filter-Stars {
+    position: relative;
+    height: 40px;
+    width: 40px;
+    vertical-align: top;
+    display: inline-flex;
+    > input {
+        cursor: pointer;
+        height: 40px;
+        width: 40px;
+        top: 0;
+        left: 0;
+        // disable checkbox style
+        opacity: 0;
+        background-color: #40355c;
+
+        &:checked + label {
+            background-color: #40355c;
+        }
+    }
+
+    > label {
+        padding: 0;
+        display: inline-flex;
+        cursor: pointer;
+        height: 40px;
+        width: 40px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        align-items: center;
+        justify-content: center;
+        font-family: Arial, Helvetica, sans-serif;
+        border-top: 1px solid black;
+        border-bottom: 1px solid black;
+        border-left: 1px solid black;
+
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        > img {
+            width: 20px;
+            display: flex;
+            justify-content: center;
+            margin: auto;
+            align-items: center;
+            margin: 2px;
+        }
+    }
+}
