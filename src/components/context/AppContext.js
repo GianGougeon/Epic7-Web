@@ -12,16 +12,18 @@ export const AppContext = createContext(null);
 //Provider
 export const AppContextProvider = ({ children }) => {
     const [epic7Api, setEpic7Api] = useState([]);
-    const [loader, setLoader] = useState(false);
+    const [loader, setLoader] = useState(true);
     const [showHero, setShowHero] = useState([]);
+
 
     //ComponentDidMouunt
     useEffect(() => {
+        setLoader(true);
         fetch("https://api.epicsevendb.com/hero")
             .then((response) => response.json())
             .then((res) => setEpic7Api(res.results))
             .catch((err) => console.log(err))
-            .finally(() => setLoader(true));
+            .finally(() => setLoader(false));
     }, []);
 
     // Actualiza el estado de showHero

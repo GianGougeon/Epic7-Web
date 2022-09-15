@@ -1,6 +1,8 @@
-import "../src/sass/style.scss";
+import "../sass/style.scss";
 import App, { Container } from "next/app";
-import { AppContextProvider } from "../src/components/context/AppContext";
+import { AppContextProvider } from "../components/context/AppContext";
+// next js provider
+
 
 class MyApp extends App {
     render() {

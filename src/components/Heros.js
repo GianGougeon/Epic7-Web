@@ -1,14 +1,16 @@
 import Image from "next/image";
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useState, useMemo } from "react";
 import { findElement, findRole, rarity } from "./ElementAndRoles";
 import Pagination from "./pagination/Pagination";
 import { useAppContext } from "./context/AppContext";
-import Loader from "./Loader";
+import { useRouter } from "next/router";
 import ReactImageFallback from "react-image-fallback";
+import Link from "next/link";
 
 const Heros = () => {
     const [currentPage, setCurrentPage] = useState(1);
-    const { loader, showHero, setShowHero } = useAppContext();
+    const { showHero } = useAppContext();
+    const router = useRouter();
 
     let PageSize = 16;
 
@@ -16,67 +18,61 @@ const Heros = () => {
         const firstPageIndex = (currentPage - 1) * PageSize;
         const lastPageIndex = firstPageIndex + PageSize;
         return showHero.slice(firstPageIndex, lastPageIndex);
-    }, [currentPage, showHero, loader]);
+    }, [currentPage, showHero]);
 
     return (
         <>
             <section>
-                {loader ? (
-                    <>
-                        <div className="heros container2">
-                            {currentTableData.map((hero) => (
-                                <div key={hero.id}>
-                                    <div className="hero-rol">
-                                        <div>
-                                            <picture>
-                                                <img
-                                                    style={{ width: "23px" }}
-                                                    src={findRole(hero.role)}
-                                                    alt={hero.name}
-                                                ></img>
-                                            </picture>
-                                            <h2>{hero.name}</h2>
-                                        </div>
-                                        <div className="hero-attribute">
-                                            <Image
-                                                width={23}
-                                                height={23}
-                                                src={findElement(
-                                                    hero.attribute
-                                                )}
-                                                alt={hero.attribute}
-                                                className="hero-attribute-img"
-                                            ></Image>
-                                            <div className="star">
-                                                {rarity(
-                                                    hero.rarity,
-                                                    hero.id,
-                                                    hero.name
-                                                )}
-                                            </div>
-                                        </div>
-                                    </div>
+                <div className="heros container2">
+                    {currentTableData.map((hero) => (
+                        <Link href={`/heros/${hero._id}`} key={hero._id}>
+                        <div key={hero.id} >
+                            <div className="hero-rol">
+                                <div>
                                     <picture>
-                                        <ReactImageFallback
-                                            src={hero.assets.icon}
-                                            fallbackImage="https://toppng.com/public/uploads/thumbnail/epic-seven-logo-11562865023mn7s1k4x0a.png"
+                                        <img
+                                            style={{ width: "23px" }}
+                                            src={findRole(hero.role)}
                                             alt={hero.name}
-                                        ></ReactImageFallback>
+                                        ></img>
                                     </picture>
+                                    <h2>{hero.name}</h2>
                                 </div>
-                            ))}
+                                <div className="hero-attribute">
+                                    <Image
+                                        width={23}
+                                        height={23}
+                                        src={findElement(hero.attribute)}
+                                        alt={hero.attribute}
+                                        className="hero-attribute-img"
+                                    ></Image>
+                                    <div className="star">
+                                        {rarity(
+                                            hero.rarity,
+                                            hero.id,
+                                            hero.name
+                                        )}
+                                    </div>
+                                </div>
+                            </div>
+                            <picture>
+                                <ReactImageFallback
+                                    src={hero.assets.thumbnail}
+                                    fallbackImage="https://toppng.com/public/uploads/thumbnail/epic-seven-logo-11562865023mn7s1k4x0a.png"
+                                    alt={hero.name}
+                                ></ReactImageFallback>
+                            </picture>
                         </div>
-                        <Pagination
-                            className="pagination-bar"
-                            currentPage={currentPage}
-                            totalCount={showHero.length}
-                            pageSize={PageSize}
-                            onPageChange={(page) => setCurrentPage(page)}
-                        />
-                    </>
-                ) : (
-                    <Loader />
-                )}
+                        </Link>
+                    ))}
+                </div>
+                <Pagination
+                    className="pagination-bar"
+                    currentPage={currentPage}
+                    totalCount={showHero.length}
+                    pageSize={PageSize}
+                    onPageChange={(page) => setCurrentPage(page)}
+                />
             </section>
         </>
     );
