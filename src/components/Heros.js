@@ -3,16 +3,14 @@ import React, { useState, useMemo } from "react";
 import { findElement, findRole, rarity } from "./ElementAndRoles";
 import Pagination from "./pagination/Pagination";
 import { useAppContext } from "./context/AppContext";
-import { useRouter } from "next/router";
 import ReactImageFallback from "react-image-fallback";
 import Link from "next/link";
 
 const Heros = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const { showHero } = useAppContext();
-    const router = useRouter();
 
-    let PageSize = 16;
+    let PageSize = 20;
 
     const currentTableData = useMemo(() => {
         const firstPageIndex = (currentPage - 1) * PageSize;
