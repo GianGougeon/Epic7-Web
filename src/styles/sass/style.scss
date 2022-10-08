@@ -1,6 +1,10 @@
-@import './base/background.scss';
-@import './components/loader.scss';
+@import './base/header';
+@import './base/footer';
+
+@import './base/background';
+@import './components/loader';
 @import './components/boostrap-grid';
-@import './components/heros.scss';
-@import './components/pagination.scss';
-@import './components/filter.scss';
+@import './components/heros';
+@import './components/pagination';
+@import './components/filter';
+

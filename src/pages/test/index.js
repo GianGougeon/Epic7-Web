@@ -1,41 +1,82 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import React from "react";
+import React,{useState} from "react";
 import { useAppContext } from "./../../components/context/AppContext";
 
 const test = () => {
-    const { epic7Api } = useAppContext();
-    const [activeFilterr, setActiveFilterrs] = React.useState([]);
-
-    // Botones para filtrar por rol
-    const roles = epic7Api.reduce((acc, hero) => {
-        if (!acc.includes(hero.role)) {
-            acc.push(hero.role);
+    const checkBoxes = [
+        {
+          id: 1,
+          value: 5,
+          checked: false
+        },
+        {
+          id: 2,
+          value: 4,
+          checked: false
+        },
+        {
+          id: 3,
+          value: 3,
+          checked: false
         }
-        return acc;
-    }, []);
-
-   function handleChange(role) {
-        setActiveFilterrs((prev) => ({
-            ...prev,
-            [role]: !activeFilterr[role],
-        }));
-    }
-
-    return (
-        <div>
-            <h1>test</h1>
-            {roles.map((role) => (
-                <div key={role}>
-                    <input type="button" 
-                        onClick={handleChange(role)}
-                     />
-                    <label>{role}</label>
-                </div>
-            ))}
+      ];
+    
+      const [posts, setPosts] = useState(checkBoxes);
+    
+      const handleChange = (id) => {
+        // siempre un input tiene que estar activado
+        // si todos estan desactivados, activa el primero y no deja desactivar
+        if (1 > posts.filter((post) => post.checked === true).length) {
+            setPosts(
+                posts.map((post) => {
+                    if (post.id === id) {
+                        return {
+                            ...post,
+                            checked: true
+                        };
+                    }
+                    return post;
+                })
+            );
+        } else {
+            setPosts(
+                posts.map((post) => {
+                    if (post.id === id) {
+                        return {
+                            ...post,
+                            checked: !post.checked
+                        };
+                    }
+                    return post;
+                })
+            );
+        }
+        };
+    
+      return (
+        <div className="App" style={{
+            marginTop: "200px",
+            color: "black",
+            margin: "200px",
+            display: "flex",
+            flexDirection: "column",
+        }}>
+          {posts.map((item) => {
+            console.log(item);
+            return (
+              <div key={item.id}>
+                <label htmlFor={item.id}>{item.value}</label>
+                <input
+                  type="checkbox"
+                  name={item.value}
+                  checked={item.checked}
+                  onChange={() => handleChange(item.id)}
+                />
+              </div>
+            );
+          })}
         </div>
-    );
+      );
 };
 
 export default test;
-
-

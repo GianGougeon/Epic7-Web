@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, {
     useContext,
     createContext,
@@ -5,6 +6,7 @@ import React, {
     useMemo,
     useEffect,
 } from "react";
+import { elementAndRoles } from "../../data/dataProp";
 
 //Context
 export const AppContext = createContext(null);
@@ -26,21 +28,40 @@ export const AppContextProvider = ({ children }) => {
             .catch((err) => console.log(err))
             .finally(() => setLoader(false));
     }, []);
-
-    // modificar epic7Api agregando el atributo "role" con un array de roles
-    useEffect(() => {
+    // =================================================================================================================================================
+    const modifyData = () => {
+        // modifica la api agregando el atributo "role" con un array de roles
+        const findElement = (el) => {
+            const find = elementAndRoles.find((e) => e.name === el);
+            return find;
+        };
         const newEpic7Api = epic7ApiCategories.map((hero) => {
+            const icon = hero.assets.icon;
+            const image = hero.assets.image;
+            const thumbnail = hero.assets.thumbnail;
+            // add element icon
+            const attribute = findElement(hero.attribute);
+            const role = findElement(hero.role);
+            const star = "https://static.wikia.nocookie.net/epic-seven/images/2/2e/Star.png"
+            // =============================================================================================
             // categories es un array de difentes strings
             const categories = [hero.attribute, hero.role];
             // transform number to string
             const stars = hero.rarity.toString();
-            // transforma el numero 5 a "cinco" y el numero 4 a "cuantro"
-            return { ...hero, categories: categories, roles: [hero.role], attributes: [hero.attribute], stars: [stars] };
+            return {
+                ...hero,
+                categories: categories,
+                roles: [hero.role],
+                attributes: [hero.attribute],
+                stars: [stars],
+                assets: { image, thumbnail, icons: { icon, attribute, role, star } },
+            };
         });
-        setEpic7Api(newEpic7Api);
+        return newEpic7Api;
+    };
+    useEffect(() => {
+        setEpic7Api(modifyData());
     }, [epic7ApiCategories]);
-
-    //
     const values = useMemo(
         () => ({
             epic7Api,

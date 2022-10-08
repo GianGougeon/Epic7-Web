@@ -1,0 +1,133 @@
+.header {
+    background-color: #394765;
+    box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 6;
+    > ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        overflow: hidden;
+        background-color: #394765;
+        > li {
+            > a {
+                display: block;
+                padding: 20px 20px;
+                text-decoration: none;
+            }
+        }
+    }
+    .logo {
+        display: block;
+        float: left;
+        display: flex;
+        justify-content: start;
+        font-size: 2em;
+        padding: 10px 20px;
+        text-decoration: none;
+    }
+}
+
+.header li a:hover,
+.header .menu-btn:hover {
+    background-color: #394765;
+}
+
+/* menu */
+
+.header .menu {
+    clear: both;
+    max-height: 0;
+    transition: max-height 0.2s ease-out;
+}
+
+/* menu icon */
+
+.header .menu-icon {
+    cursor: pointer;
+    display: inline-block;
+    padding: 28px 20px;
+    position: relative;
+    user-select: none;
+    display: flex;
+    justify-content: end;
+}
+
+.header .menu-icon .navicon {
+    background: #333;
+    display: block;
+    height: 2px;
+    position: relative;
+    transition: background 0.2s ease-out;
+    width: 18px;
+}
+
+.header .menu-icon .navicon:before,
+.header .menu-icon .navicon:after {
+    background: #333;
+    content: "";
+    display: block;
+    height: 100%;
+    position: absolute;
+    transition: all 0.2s ease-out;
+    width: 100%;
+}
+
+.header .menu-icon .navicon:before {
+    top: 5px;
+}
+
+.header .menu-icon .navicon:after {
+    top: -5px;
+}
+
+/* menu btn */
+
+.header .menu-btn {
+    display: none;
+}
+
+.header .menu-btn:checked ~ .menu {
+    max-height: 240px;
+}
+
+.header .menu-btn:checked ~ .menu-icon .navicon {
+    background: transparent;
+}
+
+.header .menu-btn:checked ~ .menu-icon .navicon:before {
+    transform: rotate(-45deg);
+}
+
+.header .menu-btn:checked ~ .menu-icon .navicon:after {
+    transform: rotate(45deg);
+}
+
+.header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
+.header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
+    top: 0;
+}
+
+@media (min-width: 768px) {
+    .header li {
+        display: flex;
+        justify-content: end;
+    }
+    .header li a {
+        padding: 20px 30px;
+    }
+    .header .menu {
+        clear: none;
+        max-height: none;
+        display: flex;
+        justify-content: center;
+    }
+    .header .menu-icon {
+        display: none;
+    }
+}
+.xd{
+    float: right;
+}

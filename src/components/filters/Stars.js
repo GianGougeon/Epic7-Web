@@ -1,45 +1,48 @@
 import React from "react";
 const Stars = (props) => {
-    const { Epic7Api, setActiveFilter } = props;
+    const { Epic7Api, handleChange } = props;
+
+    // extrae el numero de raresa y su imagen  
     const stars = Epic7Api.reduce((acc, hero) => {
         if (!acc.includes(hero.rarity)) {
             acc.push(hero.rarity);
         }
         return acc;
     }, []);
-
-    // si estan desactivados los checkbox de estrellas 3 4 5, se seleccionan todos
-    const handleChanges = (role) => {
-        if (!role.target.checked) {
-            setActiveFilter((prev) => ({
-                ...prev,
-                3: true,
-                4: true,
-                5: true,
-            }));
-        } else {
-            setActiveFilter((prev) => ({
-                ...prev,
-                [role.target.name]: role.target.checked,
-            }));
+    // 
+    const starImage = Epic7Api.reduce((acc, hero) => {
+        if (!acc.includes(hero.assets.icons.star)) {
+            acc.push(hero.assets.icons.star);
         }
-    };
+        return acc;
+    }, []);
+    // crea un array de objetos con los roles y sus imagenes siempre es la misma
+    const starsWithImages = stars.map((star) => {
+        return {
+            star: star,
+            image: starImage,
+        };
+    });
 
     
     return (
         <div>
-            {stars.map((role) => (
-                <div key={role}>
-                    <input
-                        type="checkbox"
-                        id={role}
-                        name={role}
-                        value={role}
-                        onChange={() =>handleChange(role)}
-
+            {starsWithImages.map((hero) => (
+                <div key={hero.star}>
+                <input
+                    type="checkbox"
+                    onChange={handleChange(hero.star)}
+                    name={hero.star}
+                    id={hero.star}
+                />
+                <label htmlFor={hero.star}>
+                    <span>{hero.star}</span>
+                    <img
+                        src={hero.image}
+                        alt={"Star"}
                     />
-                    <label>{role}</label>
-                </div>
+                </label>
+            </div>
             ))}
         </div>
     );

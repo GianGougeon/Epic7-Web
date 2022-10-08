@@ -1,7 +1,8 @@
 import { useAppContext } from "../components/context/AppContext";
-import Filter from "../components/Filter";
+import Filter from "../components/filters/Filter";
 import Heros from "../components/Heros";
 import Loader from "../components/Loader";
+import Header from "../components/header/Header";
 
 export const Home = () => {
     const { epic7Api, loader } = useAppContext();
@@ -16,10 +17,10 @@ export const Home = () => {
             {loader ? (
                 <Loader />
             ) : (
-                <>
+                <div style={{ marginTop: "5%" }}>
                     <Filter Epic7Api={epic7Api} />
                     <Heros Epic7Api={epic7Api} />
-                </>
+                </div>
             )}
         </>
     );

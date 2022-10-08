@@ -7,14 +7,14 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "sass": "sass --watch .src/styles/scss/style.scss:./src/styles/css/style.css"
-
+    "sass": "sass --watch ./src/styles/sass/style.scss:./src/styles/css/style.css"
   },
   "dependencies": {
     "classnames": "^2.3.1",
     "next": "12.3.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-icons": "^4.4.0",
     "react-image-fallback": "^8.0.0"
   },
   "devDependencies": {

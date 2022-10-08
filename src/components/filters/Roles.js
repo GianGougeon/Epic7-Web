@@ -1,26 +1,44 @@
 import React from "react";
 const Roles = (props) => {
-    const { Epic7Api, setActiveFilter } = props;
+    const { Epic7Api, handleChange } = props;
+
+    // extrae los roles y sus imagenes
     const roles = Epic7Api.reduce((acc, hero) => {
         if (!acc.includes(hero.role)) {
             acc.push(hero.role);
         }
         return acc;
     }, []);
-
-    const handleChange = (role) => (event) => {
-        setActiveFilter((prev) => ({
-            ...prev,
-            [role]: event.target.checked,
-        }));
-    };
+    const roleImages = Epic7Api.reduce((acc, hero) => {
+        if (!acc.includes(hero.assets.icons.role.img)) {
+            acc.push(hero.assets.icons.role.img);
+        }
+        return acc;
+    }, []);
+    // crea un array de objetos con los roles y sus imagenes
+    const rolesWithImages = roles.map((role, index) => {
+        return {
+            role: role,
+            image: roleImages[index],
+        };
+    });
 
     return (
-        <div>
-            {roles.map((role) => (
-                <div key={role}>
-                    <input type="checkbox" onChange={handleChange(role)} />
-                    <label>{role}</label>
+        <div className="filter-role">
+            {rolesWithImages.map((hero) => (
+                <div key={hero.role}>
+                    <input
+                        type="checkbox"
+                        onChange={handleChange(hero.role)}
+                        name={hero.role}
+                        id={hero.role}
+                    />
+                    <label htmlFor={hero.role}>
+                        <img
+                            src={hero.image}
+                            alt={hero.role}
+                        />
+                    </label>
                 </div>
             ))}
         </div>

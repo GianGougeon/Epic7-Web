@@ -8,7 +8,6 @@ const Heros = () => {
     const { showHero } = useAppContext();
 
 
-            console.log(showHero);
     return (
         <>
             {showHero.map((heroDetail) => (

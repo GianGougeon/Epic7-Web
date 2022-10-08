@@ -1,125 +1,109 @@
-.filters {
-    display: flex;
-    justify-content: space-between;
-    padding: 50px;
+.filter {
+    margin: 20px auto;
+    width: 100%;
     > div {
-        > form {
+        > div {
+            display: flex;
+            justify-content: center;
+
             > div {
-                display: inline-flex;
-                > div:last-child {
-                    > label {
+                margin: 0 10px;
+                > div {
+                    display: flex;
+                    > div {
+                        height: 35px;
+                        width: 35px;
+                        border-top: 1px solid black;
+                        border-bottom: 1px solid black;
+                        border-left: 1px solid black;
+                        position: relative;
+                        > input {
+                            cursor: pointer;
+                            height: 35px;
+                            width: 35px;
+                            &:checked + label {
+                                background-color: #40355c;
+                            }
+                            opacity: 0;
+                        }
+                        > label {
+                            cursor: pointer;
+                            height: 35px;
+                            width: 35px;
+                            z-index: 1;
+
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+
+                            > span {
+                                position: absolute;
+                                top: 50%;
+                                left: 50%;
+                                transform: translate(-50%, -50%);
+                                z-index: 2;
+                                font-family: Arial, Helvetica, sans-serif;
+                                font-weight: bold;
+                                font-size: 14px;
+                            }
+                            > img {
+                                width: 25px;
+                                height: 25px;
+                                display: flex;
+                                justify-content: center;
+                                margin: auto;
+                                align-items: center;
+                                // center
+                                position: absolute;
+                                top: 50%;
+                                left: 50%;
+                                transform: translate(-50%, -50%);
+                            }
+                        }
+                    }
+                    > div:last-child {
                         border-right: 1px solid black;
                     }
                 }
             }
         }
     }
-    .form-check-filterRole {
-        position: relative;
-        height: 40px;
-        width: 40px;
-        vertical-align: top;
-        display: inline-flex;
-        > input {
-            cursor: pointer;
-            height: 40px;
-            width: 40px;
-            top: 0;
-            left: 0;
-            // disable checkbox style
-            opacity: 0;
-            background-color: #40355c;
-
-            &:checked + label {
-                background-color: #40355c;
-            }
-        }
-
-        > label {
-            padding: 0;
-            display: inline-flex;
-            cursor: pointer;
-            height: 40px;
-            width: 40px;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            align-items: center;
-            justify-content: center;
-            font-family: Arial, Helvetica, sans-serif;
-
-            border-top: 1px solid black;
-            border-bottom: 1px solid black;
-            border-left: 1px solid black;
-
-            &:hover {
-                background-color: rgba(0, 0, 0, 0.5);
-            }
-            > img {
-                width: 30px;
-                height: 30px;
-                display: flex;
-                justify-content: center;
-                margin: auto;
-                align-items: center;
-                // center
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-            }
-        }
-    }
 }
-.form-check-filter-Stars {
-    position: relative;
-    height: 40px;
-    width: 40px;
-    vertical-align: top;
-    display: inline-flex;
-    > input {
-        cursor: pointer;
-        height: 40px;
-        width: 40px;
-        top: 0;
-        left: 0;
-        // disable checkbox style
-        opacity: 0;
-        background-color: #40355c;
 
-        &:checked + label {
-            background-color: #40355c;
+.filter-text {
+    margin: 20px auto 10px auto;
+    position: relative;
+    width: 200px;
+    > input,
+    textarea {
+        background-color: transparent;
+        border: 1px solid #40355c;
+        border-radius: 5px;
+        height: 35px;
+        font-size: 1em;
+        color: white;
+        &:focus {
+            outline: none;
+        }
+        &::placeholder {
+            color: #40355c;
+            padding-left: 5px;
         }
     }
-
-    > label {
-        padding: 0;
-        display: inline-flex;
-        cursor: pointer;
-        height: 40px;
-        width: 40px;
+    > button {
         position: absolute;
         top: 50%;
-        left: 50%;
+        left: 90%;
         transform: translate(-50%, -50%);
-        align-items: center;
+        background-color: transparent;
+        border: none;
+        //center text
+        display: flex;
         justify-content: center;
-        font-family: Arial, Helvetica, sans-serif;
-        border-top: 1px solid black;
-        border-bottom: 1px solid black;
-        border-left: 1px solid black;
-
-        &:hover {
-            background-color: rgba(0, 0, 0, 0.5);
-        }
-        > img {
-            width: 20px;
-            display: flex;
-            justify-content: center;
-            margin: auto;
-            align-items: center;
-            margin: 2px;
+        align-items: center;
+        > svg {
+            fill: #40355c;
         }
     }
 }

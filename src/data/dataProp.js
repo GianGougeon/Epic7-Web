@@ -43,6 +43,10 @@ const elementAndRoles = [
         name: "knight",
         img: "https://static.wikia.nocookie.net/epic-seven/images/6/6b/Knight.png",
     },
+    {
+        name: "star",
+        img: "https://static.wikia.nocookie.net/epic-seven/images/2/2e/Star.png",
+    },
 ];
 
 export { elementAndRoles };

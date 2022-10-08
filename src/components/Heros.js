@@ -10,7 +10,7 @@ const Heros = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const { showHero } = useAppContext();
 
-    let PageSize = 20;
+    let PageSize = 16;
 
     const currentTableData = useMemo(() => {
         const firstPageIndex = (currentPage - 1) * PageSize;
