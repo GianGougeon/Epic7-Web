@@ -1,6 +1,6 @@
 import { useAppContext } from "../components/context/AppContext";
 import Filter from "../components/filters/Filter";
-import Heros from "../components/Heros";
+import Heros from "../components/heros/Heros";
 import Loader from "../components/Loader";
 import Header from "../components/header/Header";
 

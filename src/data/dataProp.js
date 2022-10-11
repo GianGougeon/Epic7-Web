@@ -49,4 +49,62 @@ const elementAndRoles = [
     },
 ];
 
-export { elementAndRoles };
+const sets = [
+    {
+        name: "speed",
+        img: "https://static.smilegatemegaport.com/event/live/epic7/guide/wearingStatus/images/sets/set_speed.png",
+    },
+    {
+        name: "set de golpe",
+        img: "https://static.smilegatemegaport.com/event/live/epic7/guide/wearingStatus/images/sets/set_acc.png",
+    },
+    {
+        name: "set de critico",
+        img: "https://static.smilegatemegaport.com/event/live/epic7/guide/wearingStatus/images/sets/set_cri.png",
+    },
+    {
+        name: "set de ataque",
+        img: "https://static.smilegatemegaport.com/event/live/epic7/guide/wearingStatus/images/sets/set_att.png",
+    },
+    {
+        name: "set de vida",
+        img: "https://static.smilegatemegaport.com/event/live/epic7/guide/wearingStatus/images/sets/set_max_hp.png",
+    },
+    {
+        name: "set de defensa",
+        img: "https://static.smilegatemegaport.com/event/live/epic7/guide/wearingStatus/images/sets/set_def.png",
+    },
+    {
+        name: "set de resistencia",
+        img: "https://static.smilegatemegaport.com/event/live/epic7/guide/wearingStatus/images/sets/set_res.png",
+    },
+    {
+        name: "set de destruccion",
+        img: "https://static.smilegatemegaport.com/event/live/epic7/guide/wearingStatus/images/sets/set_cri_dmg.png",
+    },
+    {
+        name: "set de robo vital",
+        img: "	https://static.smilegatemegaport.com/event/live/epic7/guide/wearingStatus/images/sets/set_vampire.png",
+    },
+    {
+        name: "set de contraataque",
+        img: "https://static.smilegatemegaport.com/event/live/epic7/guide/wearingStatus/images/sets/set_counter.png",
+    },
+    {
+        name: "set de unidad",
+        img: "https://static.smilegatemegaport.com/event/live/epic7/guide/wearingStatus/images/sets/set_coop.png",
+    },
+    {
+        name: "set de inmunidad",
+        img: "https://static.smilegatemegaport.com/event/live/epic7/guide/wearingStatus/images/sets/set_immune.png",
+    },
+    {
+        name: "set de furia",
+        img: "https://static.smilegatemegaport.com/event/live/epic7/guide/wearingStatus/images/sets/set_rage.png",
+    },
+    {
+        name: "set de venganza",
+        img: "https://static.smilegatemegaport.com/event/live/epic7/guide/wearingStatus/images/sets/set_revenge.png",
+    },
+];
+export { elementAndRoles, sets };

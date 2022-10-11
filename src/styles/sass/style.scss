@@ -1,10 +1,12 @@
+@import './base/variables';
+@import './base/background';
+@import './base/loader';
 @import './base/header';
 @import './base/footer';
 
-@import './base/background';
-@import './components/loader';
 @import './components/boostrap-grid';
 @import './components/heros';
+@import './components/herosDetail';
 @import './components/pagination';
 @import './components/filter';
 

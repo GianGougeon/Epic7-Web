@@ -1,6 +1,6 @@
 import React from "react";
 import Filter from "../../components/filters/Filter";
-import Heros from "../../components/Heros";
+import Heros from "../../components/heros/Heros";
 
 const Home = ({ Epic7Api }) => {
 
