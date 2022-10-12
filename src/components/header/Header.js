@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-
+import { CgProfile } from "react-icons/cg";
 const Header = () => {
     return (
         <header className="header">
@@ -16,10 +16,21 @@ const Header = () => {
                     <Link href="/">Inicio</Link>
                 </li>
                 <li>
-                    <Link href="/test">algo</Link>
+                    <Link href="/heros">Heroes</Link>
                 </li>
                 <li>
-                    <Link href="#!">algo</Link>
+                    <Link href="/test">Hunts</Link>
+                </li>
+                <li>
+                    <Link href="/register">register</Link>
+                </li>
+                <li>
+                    <Link href="/login">login</Link>
+                </li>
+                <li>
+                    <Link href="/profile">
+                        <CgProfile />
+                    </Link>
                 </li>
             </ul>
         </header>

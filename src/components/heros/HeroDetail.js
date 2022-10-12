@@ -4,18 +4,13 @@ import { rarity, findSet } from "../ElementAndRoles";
 import ReactImageFallback from "react-image-fallback";
 
 const HeroDetail = ({ heroDetail }) => {
-    console.log(findSet(heroDetail.set));
     return (
-        <>
-            <div>
-                <div className="background"></div>
-            </div>
+        <div>
             <div className="Hero-Details">
                 <ReactImageFallback
                     src={heroDetail.assets.image}
                     fallbackImage="https://toppng.com/public/uploads/thumbnail/epic-seven-logo-11562865023mn7s1k4x0a.png"
                     alt={heroDetail.name}
-                    style={{ padding: "20px" }}
                 ></ReactImageFallback>
                 <div>
                     <div>
@@ -49,7 +44,7 @@ const HeroDetail = ({ heroDetail }) => {
                     <img src="https://media.discordapp.net/attachments/820488735207456779/1023454616656019476/unknown.png" />
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 

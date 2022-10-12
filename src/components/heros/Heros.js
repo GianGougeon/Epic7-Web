@@ -29,7 +29,6 @@ const Heros = () => {
                                     <div>
                                         <picture>
                                             <img
-                                                style={{ width: "23px" }}
                                                 src={findRole(hero.role)}
                                                 alt={hero.name}
                                             ></img>

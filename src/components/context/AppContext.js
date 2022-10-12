@@ -18,17 +18,16 @@ export const AppContextProvider = ({ children }) => {
     const [loader, setLoader] = useState(true);
     const [showHero, setShowHero] = useState([]);
     const [filtro, setFiltro] = useState([]);
-
     //ComponentDidMouunt
     useEffect(() => {
         setLoader(true);
-        fetch("https://api.epicsevendb.com/hero")
+        fetch(process.env.NEXT_PUBLIC_API_URL)
             .then((response) => response.json())
             .then((res) => setEpic7ApiCategories(res.results))
             .catch((err) => console.log(err))
             .finally(() => setLoader(false));
     }, []);
-    // =================================================================================================================================================
+
     const modifyData = () => {
         // modifica la api agregando el atributo "role" con un array de roles
         const findElement = (el) => {
@@ -42,7 +41,8 @@ export const AppContextProvider = ({ children }) => {
             // add element icon
             const attribute = findElement(hero.attribute);
             const role = findElement(hero.role);
-            const star = "https://static.wikia.nocookie.net/epic-seven/images/2/2e/Star.png"
+            const star =
+                "https://static.wikia.nocookie.net/epic-seven/images/2/2e/Star.png";
             // =============================================================================================
             // categories es un array de difentes strings
             const categories = [hero.attribute, hero.role];
@@ -54,11 +54,17 @@ export const AppContextProvider = ({ children }) => {
                 roles: [hero.role],
                 attributes: [hero.attribute],
                 stars: [stars],
-                assets: { image, thumbnail, icons: { icon, attribute, role, star } },
+                assets: {
+                    image,
+                    thumbnail,
+                    icons: { icon, attribute, role, star },
+                },
             };
         });
         return newEpic7Api;
     };
+
+    // =================================================================================================================================================
     useEffect(() => {
         setEpic7Api(modifyData());
     }, [epic7ApiCategories]);
@@ -71,7 +77,7 @@ export const AppContextProvider = ({ children }) => {
             filtro,
             setFiltro,
         }), // States que seran visibles en el contexto.
-        [epic7Api, loader, showHero, setShowHero, filtro, setFiltro]
+        [epic7Api, loader, showHero, filtro]
     ); // States que serán visibles en el contexto.
 
     // Interface donde será expuesto como proveedor y envolverá la App.

@@ -5,12 +5,26 @@ import Roles from "./Roles";
 import Attributes from "./Attributes";
 import Stars from "./Stars";
 import FilterText from "./FilterText";
+
+const filterTypes = {
+    elementTypes: ["wind", "fire", "light", "dark", "ice"],
+    soldierTypes: [
+        "warrior",
+        "mage",
+        "ranger",
+        "knight",
+        "manuser",
+        "assassin",
+    ],
+    starTypes: [3, 4, 5],
+};
 const Filter = ({ Epic7Api }) => {
     const { setShowHero } = useAppContext();
     const [activeFilter, setActiveFilter] = useState([]);
     const [searchHero, setSearchHero] = useState("");
 
     const filtredHeros = useMemo(() => {
+        console.log(activeFilter);
         const hasCategoryFilter = Object.values(activeFilter).includes(true);
         const matchesRol = (hero) => {
             if (hasCategoryFilter) {

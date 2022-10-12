@@ -1,29 +1,26 @@
-import { useAppContext } from "../components/context/AppContext";
-import Filter from "../components/filters/Filter";
-import Heros from "../components/heros/Heros";
-import Loader from "../components/Loader";
-import Header from "../components/header/Header";
+import React from "react";
+import { useAuth } from "./../components/context/AuthContext";
 
-export const Home = () => {
-    const { epic7Api, loader } = useAppContext();
+const Index = () => {
+    const { logout, user } = useAuth();
 
+    console.log(user);
+    const handleLogout = async () => {
+        try {
+            await logout();
+        } catch (error) {
+            console.error(error.message);
+        }
+    };
     return (
-        <>
-            <div
-                className={
-                    loader ? "background background--full" : "background"
-                }
-            ></div>
-            {loader ? (
-                <Loader />
-            ) : (
-                <div style={{ marginTop: "5%" }}>
-                    <Filter Epic7Api={epic7Api} />
-                    <Heros Epic7Api={epic7Api} />
-                </div>
-            )}
-        </>
+        <div style={{marginLeft: 200, marginTop: 100}}> 
+            <div>
+                {user === null ? "No user" : <p>welcome {user.displayName || user.email}</p>}
+                
+
+                <button onClick={handleLogout}>logout</button>
+            </div>
+        </div>
     );
 };
-
-export default Home;
+export default Index;

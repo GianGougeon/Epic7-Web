@@ -5,7 +5,7 @@ Este proyecto está hecho de fans para fans, no tiene fines de lucro, ni tiene r
 
 ### Sobre el proyecto
 
-El objetivo es crear una aplicación web que permita a los jugadores de Epic Seven subir builds de sus personajes y compartirlos con otros jugadores.
+El objetivo es crear una aplicación web que permita a los jugadores de Epic Seven subir builds de personajes y compartirlos con otros jugadores.
 
 
 ### Deploy on Vercel
