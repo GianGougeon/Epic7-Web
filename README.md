@@ -1,16 +1,30 @@
 # Epic Seven Builds
 
-Este proyecto está hecho de fans para fans, no tiene fines de lucro, ni tiene relación con Smilegate o Netmarble.
+![Intro](https://github.com/GianGougeon/Epic7Builds/Screenshots/Screenshot_1.png?raw=true)
+
+### Objetivo inicial
+
+El objetivo de este proyecto es proporcionar a los jugadores una herramienta para encontrar las mejores builds/recomendadas de equipo para cada personaje.
 
 
-### Sobre el proyecto
+### Algunas características del proyecto:
 
-El objetivo es crear una aplicación web que permita a los jugadores de Epic Seven subir builds de personajes y compartirlos con otros jugadores.
+- Filtro de personajes por elementos/clases/estrellas.
+- Para cada personaje tendrá un resumen de build recomendado.
+- Mostrar builds recomendadas para cada personaje.
+  * Builds basadas en los equipos más populares a nivel mundial (Meta).
+  * Diferentes builds según la necesidad(Survivability, Damage o Balanced)
+- Tener la posibilidad de crearse una cuenta y guardar builds propias y poder compartirlas con otros usuarios.
+    * Tener la opción de dejar un comentario (opcional).
+    * Tener la opción de votar otras builds (opcional).
+    * Votar con estrellas, la que se considere más adecuada. 
+    * Ordenar las builds por cantidad de votos.
+    * Tener la opción de seleccionar como favorito (opcional).
+- Inicialmente, las builds serán cargadas por el usuario como una propuesta y serán habilitados por un administrador.
+- Utiliza Firebase para las autenticaciones de aplicación y de base de datos.
 
+## Dev
 
-### Deploy on Vercel
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Este proyecto inicialmente está siendo desarrollado con NextJs y Firebase.
+[next.js]: https://nextjs.org/
+[Firebase]: https://firebase.google.com/

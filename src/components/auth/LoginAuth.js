@@ -3,6 +3,7 @@ import { useAuth } from "../context/AuthContext";
 // navegate next js
 import Router from "next/router";
 import Link from "next/link";
+import { FcGoogle } from "react-icons/fc";
 const Login = () => {
     const [user, setUser] = useState({
         email: "",
@@ -45,45 +46,56 @@ const Login = () => {
         }
     };
     return (
-        <div style={{marginLeft: 200, marginTop: 100}}>
-            {error && <p>Usuario o Contraseña invalidos</p>}
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label htmlFor="email">Email</label>
-                    <input
-                        type="email"
-                        name="email"
-                        id="email"
-                        onChange={handleChange}
-                        placeholder="youremail@company.tld"
-                    />
-                </div>
-                <div>
-                    <label htmlFor="password">Password</label>
-                    <input
-                        type="password"
-                        name="password"
-                        id="password"
-                        onChange={handleChange}
-                        placeholder="*************"
-                    />
-                </div>
-
-                <div>
-                    <button type="submit">Sign In</button>
-                    <a href="#!" onClick={handleResetPassword}>
-                        Forgot Password?
-                    </a>
-                </div>
-            </form>
-            <button onClick={handleGoogleSignin}>Google login</button>
+        <>
             <div>
-                <p>Dont have an account?</p>
-                <li>
-                    <Link href="/register">Register</Link>
-                </li>
+                <div className="background"></div>
             </div>
-        </div>
+            <div className="auth-form">
+                <h1>Iniciar Sesion</h1>
+                <form onSubmit={handleSubmit}>
+                    <div>
+                        <input
+                            type="email"
+                            name="email"
+                            id="email"
+                            onChange={handleChange}
+                            placeholder="Email"
+                        />
+                    </div>
+                    <div>
+                        <input
+                            type="password"
+                            name="password"
+                            id="password"
+                            onChange={handleChange}
+                            placeholder="Contraseña"
+                        />
+                    </div>
+
+                    {error && <p>Usuario o Contraseña invalidos</p>}
+                    <div>
+                        <button type="submit">Iniciar Sesion</button>
+                        {/* <a href="#!" onClick={handleResetPassword}>
+                            Forgot Password?
+                        </a> */}
+                    </div>
+                </form>
+                <div className="separador">
+                    <hr />
+                    <span>o</span>
+                </div>
+                <button onClick={handleGoogleSignin}>
+                    <FcGoogle />
+                    Continuar con Google
+                </button>
+                <div>
+                    <p>¿No tienes una cuenta?</p>
+                    <li>
+                        <Link href="/register">Registrarse</Link>
+                    </li>
+                </div>
+            </div>
+        </>
     );
 };
 export default Login;

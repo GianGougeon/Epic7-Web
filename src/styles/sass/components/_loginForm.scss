@@ -1,0 +1,120 @@
+.auth-form {
+    background-color: #eee;
+    width: 350px;
+    height: 500px;
+    // center in screen
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    //
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border-radius: 2px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    > h1 {
+        text-align: center;
+    }
+    > div:nth-child(2) {
+        display: flex;
+        justify-content: center;
+    }
+    > form {
+        > div {
+            display: flex;
+            justify-content: center;
+            > input {
+                height: 40px;
+                width: 80%;
+                margin-bottom: 10px;
+                border-radius: 2px;
+                border: 1px solid rgba($color: #2c414e, $alpha: 0.5);
+            }
+        }
+    }
+    .separador {
+        display: flex;
+        -webkit-box-pack: center;
+        justify-content: center;
+        text-align: center;
+        position: relative;
+        width: 100%;
+        flex-direction: row;
+        margin: 25px 0;
+        > hr {
+            color: inherit;
+            font: inherit;
+            text-align: center;
+            margin: 0px;
+            width: 80%;
+            border-top: 1px solid rgb(204, 204, 204);
+        }
+        > span {
+            position: absolute;
+            padding: 0px 0.5rem;
+            background-color: #eee;
+
+            font-weight: bold;
+            margin-top: -0.6rem;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+    p {
+        display: flex;
+        justify-content: center;
+    }
+    // inciado de sesion
+    button {
+        margin: 0 auto;
+        height: 40px;
+        width: 80%;
+        border: 1px solid #1d212b;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 2px;
+        font-family: $font-default;
+        font-size: 0.8em;
+        font-size: 1.1em;
+        cursor: pointer;
+        // remove style from link
+        text-decoration: none;
+        &:hover {
+            background-color: lighten(#2c414e, 30);
+        }
+    }
+    > button:nth-child(4) {
+        background-color: transparent;
+        color: #1d212b;
+        width: 90%;
+        font-size: 1em;
+        > svg {
+            // absolute left on the button
+            position: absolute;
+            left: 35px;
+            font-size: 1.3em;
+        }
+        &:hover {
+            background-color: lighten(#2c414e, 30);
+            color: #eee;
+        }
+    }
+    > div:last-child {
+        display: flex;
+        justify-content: center;
+        > li {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            margin-left: 5px;
+            > a {
+                cursor: pointer;
+                text-decoration: none;
+            }
+        }
+    }
+}

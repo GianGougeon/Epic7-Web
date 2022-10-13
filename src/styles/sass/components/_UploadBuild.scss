@@ -1,0 +1,46 @@
+.Upload-Build {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    top: 50%;
+    left: 90%;
+    transform: translate(-50%, -50%);
+    > input {
+        height: 30px;
+    }
+    > form {
+        height: 100%;
+        display: flex;
+        > div:nth-child(1) {
+            flex-direction: column;
+            color: #eee;
+            > input {
+                height: 30px;
+                width: 60px;
+            }
+        }
+        > div:nth-child(2) {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin: 0 30px;
+            > input {
+                display: none;
+            }
+            > label {
+                border-radius: 0;
+                font-size: 1.5em;
+                color: #eee;
+                cursor: pointer;
+                // on image upload bar
+                
+                > svg {
+                    font-size: 3em;
+                }
+            }
+        }
+    }
+}
+.active-file{
+    color: red;
+}

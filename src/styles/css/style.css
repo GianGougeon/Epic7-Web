@@ -467,6 +467,7 @@ supported by Chrome, Edge, Opera and Firefox */
   padding: 0;
   list-style: none;
   overflow: hidden;
+  text-transform: uppercase;
 }
 .header > ul > li > a {
   display: block;
@@ -483,6 +484,7 @@ supported by Chrome, Edge, Opera and Firefox */
   padding: 10px 20px;
   text-decoration: none;
   border-bottom: 1px solid #eee;
+  position: absolute;
 }
 @media (min-width: 768px) {
   .header .logo {
@@ -574,7 +576,7 @@ supported by Chrome, Edge, Opera and Firefox */
 }
 
 .header .menu-btn:checked ~ .menu {
-  max-height: 240px;
+  max-height: 288px;
 }
 
 .header .menu-btn:checked ~ .menu-icon .navicon {
@@ -1868,22 +1870,23 @@ hr {
   background: rgba(0, 0, 0, 0.7);
   display: flex;
   height: 150px;
-  margin-top: 48px;
+  margin-top: 59px;
+  position: relative;
 }
-.Hero-Details > div {
+.Hero-Details > div:nth-child(2) {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-.Hero-Details > div > div {
+.Hero-Details > div:nth-child(2) > div {
   display: flex;
   padding: 0 55px;
 }
-.Hero-Details > div > div > img {
+.Hero-Details > div:nth-child(2) > div > img {
   height: 25px;
   margin: auto 0;
 }
-.Hero-Details > div > div > h1 {
+.Hero-Details > div:nth-child(2) > div > h1 {
   color: #eee;
   margin: 0;
 }
@@ -1954,6 +1957,52 @@ hr {
   width: 750px;
   display: flex;
   justify-content: center;
+}
+
+.Upload-Build {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  top: 50%;
+  left: 90%;
+  transform: translate(-50%, -50%);
+}
+.Upload-Build > input {
+  height: 30px;
+}
+.Upload-Build > form {
+  height: 100%;
+  display: flex;
+}
+.Upload-Build > form > div:nth-child(1) {
+  flex-direction: column;
+  color: #eee;
+}
+.Upload-Build > form > div:nth-child(1) > input {
+  height: 30px;
+  width: 60px;
+}
+.Upload-Build > form > div:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 30px;
+}
+.Upload-Build > form > div:nth-child(2) > input {
+  display: none;
+}
+.Upload-Build > form > div:nth-child(2) > label {
+  border-radius: 0;
+  font-size: 1.5em;
+  color: #eee;
+  cursor: pointer;
+}
+.Upload-Build > form > div:nth-child(2) > label > svg {
+  font-size: 3em;
+}
+
+.active-file {
+  color: red;
 }
 
 .pagination {
@@ -2128,6 +2177,197 @@ hr {
 }
 .filter-text > button > svg {
   fill: #40355c;
+}
+
+.auth-form {
+  background-color: #eee;
+  width: 350px;
+  height: 500px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  border-radius: 2px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+.auth-form > h1 {
+  text-align: center;
+}
+.auth-form > div:nth-child(2) {
+  display: flex;
+  justify-content: center;
+}
+.auth-form > form > div {
+  display: flex;
+  justify-content: center;
+}
+.auth-form > form > div > input {
+  height: 40px;
+  width: 80%;
+  margin-bottom: 10px;
+  border-radius: 2px;
+  border: 1px solid rgba(44, 65, 78, 0.5);
+}
+.auth-form .separador {
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  width: 100%;
+  flex-direction: row;
+  margin: 25px 0;
+}
+.auth-form .separador > hr {
+  color: inherit;
+  font: inherit;
+  text-align: center;
+  margin: 0px;
+  width: 80%;
+  border-top: 1px solid rgb(204, 204, 204);
+}
+.auth-form .separador > span {
+  position: absolute;
+  padding: 0px 0.5rem;
+  background-color: #eee;
+  font-weight: bold;
+  margin-top: -0.6rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.auth-form p {
+  display: flex;
+  justify-content: center;
+}
+.auth-form button {
+  margin: 0 auto;
+  height: 40px;
+  width: 80%;
+  border: 1px solid #1d212b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2px;
+  font-family: "Roboto", sans-serif;
+  font-size: 0.8em;
+  font-size: 1.1em;
+  cursor: pointer;
+  text-decoration: none;
+}
+.auth-form button:hover {
+  background-color: #6991aa;
+}
+.auth-form > button:nth-child(4) {
+  background-color: transparent;
+  color: #1d212b;
+  width: 90%;
+  font-size: 1em;
+}
+.auth-form > button:nth-child(4) > svg {
+  position: absolute;
+  left: 35px;
+  font-size: 1.3em;
+}
+.auth-form > button:nth-child(4):hover {
+  background-color: #6991aa;
+  color: #eee;
+}
+.auth-form > div:last-child {
+  display: flex;
+  justify-content: center;
+}
+.auth-form > div:last-child > li {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  margin-left: 5px;
+}
+.auth-form > div:last-child > li > a {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.profile-details {
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  height: 150px;
+  margin-top: 48px;
+}
+.profile-details > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.profile-details > div > div {
+  display: flex;
+  padding: 0 55px;
+}
+.profile-details > div > div > img {
+  height: 25px;
+  margin: auto 0;
+}
+.profile-details > div > div > h1 {
+  color: #eee;
+  margin: 0;
+}
+
+.profile-content {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.profile-content > div:nth-child(1) {
+  background: rgba(0, 0, 0, 0.7);
+  margin: 0 50px;
+  display: block;
+  height: 450px;
+  width: 350px;
+  margin-top: 48px;
+}
+.profile-content > div:nth-child(1) > div:nth-child(1) {
+  border-bottom: 1px solid transparent;
+  border-image: linear-gradient(0.25turn, rgba(129, 129, 128, 0) 5%, #eee, rgba(129, 129, 128, 0) 95%);
+  margin-bottom: 10px;
+  border-image-slice: 1;
+  width: 100%;
+}
+.profile-content > div:nth-child(1) > div:nth-child(1) > div {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 1px solid #eee;
+  margin: 20px auto;
+}
+.profile-content > div:nth-child(1) > div:nth-child(1) > h2 {
+  display: flex;
+  justify-content: center;
+  text-transform: uppercase;
+  color: #eee;
+  font-family: "Roboto", sans-serif;
+}
+.profile-content > div:nth-child(1) > div:nth-child(2) > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.profile-content > div:nth-child(1) > div:nth-child(2) > div > p,
+.profile-content > div:nth-child(1) > div:nth-child(2) > div span {
+  color: #eee;
+  padding: 0 5px;
+  font-family: "Roboto", sans-serif;
+}
+.profile-content > div:nth-child(2) {
+  height: 450px;
+  margin-top: 48px;
+  width: 750px;
+  display: flex;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.7);
 }
 
 /*# sourceMappingURL=style.css.map */

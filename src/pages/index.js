@@ -13,14 +13,20 @@ const Index = () => {
         }
     };
     return (
-        <div style={{marginLeft: 200, marginTop: 100}}> 
+        <div style={{
+            display: "flex",
+            justifyContent: "center",
+            marginTop: "50vh",
+        }}> 
             <div>
                 {user === null ? "No user" : <p>welcome {user.displayName || user.email}</p>}
                 
 
                 <button onClick={handleLogout}>logout</button>
             </div>
+            
         </div>
+        
     );
 };
 export default Index;

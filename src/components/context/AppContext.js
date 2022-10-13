@@ -25,7 +25,6 @@ export const AppContextProvider = ({ children }) => {
             .then((response) => response.json())
             .then((res) => setEpic7ApiCategories(res.results))
             .catch((err) => console.log(err))
-            .finally(() => setLoader(false));
     }, []);
 
     const modifyData = () => {
@@ -67,6 +66,10 @@ export const AppContextProvider = ({ children }) => {
     // =================================================================================================================================================
     useEffect(() => {
         setEpic7Api(modifyData());
+        // wait 2 seconds and hide the loader
+        setTimeout(() => {
+            setLoader(false);
+        }, 1000);
     }, [epic7ApiCategories]);
     const values = useMemo(
         () => ({

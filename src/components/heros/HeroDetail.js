@@ -2,8 +2,12 @@
 import React from "react";
 import { rarity, findSet } from "../ElementAndRoles";
 import ReactImageFallback from "react-image-fallback";
+import HeroUploadBuild from "./HeroUploadBuild";
+import { useAuth } from "../context/AuthContext";
 
 const HeroDetail = ({ heroDetail }) => {
+    const { user } = useAuth();
+    console.log(user, "detail");
     return (
         <div>
             <div className="Hero-Details">
@@ -25,6 +29,7 @@ const HeroDetail = ({ heroDetail }) => {
                         {rarity(heroDetail.rarity, heroDetail.name)}
                     </div>
                 </div>
+                {!user ? <HeroUploadBuild /> : <div>USUARIO NO LOGEADO</div>}
             </div>
             <div className="detail-content">
                 <div>
