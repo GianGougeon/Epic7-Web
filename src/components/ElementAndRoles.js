@@ -25,9 +25,16 @@ const rarity = (data, alt) => {
     return arr;
 };
 
-const findSet = (data) => {
-    return sets.find((el) => el.setsItems === data).img;
+const findSet = (nombre) => {
+    // transforma el parametro recibido en string
+    let set = String(nombre);
+    if (set === "undefined") {
+        // no retorna nada
+        return null;
+    } else {
+        // encuentra la imagen.
+        return sets.find((el) => el.name === set).img;
+    }
 };
-
 
 export { findElement, findRole, rarity, findSet };

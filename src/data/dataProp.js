@@ -51,60 +51,166 @@ const elementAndRoles = [
 
 const sets = [
     {
-        name: "speed",
+        name: "Velocidad",
         img: "https://static.smilegatemegaport.com/event/live/epic7/guide/wearingStatus/images/sets/set_speed.png",
+        setPiece: 4,
     },
     {
-        name: "set de golpe",
+        name: "Golpe",
         img: "https://static.smilegatemegaport.com/event/live/epic7/guide/wearingStatus/images/sets/set_acc.png",
+        setPiece: 2,
     },
     {
-        name: "set de critico",
+        name: "Critico",
         img: "https://static.smilegatemegaport.com/event/live/epic7/guide/wearingStatus/images/sets/set_cri.png",
+        setPiece: 2,
     },
     {
-        name: "set de ataque",
+        name: "Ataque",
         img: "https://static.smilegatemegaport.com/event/live/epic7/guide/wearingStatus/images/sets/set_att.png",
+        setPiece: 4,
     },
     {
-        name: "set de vida",
+        name: "Vida",
         img: "https://static.smilegatemegaport.com/event/live/epic7/guide/wearingStatus/images/sets/set_max_hp.png",
+        setPiece: 2,
     },
     {
-        name: "set de defensa",
+        name: "Defensa",
         img: "https://static.smilegatemegaport.com/event/live/epic7/guide/wearingStatus/images/sets/set_def.png",
+        setPiece: 2,
     },
     {
-        name: "set de resistencia",
+        name: "Resistencia",
         img: "https://static.smilegatemegaport.com/event/live/epic7/guide/wearingStatus/images/sets/set_res.png",
+        setPiece: 2,
     },
     {
-        name: "set de destruccion",
+        name: "Destruccion",
         img: "https://static.smilegatemegaport.com/event/live/epic7/guide/wearingStatus/images/sets/set_cri_dmg.png",
+        setPiece: 4,
     },
     {
-        name: "set de robo vital",
-        img: "	https://static.smilegatemegaport.com/event/live/epic7/guide/wearingStatus/images/sets/set_vampire.png",
+        name: "Robo vital",
+        img: "https://static.smilegatemegaport.com/event/live/epic7/guide/wearingStatus/images/sets/set_vampire.png",
+        setPiece: 4,
     },
     {
-        name: "set de contraataque",
+        name: "Contraataque",
         img: "https://static.smilegatemegaport.com/event/live/epic7/guide/wearingStatus/images/sets/set_counter.png",
+        setPiece: 4,
     },
     {
-        name: "set de unidad",
+        name: "Unidad",
         img: "https://static.smilegatemegaport.com/event/live/epic7/guide/wearingStatus/images/sets/set_coop.png",
+        setPiece: 2,
     },
     {
-        name: "set de inmunidad",
+        name: "Inmunidad",
         img: "https://static.smilegatemegaport.com/event/live/epic7/guide/wearingStatus/images/sets/set_immune.png",
+        setPiece: 2,
     },
     {
-        name: "set de furia",
+        name: "Furia",
         img: "https://static.smilegatemegaport.com/event/live/epic7/guide/wearingStatus/images/sets/set_rage.png",
+        setPiece: 4,
     },
     {
-        name: "set de venganza",
+        name: "Venganza",
         img: "https://static.smilegatemegaport.com/event/live/epic7/guide/wearingStatus/images/sets/set_revenge.png",
+        setPiece: 4,
     },
 ];
-export { elementAndRoles, sets };
+const setStats = {
+    collar: [
+        {
+            name: "Vida",
+            img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619812839313478/unknown.png",
+        },
+        {
+            name: "Vida%",
+            img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619812839313478/unknown.png",
+        },
+        {
+            name: "Ataque",
+            img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619812839313478/unknown.png",
+        },
+        {
+            name: "Defensa",
+            img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619812839313478/unknown.png",
+        },
+        {
+            name: "Defensa%",
+            img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619839578001438/unknown.png",
+        },
+        {
+            name: "Prob. Critico%",
+            img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619839578001438/unknown.png",
+        },
+        {
+            name: "Prob. Daño Critico%",
+            img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619839578001438/unknown.png",
+        },
+    ],
+    anillo: [
+        {
+            name: "Vida",
+            img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619839578001438/unknown.png",
+        },
+        {
+            name: "Vida%",
+            img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619839578001438/unknown.png",
+        },
+        {
+            name: "Defensa",
+            img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619839578001438/unknown.png",
+        },
+        {
+            name: "Defensa%",
+            img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619839578001438/unknown.png",
+        },
+        {
+            name: "Ataque",
+            img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619839578001438/unknown.png",
+        },
+        {
+            name: "Ataque%",
+            img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619839578001438/unknown.png",
+        },
+        {
+            name: "Resitencia de efectos%",
+            img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619839578001438/unknown.png",
+        },
+    ],
+    botas: [
+        {
+            name: "Velocidad",
+            img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619862151741510/unknown.png",
+        },
+        {
+            name: "Vida",
+            img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619862151741510/unknown.png",
+        },
+        {
+            name: "Vida%",
+            img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619862151741510/unknown.png",
+        },
+        {
+            name: "Defensa%",
+            img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619862151741510/unknown.png",
+        },
+        {
+            name: "Defensa",
+            img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619862151741510/unknown.png",
+        },
+        {
+            name: "Ataque",
+            img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619862151741510/unknown.png",
+        },
+        {
+            name: "Ataque%",
+            img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619862151741510/unknown.png",
+        },
+    ],
+};
+export { elementAndRoles, sets, setStats };

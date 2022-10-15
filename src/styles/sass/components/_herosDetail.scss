@@ -1,27 +1,79 @@
 .Hero-Details {
-    background: rgba($color: #000000, $alpha: 0.7);
     display: flex;
-    height: 150px;
+    background: rgba($color: #000000, $alpha: 0.7);
+    justify-content: space-between;
     margin-top: 59px;
-    position: relative;
+
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+    > div:nth-child(1) {
+        display: flex;
+        height: 150px;
+        position: relative;
+        > div:nth-child(2) {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            > div {
+                display: flex;
+                padding: 0 55px;
+                > img {
+                    height: 25px;
+                    margin: auto 0;
+                }
+                > h1 {
+                    color: #eee;
+                    margin: 0;
+                }
+            }
+        }
+    }
     > div:nth-child(2) {
         display: flex;
-        flex-direction: column;
-        justify-content: center;
-        > div {
+        align-items: center;
+        margin-right: 50px;
+        > button, .button-build {
+            align-items: center;
+            background-image: linear-gradient(
+                144deg,
+                #af40ff,
+                #5b42f3 50%,
+                #00ddeb
+            );
+            border: 0;
+            border-radius: 8px;
+            box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+            box-sizing: border-box;
+            color: #ffffff;
             display: flex;
-            padding: 0 55px;
-            > img {
-                height: 25px;
-                margin: auto 0;
+            font-family: Phantomsans, sans-serif;
+            font-size: 20px;
+            justify-content: center;
+            line-height: 1em;
+            max-width: 100%;
+            min-width: 140px;
+            padding: 3px;
+            text-decoration: none;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            white-space: nowrap;
+            cursor: pointer;
+            > span {
+                background-color: #2c2540;
+                padding: 16px 24px;
+                border-radius: 6px;
+                width: 100%;
+                height: 100%;
+                transition: 300ms;
             }
-            > h1 {
-                color: #eee;
-                margin: 0;
+            @media (min-width: 768px) {
+                font-size: 24px;
+                min-width: 196px;
             }
         }
     }
 }
+
 .detail-content {
     display: flex;
     justify-content: center;
@@ -75,11 +127,12 @@
             flex-direction: column;
             align-items: center;
             > div {
+                height: 35px;
                 display: flex;
+                align-items: center;
+
                 > img {
-                    width: 25px;
                     height: 25px;
-                    margin: auto 0;
                 }
                 > p {
                     color: #eee;
@@ -95,11 +148,14 @@
         margin-top: 48px;
         margin-left: 48px;
 
-        > img {
+        > img,
+        > div {
             height: 450px;
             width: 750px;
             display: flex;
             justify-content: center;
+            background: rgba($color: #000000, $alpha: 0.7);
         }
     }
 }
+

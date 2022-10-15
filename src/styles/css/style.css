@@ -1867,28 +1867,75 @@ hr {
 }
 
 .Hero-Details {
+  display: flex;
   background: rgba(0, 0, 0, 0.7);
+  justify-content: space-between;
+  margin-top: 59px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+}
+.Hero-Details > div:nth-child(1) {
   display: flex;
   height: 150px;
-  margin-top: 59px;
   position: relative;
 }
-.Hero-Details > div:nth-child(2) {
+.Hero-Details > div:nth-child(1) > div:nth-child(2) {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-.Hero-Details > div:nth-child(2) > div {
+.Hero-Details > div:nth-child(1) > div:nth-child(2) > div {
   display: flex;
   padding: 0 55px;
 }
-.Hero-Details > div:nth-child(2) > div > img {
+.Hero-Details > div:nth-child(1) > div:nth-child(2) > div > img {
   height: 25px;
   margin: auto 0;
 }
-.Hero-Details > div:nth-child(2) > div > h1 {
+.Hero-Details > div:nth-child(1) > div:nth-child(2) > div > h1 {
   color: #eee;
   margin: 0;
+}
+.Hero-Details > div:nth-child(2) {
+  display: flex;
+  align-items: center;
+  margin-right: 50px;
+}
+.Hero-Details > div:nth-child(2) > button, .Hero-Details > div:nth-child(2) .button-build {
+  align-items: center;
+  background-image: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
+  border: 0;
+  border-radius: 8px;
+  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+  box-sizing: border-box;
+  color: #ffffff;
+  display: flex;
+  font-family: Phantomsans, sans-serif;
+  font-size: 20px;
+  justify-content: center;
+  line-height: 1em;
+  max-width: 100%;
+  min-width: 140px;
+  padding: 3px;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.Hero-Details > div:nth-child(2) > button > span, .Hero-Details > div:nth-child(2) .button-build > span {
+  background-color: #2c2540;
+  padding: 16px 24px;
+  border-radius: 6px;
+  width: 100%;
+  height: 100%;
+  transition: 300ms;
+}
+@media (min-width: 768px) {
+  .Hero-Details > div:nth-child(2) > button, .Hero-Details > div:nth-child(2) .button-build {
+    font-size: 24px;
+    min-width: 196px;
+  }
 }
 
 .detail-content {
@@ -1935,12 +1982,12 @@ hr {
   align-items: center;
 }
 .detail-content > div:nth-child(1) > div:nth-child(2) > div {
+  height: 35px;
   display: flex;
+  align-items: center;
 }
 .detail-content > div:nth-child(1) > div:nth-child(2) > div > img {
-  width: 25px;
   height: 25px;
-  margin: auto 0;
 }
 .detail-content > div:nth-child(1) > div:nth-child(2) > div > p {
   color: #eee;
@@ -1952,57 +1999,122 @@ hr {
   margin-top: 48px;
   margin-left: 48px;
 }
-.detail-content > div:nth-child(2) > img {
+.detail-content > div:nth-child(2) > img,
+.detail-content > div:nth-child(2) > div {
   height: 450px;
   width: 750px;
   display: flex;
   justify-content: center;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.Upload-Build-preview {
+  height: 200px;
+  background-color: rgba(110, 203, 235, 0.6);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px -50px 36px -28px inset;
+}
+.Upload-Build-preview > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.Upload-Build-preview > div > h2 {
+  text-transform: uppercase;
+}
+.Upload-Build-preview > div > button {
+  text-transform: uppercase;
+  height: 50px;
 }
 
 .Upload-Build {
   display: flex;
   flex-direction: row;
-  position: absolute;
-  top: 50%;
-  left: 90%;
-  transform: translate(-50%, -50%);
+  background-color: rgba(55, 56, 56, 0.6);
+  justify-content: center;
 }
 .Upload-Build > input {
   height: 30px;
 }
 .Upload-Build > form {
-  height: 100%;
-  display: flex;
-}
-.Upload-Build > form > div:nth-child(1) {
-  flex-direction: column;
-  color: #eee;
-}
-.Upload-Build > form > div:nth-child(1) > input {
-  height: 30px;
-  width: 60px;
-}
-.Upload-Build > form > div:nth-child(2) {
+  height: 400px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+.Upload-Build > form h3 {
+  display: flex;
+  justify-content: center;
+  text-transform: uppercase;
+  color: #eee;
+}
+.Upload-Build > form > div {
+  display: flex;
+}
+.Upload-Build > form > div > div:nth-child(1) {
+  flex-direction: column;
+  display: flex;
+  width: 320px;
+}
+.Upload-Build > form > div > div:nth-child(1) > div {
+  margin-bottom: 10px;
+}
+.Upload-Build > form > div > div:nth-child(2) {
   margin: 0 30px;
 }
-.Upload-Build > form > div:nth-child(2) > input {
+.Upload-Build > form > div > div:nth-child(2) > div {
+  margin: 0 auto 10px auto;
+  width: 250px;
+}
+.Upload-Build > form > div > div:nth-child(3) {
+  display: flex;
+  flex-direction: column;
+  margin: 0 10px;
+  align-content: center;
+  align-items: center;
+}
+.Upload-Build > form > div > div:nth-child(3) > div {
+  border: 1px dashed #eee;
+  height: 170px;
+  width: 200px;
+  border-radius: 10px;
+  position: relative;
+}
+.Upload-Build > form > div > div:nth-child(3) > div > input {
   display: none;
 }
-.Upload-Build > form > div:nth-child(2) > label {
-  border-radius: 0;
-  font-size: 1.5em;
-  color: #eee;
+.Upload-Build > form > div > div:nth-child(3) > div > label {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  font-size: 6em;
   cursor: pointer;
 }
-.Upload-Build > form > div:nth-child(2) > label > svg {
-  font-size: 3em;
+.Upload-Build > form > div > div:nth-child(3) > div > label > p {
+  font-size: 16px;
+}
+.Upload-Build > form > button {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 200px;
 }
 
 .active-file {
-  color: red;
+  transition: all 0.3s ease-in-out;
+  color: #1c3eaf;
+}
+
+.noActive-file {
+  transition: all 0.3s ease-in-out;
+  color: #eee;
 }
 
 .pagination {

@@ -24,7 +24,7 @@ const Heros = () => {
                 <>
                     {heroDetail._id === id ? (
                         <>
-                            <HeroDetail heroDetail={heroDetail} />
+                            <HeroDetail heroDetail={heroDetail} heroIdPage={id} />
                         </>
                     ) : null}
                 </>

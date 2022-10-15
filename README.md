@@ -1,6 +1,6 @@
 # Epic Seven Builds
 
-![Intro](https://github.com/GianGougeon/Epic7Builds/Screenshots/Screenshot_1.png?raw=true)
+![Intro](https://github.com/GianGougeon/Epic7Builds/blob/main/Screenshots/Screenshot_1.png?raw=true)
 
 ### Objetivo inicial
 
@@ -21,10 +21,11 @@ El objetivo de este proyecto es proporcionar a los jugadores una herramienta par
     * Ordenar las builds por cantidad de votos.
     * Tener la opción de seleccionar como favorito (opcional).
 - Inicialmente, las builds serán cargadas por el usuario como una propuesta y serán habilitados por un administrador.
+    * Una vez habilitado, llegará una notificación al perfil.
 - Utiliza Firebase para las autenticaciones de aplicación y de base de datos.
 
 ## Dev
 
-Este proyecto inicialmente está siendo desarrollado con NextJs y Firebase.
-[next.js]: https://nextjs.org/
-[Firebase]: https://firebase.google.com/
+Este proyecto inicialmente está siendo desarrollado con NextJs y Firebase. <br/>
+-[next.js]: https://nextjs.org/ <br/>
+-[Firebase]: https://firebase.google.com/

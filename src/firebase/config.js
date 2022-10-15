@@ -21,8 +21,9 @@ export const auth = getAuth(app);
 export const db = getFirestore(app);
 export const storage = getStorage(app);
 
-export const uploadFile = async (file) => {
-    const storageRef = ref(storage, file.name);
+export const uploadFile = async (file, heroFolder, imageName) => {
+    // crear una carpeta por el id del heroe y guardar su imagen de build
+    const storageRef = ref(storage, `/heros-builds-images/${heroFolder}/${imageName}`);
     await uploadBytes(storageRef, file);
     const url = await getDownloadURL(storageRef);
     return url;
@@ -33,3 +34,9 @@ export const uploadFile = async (file) => {
 //         console.log('Uploaded a blob or file!');
 //     });
 // }
+    
+// const storageRef = ref(storage, name);
+//     await uploadBytes(storageRef, file);
+//     const url = await getDownloadURL(storageRef);
+//     // create folder con el id del heroe
+//     return url;
