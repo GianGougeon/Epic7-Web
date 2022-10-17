@@ -1,7 +1,9 @@
 /* eslint-disable react/jsx-key */
 import React, { useMemo, useState, useEffect } from "react";
 import { uploadFile } from "../../../firebase/config";
+// firebase
 import { updateDoc, doc, setDoc, onSnapshot } from "firebase/firestore";
+import { db } from '../../../firebase/config'
 import { FaCloudUploadAlt } from "react-icons/fa";
 
 import { sets, setStats } from "../../../data/dataProp";
@@ -11,9 +13,18 @@ import SelectSet from "./SelectSet";
 // uuidv4 creates a unique ID for a specific file
 import { uuid } from "uuidv4";
 import SelectStats from "./SelectStats";
+
+import ReactLoading from "react-loading";
 const HeroUploadBuild = (prop) => {
-    const { heroDetail, heroIdPage, setUserDataBuild } = prop;
     const { user } = useAuth();
+    const { heroDetail, heroIdPage, setUserDataPreview } =
+        prop;
+    // loader
+    const [loader, setLoader] = useState({
+        uploadLoader: false,
+        uploadhidden: true,
+    });
+    // image
     const [file, setFile] = useState(null);
     // sets
     const [set1, setSet1] = useState({ setPiece: null });
@@ -23,65 +34,62 @@ const HeroUploadBuild = (prop) => {
         set2: false,
         set3: false,
     });
-    const [collar, setCollar] = useState([]);
-    const [anillo, setAnillo] = useState([]);
-    const [botas, setBotas] = useState([]);
-    const addNewCollection = (collection, data) => {
-        data.forEach((item) => {
-            setDoc(doc(db, collection, item.id), item);
-        });
-    };
+    // stats
+    const [collar, setCollar] = useState({});
+    const [anillo, setAnillo] = useState({});
+    const [botas, setBotas] = useState({});
 
+    const setData = (imageToFirebase) => {
+        const setData = {
+            userInfo: {
+                id: user.uid,
+                email: user.email,
+                nickname: user.displayName,
+                photoURL: user.photoURL,
+            },
+            heroInfo: {
+                id: heroDetail.id,
+                _id: heroDetail._id,
+                name: heroDetail.name,
+                buildImage: imageToFirebase,
+                sets: {
+                    setName: set1,
+                    setName2: set2,
+                    setName3: set3,
+                },
+                statsPiece: {
+                    collar,
+                    anillo,
+                    botas,
+                },
+            },
+            uploadDate: Date.now(),
+        };
+        return setData;
+    };
     // Enviar formulario a firebase
     const handleSubmit = async (e) => {
+        setUserDataPreview("");
+        setLoader({ ...loader, uploadLoader: true });
         e.preventDefault();
         try {
             // imagen url
-            const result =
-                "https://assets.epicsevendb.com/_source/face/c2042_su.png";
-            // const result = await uploadFile(
-            //     file,
-            //     heroDetail._id,
-            //     `${heroDetail._id}-${uuid()}`
-            // );
-            const setData = {
-                userInfo: {
-                    id: user.uid,
-                    email: user.email,
-                    nickname: user.displayName,
-                },
-                heroInfo: {
-                    id: heroDetail.id,
-                    _id: heroDetail._id,
-                    name: heroDetail.name,
-                    buildImage: result,
-                    previewImg: file,
-                    sets: {
-                        setName: set1,
-                        setName2: set2,
-                        setName3: set3,
-                    },
-                    statsPiece: {
-                        collar,
-                        anillo,
-                        botas,
-                    },
-                },
-                // upload date here, to firebase
-                uploadDate: Date.now(),
-            };
-            console.log(setData);
-            await setUserDataBuild(setData);
+            // const result =
+            //     "https://assets.epicsevendb.com/_source/face/c2042_su.png";
+            const result = await uploadFile(
+                file,
+                heroDetail._id,
+                `${heroDetail._id}-${uuid()}`
+            );
+            await setDoc(doc(db, "pendingBuilds", `${heroDetail._id}-${uuid()}`), setData(result));
+            setLoader({
+                uploadLoader: false,
+                uploadhidden: false,
+            });
         } catch (err) {
             console.log(err);
         }
-        setFile(null);
-        setSet1({ setPiece: null });
-        setSet2({ setPiece: null });
-        setSet3({ setPiece: null });
-        setCollar([]);
-        setAnillo([]);
-        setBotas([]);
+        setFile("");
     };
     // filtrar sets por valor de piesas: 4 o 2 piesas
     const setPiece = () => {
@@ -116,62 +124,145 @@ const HeroUploadBuild = (prop) => {
             });
         }
     }, [set1, set2]);
+    // !uploadLoader
+    //  uploadhidden
+    // test
+    //  !uploadLoader
+    //  !uploadhidden
 
-    console.log(collar, anillo, botas);
     return (
         <>
-            <div className="Upload-Build">
-                <form onSubmit={handleSubmit}>
-                    <div>
-                        <div>
-                            <h3>Selecciona set</h3>
-                            <SelectSet setSet={setSet1} sets={sets} />
-                            {activeSelector.set2 ? (
-                                <SelectSet setSet={setSet2} sets={setPiece()} />
-                            ) : null}
-                            {activeSelector.set3 ? (
-                                <SelectSet setSet={setSet3} sets={setPiece()} />
-                            ) : null}
-                        </div>
-                        <div>
-                            <h3>Selecciona una estadística principal</h3>
-                            <SelectStats
-                                setCollar={setCollar}
-                                type={setStats.collar}
-                            />
-                            <SelectStats
-                                setCollar={setAnillo}
-                                type={setStats.anillo}
-                            />
-                            <SelectStats
-                                setCollar={setBotas}
-                                type={setStats.botas}
-                            />
-                        </div>
+            {!loader.uploadLoader ? (
+                <>
+                    {loader.uploadhidden ? (
+                        <>
+                            <div className="Upload-Build">
+                                <form onSubmit={(e) => handleSubmit(e)}>
+                                    <div>
+                                        <div>
+                                            <h3>Selecciona set</h3>
+                                            <SelectSet
+                                                setSet={setSet1}
+                                                sets={sets}
+                                            />
+                                            {activeSelector.set2 ? (
+                                                <SelectSet
+                                                    setSet={setSet2}
+                                                    sets={setPiece()}
+                                                />
+                                            ) : null}
+                                            {activeSelector.set3 ? (
+                                                <SelectSet
+                                                    setSet={setSet3}
+                                                    sets={setPiece()}
+                                                />
+                                            ) : null}
+                                        </div>
+                                        <div>
+                                            <h3>
+                                                Selecciona una estadística
+                                                principal
+                                            </h3>
+                                            <SelectStats
+                                                setCollar={setCollar}
+                                                type={setStats.collar}
+                                            />
+                                            <SelectStats
+                                                setCollar={setAnillo}
+                                                type={setStats.anillo}
+                                            />
+                                            <SelectStats
+                                                setCollar={setBotas}
+                                                type={setStats.botas}
+                                            />
+                                        </div>
 
-                        <div>
-                            <h3>Subir imagen</h3>
-                            <div>
-                                <input
-                                    type="file"
-                                    name="UploadFile"
-                                    id="UploadFile"
-                                    onChange={(e) => setFile(e.target.files[0])}
-                                />
-                                <label htmlFor="UploadFile" className={file ? "active-file" : "noActive-file"}>
-                                    <FaCloudUploadAlt />
-                                    {file ? (
-                                        <p className={file ? "active-file" : "noActive-file"}>Un archivo seleccionado</p>
-                                    ) : <p className={file ? "active-file" : "noActive-file"}>Selecciona una imagen</p>}
-                                </label>
+                                        <div>
+                                            <h3>Subir imagen</h3>
+                                            <div>
+                                                <input
+                                                    type="file"
+                                                    name="UploadFile"
+                                                    id="UploadFile"
+                                                    onChange={(e) =>
+                                                        setFile(
+                                                            e.target.files[0]
+                                                        )
+                                                    }
+                                                />
+                                                <label
+                                                    htmlFor="UploadFile"
+                                                    className={
+                                                        file
+                                                            ? "active-file"
+                                                            : "noActive-file"
+                                                    }
+                                                >
+                                                    <FaCloudUploadAlt />
+                                                    {file ? (
+                                                        <p
+                                                            className={
+                                                                file
+                                                                    ? "active-file"
+                                                                    : "noActive-file"
+                                                            }
+                                                        >
+                                                            Un archivo
+                                                            seleccionado
+                                                        </p>
+                                                    ) : (
+                                                        <p
+                                                            className={
+                                                                file
+                                                                    ? "active-file"
+                                                                    : "noActive-file"
+                                                            }
+                                                        >
+                                                            Selecciona una
+                                                            imagen
+                                                        </p>
+                                                    )}
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <button
+                                            type="button"
+                                            className="btn-preview"
+                                            onClick={() =>
+                                                setUserDataPreview(
+                                                    setData(file)
+                                                )
+                                            }
+                                        >
+                                            Vista Previa
+                                        </button>
+                                        <button
+                                            type="button"
+                                            className="btn-preview"
+                                            onClick={() =>
+                                                setUserDataPreview("")
+                                            }
+                                        >
+                                            Limpiar
+                                        </button>
+                                    </div>
+                                    <button>Enviar Información</button>
+                                </form>
                             </div>
+                        </>
+                    ) : (
+                        <div className="Upload-Build done">
+                            <span>Gracias, su build queda en revisión.</span>
                         </div>
-                    </div>
-                    <button>
-                Enviar Información
-                    </button>
-                </form>
-            </div>
+                    )}
+                </>
+            ) : (
+                <div className="Upload-Build uploading">
+                    <ReactLoading type="bars" color="#eee" />
+                </div>
+            )}
         </>
     );
 };

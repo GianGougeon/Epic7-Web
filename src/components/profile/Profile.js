@@ -3,9 +3,6 @@ import React from "react";
 
 const Profile = () => {
     const { logout, user } = useAuth();
-    const userName = user.email.split("@")[0];
-    console.log(user);
-
     // transform en formato dd/MM/yyyy
     const firebaseDate = () => {
         const date = new Date(user.metadata.creationTime);
@@ -52,7 +49,7 @@ const Profile = () => {
                     <div>
                         <div>
                             <div></div>
-                            <h2>{userName}</h2>
+                            <h2>{user.displayName}</h2>
                         </div>
                         <div>
                             <div>

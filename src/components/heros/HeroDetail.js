@@ -1,30 +1,37 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useState } from "react";
-import { rarity, findSet } from "../ElementAndRoles";
-import ReactImageFallback from "react-image-fallback";
 import HeroUploadBuild from "./UploadHero/HeroUploadBuild";
-import { useAuth } from "../context/AuthContext";
 import HeroPreview from "./UploadHero/HeroPreview";
 import HeroCover from "./UploadHero/HeroCover";
 import ListBuilds from "./UploadHero/ListBuilds";
+import { updateDoc, doc, setDoc, onSnapshot } from "firebase/firestore";
 
 const HeroDetail = (prop) => {
     const { heroDetail, heroIdPage } = prop;
-    const [userDataBuild, setUserDataBuild] = useState("");
-    const { user } = useAuth();
+    // preview build
+    const [userDataPreview, setUserDataPreview] = useState("");
+    // loader
+    const [uploadBuild, setUploadBuild] = useState(false);
 
-    
+    console.log(heroDetail);
     return (
         <div>
-            <HeroCover heroDetail={heroDetail}/>
-            <HeroUploadBuild
+            <HeroCover
                 heroDetail={heroDetail}
-                heroIdPage={heroIdPage}
-                setUserDataBuild={setUserDataBuild}
+                setUploadBuild={setUploadBuild}
             />
-            <HeroPreview userDataBuild={userDataBuild}/>
-            <ListBuilds />
-            
+            {uploadBuild && (
+                <HeroUploadBuild
+                    heroDetail={heroDetail}
+                    heroIdPage={heroIdPage}
+                    setUserDataPreview={setUserDataPreview}
+                />
+            )}
+
+            {userDataPreview != "" && (
+                <HeroPreview userDataPreview={userDataPreview} heroIdPage={heroIdPage} />
+            )}
+            <ListBuilds heroIdPage={heroIdPage} heroDetail={heroDetail}/>
         </div>
     );
 };

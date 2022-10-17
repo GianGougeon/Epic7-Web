@@ -13,7 +13,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    border-radius: 2px;
+    border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     > h1 {
         text-align: center;
@@ -32,6 +32,20 @@
                 margin-bottom: 10px;
                 border-radius: 2px;
                 border: 1px solid rgba($color: #2c414e, $alpha: 0.5);
+                padding-left: 5px;
+
+                // placeholder color
+                &::placeholder {
+                    font-size: 16px;
+                    font-family: $font-default;
+                    padding-left: 5px;
+
+                }
+                // on input selected
+                &:focus {
+                    outline: none;
+                    border: 2px solid #312788;
+                }
             }
         }
     }
@@ -85,6 +99,7 @@
         text-decoration: none;
         &:hover {
             background-color: lighten(#2c414e, 30);
+            border: none;
         }
     }
     > button:nth-child(4) {

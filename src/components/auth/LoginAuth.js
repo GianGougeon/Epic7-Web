@@ -29,7 +29,8 @@ const Login = () => {
     const handleGoogleSignin = async () => {
         try {
             await loginWithGoogle();
-            Router.push("/");
+            // Router.push("/");
+            history.back();
         } catch (error) {
             setError(error.message);
         }

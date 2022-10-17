@@ -124,6 +124,14 @@ const sets = [
 const setStats = {
     collar: [
         {
+            name: "Prob. Critico%",
+            img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619839578001438/unknown.png",
+        },
+        {
+            name: "Prob. Daño Critico%",
+            img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619839578001438/unknown.png",
+        },
+        {
             name: "Vida",
             img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619812839313478/unknown.png",
         },
@@ -136,6 +144,10 @@ const setStats = {
             img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619812839313478/unknown.png",
         },
         {
+            name: "Ataqu%",
+            img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619812839313478/unknown.png",
+        },
+        {
             name: "Defensa",
             img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619812839313478/unknown.png",
         },
@@ -143,32 +155,9 @@ const setStats = {
             name: "Defensa%",
             img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619839578001438/unknown.png",
         },
-        {
-            name: "Prob. Critico%",
-            img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619839578001438/unknown.png",
-        },
-        {
-            name: "Prob. Daño Critico%",
-            img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619839578001438/unknown.png",
-        },
+        
     ],
     anillo: [
-        {
-            name: "Vida",
-            img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619839578001438/unknown.png",
-        },
-        {
-            name: "Vida%",
-            img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619839578001438/unknown.png",
-        },
-        {
-            name: "Defensa",
-            img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619839578001438/unknown.png",
-        },
-        {
-            name: "Defensa%",
-            img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619839578001438/unknown.png",
-        },
         {
             name: "Ataque",
             img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619839578001438/unknown.png",
@@ -177,6 +166,23 @@ const setStats = {
             name: "Ataque%",
             img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619839578001438/unknown.png",
         },
+        {
+            name: "Vida",
+            img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619839578001438/unknown.png",
+        },
+        {
+            name: "Vida%",
+            img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619839578001438/unknown.png",
+        },
+        {
+            name: "Defensa",
+            img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619839578001438/unknown.png",
+        },
+        {
+            name: "Defensa%",
+            img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619839578001438/unknown.png",
+        },
+        
         {
             name: "Resitencia de efectos%",
             img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619839578001438/unknown.png",
@@ -188,6 +194,14 @@ const setStats = {
             img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619862151741510/unknown.png",
         },
         {
+            name: "Ataque",
+            img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619862151741510/unknown.png",
+        },
+        {
+            name: "Ataque%",
+            img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619862151741510/unknown.png",
+        },
+        {
             name: "Vida",
             img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619862151741510/unknown.png",
         },
@@ -203,14 +217,7 @@ const setStats = {
             name: "Defensa",
             img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619862151741510/unknown.png",
         },
-        {
-            name: "Ataque",
-            img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619862151741510/unknown.png",
-        },
-        {
-            name: "Ataque%",
-            img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619862151741510/unknown.png",
-        },
+        
     ],
 };
 export { elementAndRoles, sets, setStats };

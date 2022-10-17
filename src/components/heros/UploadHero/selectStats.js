@@ -42,7 +42,9 @@ const SelectStats = (prop) => {
         console.log(type);
         setCollar({
             name: e.value,
+            img: type.find((item) => item.name === e.value).img,
         });
+        console.log(type.find((item) => item.name === e.value).img);
     };
 
     return (

@@ -1,72 +1,89 @@
 import { findSet } from "../../ElementAndRoles";
-const HeroPreview = ({userDataBuild}) => {
+const HeroPreview = ({ userDataPreview }) => {
+    const { heroInfo, userInfo, uploadDate } = userDataPreview;
+    // Hero info
+    const { buildImage, sets, statsPiece } = heroInfo;
+    // User info
+    const { nickname, photoURL } = userInfo;
     const imageUrl = () => {
-        if (userDataBuild?.heroInfo?.previewImg === null) {
+        if (buildImage === null) {
             return "";
         } else {
-            const url = URL.createObjectURL(
-                userDataBuild?.heroInfo?.previewImg
-            );
+            const url = URL.createObjectURL(buildImage);
             return url;
         }
     };
+    // transforma timestamp en fecha dd/mm/yyyy
+    const date = () => {
+        const date = new Date(uploadDate);
+        const day = date.getDate();
+        const month = date.getMonth() + 1;
+        const year = date.getFullYear();
+        return `${day}/${month}/${year}`;
+    };
+
     return (
-        <div className="detail-content">
+        <div
+            className="detail-content"
+            style={{ backgroundColor: "rgba(55, 56, 56, 0.6)" }}
+        >
             <div>
                 <div>
-                    <div></div>
-                    <h2>{userDataBuild?.userInfo?.nickname}</h2>
+                    <div>
+                        <img src={photoURL} alt={nickname}></img>
+                    </div>
+                    <h2>{nickname}</h2>
                 </div>
                 <div>
-                    {userDataBuild ? (
+                    {userDataPreview ? (
                         <>
                             <div>
+                                <img src={findSet(sets?.setName?.name)} />
+                                <p>{sets?.setName?.name}</p>
+                            </div>
+                            <div>
+                                <img src={findSet(sets?.setName2?.name)} />
+                                <p>{sets?.setName2?.name}</p>
+                            </div>
+                            <div>
+                                <img src={findSet(sets?.setName3?.name)} />
+                                <p>{sets?.setName3?.name}</p>
+                            </div>
+                            {/* Stats */}
+                            <hr></hr>
+                            <div>
                                 <img
-                                    src={findSet(
-                                        userDataBuild?.heroInfo?.sets?.setName
-                                            ?.name
-                                    )}
-                                />
-                                <p>
-                                    {
-                                        userDataBuild?.heroInfo?.sets?.setName
-                                            ?.name
-                                    }
-                                </p>
+                                    src={statsPiece?.collar?.img}
+                                    alt={statsPiece?.collar?.name}
+                                ></img>
+                                <p>{statsPiece?.collar?.name}</p>
                             </div>
                             <div>
                                 <img
-                                    src={findSet(
-                                        userDataBuild?.heroInfo?.sets?.setName2
-                                            ?.name
-                                    )}
-                                />
-                                <p>
-                                    {
-                                        userDataBuild?.heroInfo?.sets?.setName2
-                                            ?.name
-                                    }
-                                </p>
+                                    src={statsPiece?.anillo?.img}
+                                    alt={statsPiece?.anillo?.name}
+                                ></img>
+                                <p>{statsPiece?.anillo?.name}</p>
                             </div>
                             <div>
                                 <img
-                                    src={findSet(
-                                        userDataBuild?.heroInfo?.sets?.setName3
-                                            ?.name
-                                    )}
-                                />
-                                <p>
-                                    {
-                                        userDataBuild?.heroInfo?.sets?.setName3
-                                            ?.name
-                                    }
-                                </p>
+                                    src={statsPiece?.botas?.img}
+                                    alt={statsPiece?.botas?.name}
+                                ></img>
+                                <p>{statsPiece?.botas?.name}</p>
                             </div>
                         </>
                     ) : null}
+                    <hr></hr>
+
+                    <div>
+                        <p>{date()}</p>
+                    </div>
                 </div>
             </div>
-            <div>{userDataBuild ? <img src={imageUrl()} /> : <div></div>}</div>
+            <div>
+                {userDataPreview ? <img src={imageUrl()} /> : <div></div>}
+            </div>
         </div>
     );
 };
