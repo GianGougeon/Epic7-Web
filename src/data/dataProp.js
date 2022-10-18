@@ -124,12 +124,12 @@ const sets = [
 const setStats = {
     collar: [
         {
-            name: "Prob. Critico%",
-            img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619839578001438/unknown.png",
+            name: "Prob. Crítico",
+            img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619812839313478/unknown.png",
         },
         {
-            name: "Prob. Daño Critico%",
-            img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619839578001438/unknown.png",
+            name: "Prob. Daño Crítico",
+            img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619812839313478/unknown.png",
         },
         {
             name: "Vida",
@@ -144,7 +144,7 @@ const setStats = {
             img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619812839313478/unknown.png",
         },
         {
-            name: "Ataqu%",
+            name: "Ataque%",
             img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619812839313478/unknown.png",
         },
         {
@@ -153,9 +153,8 @@ const setStats = {
         },
         {
             name: "Defensa%",
-            img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619839578001438/unknown.png",
+            img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619812839313478/unknown.png",
         },
-        
     ],
     anillo: [
         {
@@ -182,9 +181,8 @@ const setStats = {
             name: "Defensa%",
             img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619839578001438/unknown.png",
         },
-        
         {
-            name: "Resitencia de efectos%",
+            name: "Resistencia de efectos%",
             img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619839578001438/unknown.png",
         },
     ],
@@ -217,7 +215,6 @@ const setStats = {
             name: "Defensa",
             img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619862151741510/unknown.png",
         },
-        
     ],
 };
 export { elementAndRoles, sets, setStats };

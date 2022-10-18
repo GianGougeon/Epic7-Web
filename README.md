@@ -11,16 +11,15 @@ El objetivo de este proyecto es proporcionar a los jugadores una herramienta par
 
 - Filtro de personajes por elementos/clases/estrellas.
 - Para cada personaje tendrá un resumen de build recomendado.
-- Mostrar builds recomendadas para cada personaje.
+- Mostrar builds recomendadas.
   * Builds basadas en los equipos más populares a nivel mundial (Meta).
   * Diferentes builds según la necesidad(Survivability, Damage o Balanced)
 - Tener la posibilidad de crearse una cuenta y guardar builds propias y poder compartirlas con otros usuarios.
     * Tener la opción de dejar un comentario (opcional).
-    * Tener la opción de votar otras builds (opcional).
-    * Votar con estrellas, la que se considere más adecuada. 
+    * Votar con estrellas, la que se considere más adecuada (opcional). 
     * Ordenar las builds por cantidad de votos.
     * Tener la opción de seleccionar como favorito (opcional).
-- Inicialmente, las builds serán cargadas por el usuario como una propuesta y serán habilitados por un administrador.
+- Inicialmente, las builds serán cargadas por el usuario como una propuesta y serán revisadas y aprobado por un administrador.
     * Una vez habilitado, llegará una notificación al perfil.
 - Utiliza Firebase para las autenticaciones de aplicación y de base de datos.
 

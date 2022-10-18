@@ -85,6 +85,9 @@
                 border-radius: 50%;
                 border: 1px solid #eee;
                 margin: 20px auto;
+                > img {
+                    height: 100%;
+                }
             }
             > h2 {
                 display: flex;
@@ -135,7 +138,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    >span{
+    > span {
         font-size: 20px;
         color: #eee;
     }
@@ -162,5 +165,7 @@
         transition: all 0.1s;
         border: 2px solid #eee;
     }
-    
+}
+.select-img-stat {
+    filter: invert(1);
 }

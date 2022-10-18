@@ -3,7 +3,7 @@ import React, { useMemo, useState, useEffect } from "react";
 import { uploadFile } from "../../../firebase/config";
 // firebase
 import { updateDoc, doc, setDoc, onSnapshot } from "firebase/firestore";
-import { db } from '../../../firebase/config'
+import { db } from "../../../firebase/config";
 import { FaCloudUploadAlt } from "react-icons/fa";
 
 import { sets, setStats } from "../../../data/dataProp";
@@ -17,8 +17,7 @@ import SelectStats from "./SelectStats";
 import ReactLoading from "react-loading";
 const HeroUploadBuild = (prop) => {
     const { user } = useAuth();
-    const { heroDetail, heroIdPage, setUserDataPreview } =
-        prop;
+    const { heroDetail, heroIdPage, setUserDataPreview } = prop;
     // loader
     const [loader, setLoader] = useState({
         uploadLoader: false,
@@ -74,14 +73,15 @@ const HeroUploadBuild = (prop) => {
         e.preventDefault();
         try {
             // imagen url
-            // const result =
-            //     "https://assets.epicsevendb.com/_source/face/c2042_su.png";
             const result = await uploadFile(
                 file,
                 heroDetail._id,
                 `${heroDetail._id}-${uuid()}`
             );
-            await setDoc(doc(db, "pendingBuilds", `${heroDetail._id}-${uuid()}`), setData(result));
+            await setDoc(
+                doc(db, "pendingBuilds", `${heroDetail._id}-${uuid()}`),
+                setData(result)
+            );
             setLoader({
                 uploadLoader: false,
                 uploadhidden: false,
@@ -123,7 +123,7 @@ const HeroUploadBuild = (prop) => {
                 set3: false,
             });
         }
-    }, [set1, set2]);
+    }, [set1, set2, set3.setPiece]);
     // !uploadLoader
     //  uploadhidden
     // test
@@ -248,7 +248,7 @@ const HeroUploadBuild = (prop) => {
                                             Limpiar
                                         </button>
                                     </div>
-                                    <button>Enviar Información</button>
+                                    <button>Enviar</button>
                                 </form>
                             </div>
                         </>

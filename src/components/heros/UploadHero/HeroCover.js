@@ -11,7 +11,7 @@ const HeroCover = (prop) => {
     const { attribute } = heroDetail.assets.icons;
 
     return (
-        <div className="Hero-Details">
+        <div className="Hero-Details" key={heroDetail._id}>
             <div>
                 <ReactImageFallback
                     src={heroDetail.assets.image}
@@ -34,14 +34,22 @@ const HeroCover = (prop) => {
             </div>
             {user ? (
                 <div>
-                    <button className="btn-upload" onClick={() => setUploadBuild(true)}>
+                    <button
+                        className="btn-upload"
+                        onClick={() => setUploadBuild(true)}
+                    >
                         Publicar Build
                     </button>
                 </div>
             ) : (
                 <div className="publish-build">
                     <span>¿Quieres publicar una build?</span>
-                    <button className="btn-upload" onClick={()=> Router.push("/login")}>Inicia sesión</button>
+                    <button
+                        className="btn-upload"
+                        onClick={() => Router.push("/login")}
+                    >
+                        Inicia sesión
+                    </button>
                 </div>
             )}
         </div>

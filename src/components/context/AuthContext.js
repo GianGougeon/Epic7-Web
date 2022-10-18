@@ -1,66 +1,74 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  signOut,
-  onAuthStateChanged,
-  GoogleAuthProvider,
-  signInWithPopup,
-  sendPasswordResetEmail,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    signOut,
+    onAuthStateChanged,
+    GoogleAuthProvider,
+    signInWithPopup,
+    sendPasswordResetEmail,
+    updateProfile,
 } from "firebase/auth";
 import { auth } from "../../firebase/config";
 
 const authContext = createContext();
 
 export const useAuth = () => {
-  const context = useContext(authContext);
-  if (!context) throw new Error("There is no Auth provider");
-  return context;
+    const context = useContext(authContext);
+    if (!context) throw new Error("There is no Auth provider");
+    return context;
 };
 
 export function AuthProvider({ children }) {
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
+    const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true);
 
-  const signup = (email, password) => {
-    return createUserWithEmailAndPassword(auth, email, password);
-  };
+    const signup = (email, password) => {
+        return createUserWithEmailAndPassword(auth, email, password);
+    };
 
-  const login = (email, password) => {
-    return signInWithEmailAndPassword(auth, email, password);
-  };
+    const login = (email, password) => {
+        return signInWithEmailAndPassword(auth, email, password);
+    };
 
-  const loginWithGoogle = () => {
-    const googleProvider = new GoogleAuthProvider();
-    return signInWithPopup(auth, googleProvider);
-  };
+    const loginWithGoogle = () => {
+        const googleProvider = new GoogleAuthProvider();
+        return signInWithPopup(auth, googleProvider);
+    };
 
-  const logout = () => signOut(auth);
+    const logout = () => signOut(auth);
 
-  const resetPassword = async (email) => sendPasswordResetEmail(auth, email);
+    const resetPassword = async (email) => sendPasswordResetEmail(auth, email);
 
-  useEffect(() => {
-    const unsubuscribe = onAuthStateChanged(auth, (currentUser) => {
-      // console.log({ currentUser });
-      setUser(currentUser);
-      setLoading(false);
-    });
-    return () => unsubuscribe();
-  }, []);
+    const updateProfileUser = (displayName, image) => {
+        return updateProfile(auth.currentUser, {
+            displayName,
+            photoURL: image,
+        });
+    };
 
-  return (
-    <authContext.Provider
-      value={{
-        signup,
-        login,
-        user,
-        logout,
-        loading,
-        loginWithGoogle,
-        resetPassword,
-      }}
-    >
-      {children}
-    </authContext.Provider>
-  );
+    useEffect(() => {
+        const unsubuscribe = onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser);
+            setLoading(false);
+        });
+        return () => unsubuscribe();
+    }, []);
+
+    return (
+        <authContext.Provider
+            value={{
+                signup,
+                login,
+                user,
+                logout,
+                loading,
+                loginWithGoogle,
+                resetPassword,
+                updateProfileUser,
+            }}
+        >
+            {children}
+        </authContext.Provider>
+    );
 }

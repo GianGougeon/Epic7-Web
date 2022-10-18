@@ -1,5 +1,6 @@
 import { findSet } from "../../ElementAndRoles";
-const HeroPreview = ({ userDataPreview }) => {
+const HeroPreview = (prop) => {
+    const { heroDetail, userDataPreview } = prop;
     const { heroInfo, userInfo, uploadDate } = userDataPreview;
     // Hero info
     const { buildImage, sets, statsPiece } = heroInfo;
@@ -30,7 +31,10 @@ const HeroPreview = ({ userDataPreview }) => {
             <div>
                 <div>
                     <div>
-                        <img src={photoURL} alt={nickname}></img>
+                        <img
+                            src={photoURL || heroDetail.assets.icons.icon}
+                            alt={nickname}
+                        ></img>
                     </div>
                     <h2>{nickname}</h2>
                 </div>

@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export const ProtectedRoute = ({ children }) => {
     const { user, loading } = useAuth();
-    if (loading) return <h1>Loading</h1>;
+    if (loading) return <div className="background"></div>;
     if (!user) {
         router.push("/login");
     } else {

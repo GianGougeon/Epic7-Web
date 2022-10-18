@@ -23,8 +23,8 @@ const Heros = () => {
             <section>
                 <div className="heros container2">
                     {currentTableData.map((hero) => (
-                        <Link href={`/heros/${hero._id}`} key={hero._id}> 
-                            <div>
+                        <Link  href={`/heros/${hero._id}`} key={hero.id}>
+                            <div >
                                 <div className="hero-rol">
                                     <div>
                                         <picture>

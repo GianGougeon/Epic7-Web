@@ -1,0 +1,12 @@
+.admin-panel{
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    >div{
+        display: flex;
+    }
+    >div:nth-child(even){
+        border: 1px solid red;
+        background-color: aqua;
+    }
+}

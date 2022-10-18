@@ -20,6 +20,7 @@ const SelectStats = (prop) => {
                 >
                     <div>
                         <img
+                        className="select-img-stat"
                             style={{ marginRight: "5px" }}
                             src={item.img}
                             height="30px"
@@ -44,7 +45,6 @@ const SelectStats = (prop) => {
             name: e.value,
             img: type.find((item) => item.name === e.value).img,
         });
-        console.log(type.find((item) => item.name === e.value).img);
     };
 
     return (

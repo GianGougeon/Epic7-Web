@@ -4,7 +4,6 @@ import HeroUploadBuild from "./UploadHero/HeroUploadBuild";
 import HeroPreview from "./UploadHero/HeroPreview";
 import HeroCover from "./UploadHero/HeroCover";
 import ListBuilds from "./UploadHero/ListBuilds";
-import { updateDoc, doc, setDoc, onSnapshot } from "firebase/firestore";
 
 const HeroDetail = (prop) => {
     const { heroDetail, heroIdPage } = prop;
@@ -13,9 +12,8 @@ const HeroDetail = (prop) => {
     // loader
     const [uploadBuild, setUploadBuild] = useState(false);
 
-    console.log(heroDetail);
     return (
-        <div>
+        <>
             <HeroCover
                 heroDetail={heroDetail}
                 setUploadBuild={setUploadBuild}
@@ -29,10 +27,10 @@ const HeroDetail = (prop) => {
             )}
 
             {userDataPreview != "" && (
-                <HeroPreview userDataPreview={userDataPreview} heroIdPage={heroIdPage} />
+                <HeroPreview userDataPreview={userDataPreview} heroIdPage={heroIdPage}  heroDetail={heroDetail}/>
             )}
             <ListBuilds heroIdPage={heroIdPage} heroDetail={heroDetail}/>
-        </div>
+        </>
     );
 };
 
