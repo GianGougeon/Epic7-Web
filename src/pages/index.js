@@ -4,29 +4,22 @@ import { useAuth } from "./../components/context/AuthContext";
 const Index = () => {
     const { logout, user } = useAuth();
 
-    console.log(user);
-    const handleLogout = async () => {
-        try {
-            await logout();
-        } catch (error) {
-            console.error(error.message);
-        }
-    };
     return (
-        <div style={{
-            display: "flex",
-            justifyContent: "center",
-            marginTop: "50vh",
-        }}> 
+        <div
+            style={{
+                display: "flex",
+                justifyContent: "center",
+                marginTop: "50vh",
+            }}
+        >
             <div>
-                {user === null ? "No user" : <p>welcome {user.displayName || user.email}</p>}
-                
-
-                <button onClick={handleLogout}>logout</button>
+                {user === null ? (
+                    "No user"
+                ) : (
+                    <p>welcome {user.displayName || user.email}</p>
+                )}
             </div>
-            
         </div>
-        
     );
 };
 export default Index;

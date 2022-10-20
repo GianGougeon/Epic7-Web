@@ -8,6 +8,7 @@ import {
     signInWithPopup,
     sendPasswordResetEmail,
     updateProfile,
+    getAuth,
 } from "firebase/auth";
 import { auth } from "../../firebase/config";
 
@@ -46,6 +47,18 @@ export function AuthProvider({ children }) {
             photoURL: image,
         });
     };
+    //////////////////////
+    //////////////////////
+    //////////////////////
+    //////////////////////
+    //////////////////////
+    
+    //////////////////////
+    //////////////////////
+    //////////////////////
+    //////////////////////
+    //////////////////////
+    //////////////////////
 
     useEffect(() => {
         const unsubuscribe = onAuthStateChanged(auth, (currentUser) => {

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ReactImageFallback from "react-image-fallback";
-
+// styles
+import styles from "./../../styles/sass/components/profile/info.module.scss";
 const Info = (prop) => {
     const { user, updateProfileUser } = prop;
     const [imageSelector, setImageSelector] = useState("");
@@ -24,87 +25,112 @@ const Info = (prop) => {
         },
     ];
     const handleSubmit = async (e) => {
+        // e.preventDefault();
+        // // caracteres minimos para el nickname
+        // if (changeNickname.length < 3 || changeNickname.length > 15) {
+        //     alert("El nickname debe tener entre 3 y 15 caracteres");
+        // }
+        // // chequear que la imagen sea una url valida
+        // if (imageSelector === undefined) {
+        //     alert("Debes seleccionar una imagen");
+        // }
+        // // si todo esta bien, actualizar el perfil
+        // if (
+        //     changeNickname.length >= 3 &&
+        //     changeNickname.length <= 15 &&
+        //     imageSelector !== undefined
+        // ) {
+        //     try {
+        //         await updateProfileUser(changeNickname, imageSelector);
+        //         console.log("nickname updated");
+        //         alert("Perfil actualizado");
+        //         // limpiar
+        //         setChangeNickname("");
+        //         setImageSelector("");
+        //     } catch (error) {
+        //         console.log(error);
+        //     }
+        // }
+        // // solo actualizar el el perfil una vez a la semana
+    };
+
+    // checkear que el nombre de usuario no exista aun - si ya existe, pedir que lo cambies
+    const updateNicknameOnChange = async (e) => {
         e.preventDefault();
-        // caracteres minimos para el nickname
-        if (changeNickname.length < 3 || changeNickname.length > 15) {
-            alert("El nickname debe tener entre 3 y 15 caracteres");
+        setChangeNickname(e.target.value);
+        const { value } = e.target;
+        // si el formato del nombre esta mal, no buscar en la base de datos
+        // longitud mayor o igual que 3 caracteres y longitud menor o igual que 15 caracteres
+        if (value.length < 3 || value.length > 15) {
+            return null;
         }
-        // chequear que la imagen sea una url valida
-        if (imageSelector === undefined) {
-            alert("Debes seleccionar una imagen");
-        }
-        // si todo esta bien, actualizar el perfil
-        if (
-            changeNickname.length >= 3 &&
-            changeNickname.length <= 15 &&
-            imageSelector !== undefined
-        ) {
-            try {
-                await updateProfileUser(changeNickname, imageSelector);
-                console.log("nickname updated");
-                alert("Perfil actualizado");
-                // limpiar
-                setChangeNickname("");
-                setImageSelector("");
-            } catch (error) {
-                console.log(error);
-            }
-        }
-        // solo actualizar el el perfil una vez a la semana
     };
 
     return (
-        <div className="info">
-            <h2>Editar Información</h2>
-            <div>
-                <div>
-                    <div className="preview">
-                        <p>Preview:</p>
+        <div className={styles.info}>
+            <form onSubmit={handleSubmit}>
+                <div className={styles.title}>
+                    <h1>Información</h1>
+                </div>
+                <div className={styles.imagePreview}>
+                    {/* Preview */}
+                    <div>
+                        <h2>Preview:</h2>
                         <div>
                             <ReactImageFallback
-                                src={imageSelector || user.photoURL} 
-                                fallbackImage=""
+                                src={imageSelector}
+                                alt="preview"
                             ></ReactImageFallback>
                         </div>
                     </div>
                     <div>
-                        <h2>Selecciona una imagen</h2>
+                        <h2>Elije una image</h2>
                         <div>
                             {images.map((image) => (
-                                <div
-                                    key={image.id}
-                                    onClick={() => setImageSelector(image.url)}
-                                >
-                                    <img src={image.url} />
-                                </div>
+                                <>
+                                    <div>
+                                        <label
+                                            htmlFor={image.id}
+                                            key={image.id}
+                                        >
+                                            <img
+                                                src={image.url}
+                                                alt="profile"
+                                            ></img>
+                                        </label>
+                                        <input
+                                            type="radio"
+                                            name="image"
+                                            id={image.id}
+                                            value={image.url}
+                                            onChange={(e) =>
+                                                setImageSelector(e.target.value)
+                                            }
+                                        />
+                                    </div>
+                                </>
                             ))}
                         </div>
                     </div>
                 </div>
-                <div>
-                    <h2>Informacion de cuenta</h2>
+                <div className={styles.edit}>
+                    <h2>Editar Información</h2>
                     <div>
-                        <h3>Cambiar Nick</h3>
-                        <label htmlFor="name">
-                            <span>Nuevo:</span>
+                        <label htmlFor="nickname">
+                            <span>Nickname</span>
                             <input
                                 type="text"
-                                name="name"
-                                id="name"
+                                name="nickname"
+                                id="nickname"
                                 onChange={(e) =>
                                     setChangeNickname(e.target.value)
                                 }
-                            />
+                            ></input>
                         </label>
                     </div>
                 </div>
-            </div>
-            <button
-                className="info-save btn-upload"
-                onClick={(e) => handleSubmit(e)}
-            >
-                Guardar
-            </button>
+                <button>Guardar</button>
+            </form>
         </div>
     );
 };

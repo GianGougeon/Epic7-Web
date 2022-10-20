@@ -1,0 +1,12 @@
+@mixin border-bottom($color: transparent, $length: 10%, $length2: 90%) {
+    border-bottom: 1px solid transparent;
+    border-image: linear-gradient(
+        .25turn,
+        rgba(129, 129, 128, 0) $length,
+        $color,
+        rgba(129, 129, 128, 0) $length2
+    );
+    border-image-slice: 1;
+}
+
+

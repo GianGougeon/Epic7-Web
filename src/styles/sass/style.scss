@@ -2,7 +2,6 @@
 @import './base/variables';
 @import './base/background';
 @import './base/loader';
-@import './base/header';
 @import './base/footer';
 
 @import './components/boostrap-grid';
@@ -12,6 +11,6 @@
 @import './components/pagination';
 @import './components/filter';
 @import './components/loginForm';
-@import './components/profile';
+@import './components/profile/profile';
 @import './components/adminPanel';
 

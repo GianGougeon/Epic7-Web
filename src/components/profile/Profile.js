@@ -1,11 +1,15 @@
 import { useAuth } from "../../components/context/AuthContext";
 import React, { useState } from "react";
-import { getAuth, updateProfile } from "firebase/auth";
 import ListPublished from "./ListPublished";
 import Info from "./Info";
+// styles
+
 const Profile = () => {
     const [currentSection, setCurrentSection] = useState("info");
-    const { user, updateProfileUser } = useAuth();
+    const { user, updateProfileUser, findUserAlreadyExist } = useAuth();
+
+
+    console.log(user);
 
     return (
         <>

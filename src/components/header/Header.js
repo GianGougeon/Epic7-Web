@@ -1,17 +1,29 @@
 import Link from "next/link";
-import React from "react";
-import { CgProfile } from "react-icons/cg";
+import React, { useState } from "react";
+import { FaUserCircle } from "react-icons/fa";
+import styles from "../../styles/sass/base/header/header.module.scss";
+import Profile from "./Profile";
+import { useAuth } from "../context/AuthContext";
 const Header = () => {
+    const { user, logout } = useAuth();
+    const [expand, setExpand] = useState(false);
+
     return (
-        <header className="header">
+        <header className={styles.header}>
             <Link href="/">
-                <a className="logo">E7B</a>
+                <a className={styles.logo}>E7B</a>
             </Link>
-            <input className="menu-btn" type="checkbox" id="menu-btn" />
-            <label className="menu-icon" htmlFor="menu-btn">
-                <span className="navicon" />
+            <input className={styles.menuBtn} type="checkbox" id="menu-btn" />
+            <label className={styles.menuIcon} htmlFor="menu-btn">
+                <span className={styles.navicon} />
             </label>
-            <ul className="menu">
+            <div className={styles.menuProfile}>
+                <img
+                    src={user?.photoURL || ""}
+                    onClick={() => setExpand(!expand)}
+                />
+            </div>
+            <ul className={styles.menu}>
                 <li>
                     <Link href="/">Inicio</Link>
                 </li>
@@ -24,12 +36,17 @@ const Header = () => {
                 <li>
                     <Link href="/admin">admin</Link>
                 </li>
-                <li>
-                    <Link href="/profile">
-                        <CgProfile />
-                    </Link>
-                </li>
+                <div onClick={() => setExpand(!expand)}>
+                    {user ? (
+                        <img src={user?.photoURL || ""} />
+                    ) : (
+                        <FaUserCircle />
+                    )}
+                </div>
             </ul>
+            {expand && (
+                <Profile setExpand={setExpand} user={user} logout={logout} />
+            )}
         </header>
     );
 };

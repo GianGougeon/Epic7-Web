@@ -1,0 +1,21 @@
+@mixin btn($height: 50px, $width: 200px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: $height;
+    width: $width;
+    background: transparent;
+    border: 2px solid #eee;
+    color: #eee;
+    text-transform: uppercase;
+    font-weight: bold;
+    &:hover {
+        transition: all 0.1s;
+    }
+    &:active {
+        background: #eee;
+        color: #373838;
+        transition: all 0.1s;
+        border: 2px solid #eee;
+    }
+}
