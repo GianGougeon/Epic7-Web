@@ -1,16 +1,21 @@
+@import "../../mixin/border-bottom.scss";
+
 .header {
-    box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.1);
+    // border-bottom: 1px solid rgba($color: #361349, $alpha: 1);
     position: absolute;
     top: 0;
     width: 100%;
     z-index: 6;
-    background-color: #394765;
+    background-color: #191a22;
+
     > ul {
         margin: 0;
         padding: 0;
         list-style: none;
         text-transform: uppercase;
         overflow: hidden;
+        background-color: #191a22;
+
         > li {
             > a {
                 display: block;
@@ -34,13 +39,14 @@
         top: 30px;
         transform: translate(-50%, -50%);
 
+        cursor: pointer;
         @media (min-width: 768px) {
             left: 0;
             top: 30px;
             transform: translate(0%, -50%);
         }
     }
-    
+
     .menu {
         clear: both;
         max-height: 0;
@@ -56,14 +62,7 @@
             width: 100%;
             display: flex;
             justify-content: center;
-            border-bottom: 1px solid transparent;
-            border-image: linear-gradient(
-                0.25turn,
-                rgba(255, 255, 255, 0) 3%,
-                rgb(255, 255, 255),
-                rgba(247, 247, 247, 0) 97%
-            );
-            border-image-slice: 1;
+            @include border-bottom(#4f2464, 10%, 90%);
             height: 60px;
             transition: all 0.2s ease-in-out;
             > img {
@@ -72,8 +71,12 @@
                 border-radius: 50%;
                 border: 1px solid #eee;
             }
-            &:hover {
-                background-color: rgb(65, 83, 165);
+            > a {
+                border-bottom: 1px solid transparent;
+                &:hover {
+                    transition: all 0.2s ease-in-out;
+                    @include border-bottom(#aa4cda, 1%, 99%);
+                }
             }
         }
         div {
@@ -83,9 +86,6 @@
             transform: translate(-50%, -50%);
             z-index: 3;
             display: none;
-        }
-        div:hover {
-            background-color: transparent;
         }
     }
 }
@@ -183,6 +183,12 @@
     .header li {
         display: flex;
         justify-content: flex-end;
+    }
+    .header {
+        background-color: transparent;
+        > ul {
+            background-color: transparent;
+        }
     }
     .logo {
         left: 0%;

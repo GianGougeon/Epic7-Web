@@ -9,11 +9,6 @@ export const Home = () => {
 
     return (
         <>
-            <div
-                className={
-                    loader ? "background background--full" : "background"
-                }
-            ></div>
             {loader ? (
                 <Loader />
             ) : (

@@ -1,0 +1,95 @@
+@import "../base/variables";
+.index {
+    background-color: #0d0e14;
+    margin-top: 59px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    &::before {
+        content: "";
+        background: #4f2464;
+        border-radius: 50%;
+        filter: blur(150px);
+        top: 30%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 300px;
+        height: 300px;
+        position: absolute;
+        z-index: 1;
+    }
+    > div:first-child {
+        color: #eee;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        z-index: 2;
+
+        > h1 {
+            font-size: clamp(1rem, 5vw, 6rem);
+            margin: 0;
+            z-index: 2;
+            color: #eee;
+        }
+        > div {
+            display: flex;
+            justify-content: center;
+
+            > button {
+                color: #eee;
+                background-color: transparent;
+                height: 50px;
+                border: 1px solid grey;
+                font-family: $font-Lexend;
+                font-weight: 600;
+                border-radius: 5px;
+                padding: 10px;
+                transition: all 0.2s ease-in-out;
+                width: 120px;
+                &:hover {
+                    background-color: #eee;
+                    color: #0d0e14;
+                }
+                margin: 0 10px;
+            }
+            > button:last-child {
+                background-color: #eee;
+                color: #0d0e14;
+                &:hover {
+                    color: #0d0e14;
+                }
+            }
+        }
+    }
+    > div:last-child {
+        > h2 {
+            color: #eee;
+            font-size: clamp(1rem, 5vw, 1.7rem);
+            margin: 0;
+            z-index: 2;
+            margin: 20px;
+            font-family: $font-Lexend;
+        }
+    }
+}
+
+.marquee {
+    justify-content: space-between !important;
+}
+
+.image_wrapper {
+    margin: 0px 5px;
+    overflow: hidden;
+    border-radius: 10px;
+    > img {
+        height: 280px;
+        cursor: pointer;
+        transition: all 0.5s ease;
+        border-radius: 10px;
+        &:hover {
+            transform: scale(1.02);
+        }
+    }
+}
