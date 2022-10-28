@@ -1,6 +1,6 @@
 # Epic Seven Builds
 
-![Intro](https://github.com/GianGougeon/Epic7Builds/blob/main/Screenshots/Screenshot_1.png?raw=true)
+![Intro](https://github.com/GianGougeon/Epic7Builds/blob/main/Screenshots/home.png?raw=true)
 
 ### Objetivo inicial
 
