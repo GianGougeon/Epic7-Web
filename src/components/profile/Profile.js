@@ -2,6 +2,7 @@ import { useAuth } from "../../components/context/AuthContext";
 import React, { useState } from "react";
 import ListPublished from "./ListPublished";
 import Info from "./Info";
+import styles from "../../styles/sass/components/profile/profile.module.scss";
 // styles
 
 const Profile = () => {
@@ -13,7 +14,7 @@ const Profile = () => {
 
     return (
         <>
-            <div className="profile-details">
+            <div className={styles.profile_details}>
                 <div>
                     <input
                         type="radio"
@@ -41,33 +42,6 @@ const Profile = () => {
                 )}
                 {currentSection === "listPublished" && <ListPublished />}
             </div>
-
-            {/* <div>
-                <div className="profile-details">
-                    <div>
-                        <div>
-                            <h1>Perfil</h1>
-                        </div>
-                        <div className="star"></div>
-                    </div>
-                </div>
-                <div className="profile-content">
-                    <div>
-                        <div>
-                            <div></div>
-                            <h2>{user.displayName}</h2>
-                        </div>
-                        <div>
-                            <div>
-                                <p>Creación: Hace {elapsedTime()}</p>
-                                <span>Fecha: {firebaseDate()[0].date}</span>
-                                <span>Hora: {firebaseDate()[0].time}</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div>contenido</div>
-                </div>
-            </div> */}
         </>
     );
 };

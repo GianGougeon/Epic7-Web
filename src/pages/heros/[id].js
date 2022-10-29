@@ -17,9 +17,6 @@ const Heros = () => {
 
     return (
         <>
-            <div>
-                <div className="background"></div>
-            </div>
             {showHero.map((heroDetail) => (
                 <>
                     {heroDetail._id === id ? (

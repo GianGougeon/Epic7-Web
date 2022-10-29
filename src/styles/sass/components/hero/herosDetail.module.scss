@@ -1,12 +1,21 @@
-.Hero-Details {
-    display: flex;
-    background: rgba($color: #000000, $alpha: 0.7);
-    justify-content: space-between;
-    margin-top: 59px;
+@import "../../base/variables";
 
-    box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px,
-        rgba(0, 0, 0, 0.05) 0px 5px 10px;
-    > div:nth-child(1) {
+.hero_section {
+    background: rgb(13, 14, 20);
+    background: linear-gradient(
+        0,
+        rgba(13, 14, 20, 1) 0%,
+        rgba($color: #4f2464, $alpha: 0.4) 100%
+    );
+}
+.Hero_Details {
+    display: flex;
+    background-color: #0d0e14;
+    justify-content: space-between;
+    padding-top: 59px;
+    opacity: 1;
+    border-bottom: 1px solid rgba($color: #eee, $alpha: 0.25);
+    > div:first-child {
         display: flex;
         height: 150px;
         position: relative;
@@ -28,14 +37,14 @@
             }
         }
     }
-    > div:nth-child(2) {
+    > div:last-child {
         display: flex;
         align-items: center;
         margin-right: 50px;
     }
 }
 
-.detail-content {
+.detail_content {
     display: flex;
     justify-content: center;
     border-bottom: 1px solid transparent;
@@ -66,6 +75,8 @@
         height: 470px;
         width: 250px;
         margin-top: 48px;
+        border: 1px solid rgba($color: #eee, $alpha: 0.25);
+
         > div:nth-child(1) {
             // border botom gradiant
             border-bottom: 1px solid transparent;
@@ -98,6 +109,7 @@
             }
         }
         > div:nth-child(2) {
+
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -120,6 +132,7 @@
 
     > div:nth-child(2) {
         width: auto;
+        border: 1px solid rgba($color: #eee, $alpha: 0.25);
         margin-top: 48px;
         margin-left: 48px;
 
@@ -133,18 +146,21 @@
         }
     }
 }
-.publish-build {
+.publish_build {
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    > span {
+    align-items: center;
+    > p {
+        width: 250px;
         font-size: 20px;
         color: #eee;
+        text-align: center;
+        margin: 0;
     }
 }
 
-.btn-upload {
+.btn_upload {
     margin: 5px auto;
     display: flex;
     justify-content: center;
@@ -166,6 +182,6 @@
         border: 2px solid #eee;
     }
 }
-.select-img-stat {
+.select_img_stat {
     filter: invert(1);
 }

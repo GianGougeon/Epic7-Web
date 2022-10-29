@@ -1,4 +1,5 @@
 import { findSet } from "../../ElementAndRoles";
+import styles from '../../../styles/sass/components/hero/herosDetail.module.scss';
 const HeroPreview = (prop) => {
     const { heroDetail, userDataPreview } = prop;
     const { heroInfo, userInfo, uploadDate } = userDataPreview;
@@ -25,7 +26,7 @@ const HeroPreview = (prop) => {
 
     return (
         <div
-            className="detail-content"
+            className={styles.detail_content}
             style={{ backgroundColor: "rgba(55, 56, 56, 0.6)" }}
         >
             <div>
@@ -86,7 +87,7 @@ const HeroPreview = (prop) => {
                 </div>
             </div>
             <div>
-                {userDataPreview ? <img src={imageUrl()} /> : <div></div>}
+                {userDataPreview ? <img src={imageUrl()} /> : null}
             </div>
         </div>
     );

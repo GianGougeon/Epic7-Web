@@ -1,22 +1,46 @@
+.heros_section {
+    > div:first-child {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: #eee;
+
+        > h1 {
+            font-size: clamp(1rem, 5vw, 3rem);
+            margin: 0;
+        }
+    }
+}
 .heros {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-gap: 1rem;
     grid-auto-rows: minmax(100px, auto);
-
+    &::before {
+        content: "";
+        background: #4f2464;
+        border-radius: 50%;
+        filter: blur(150px);
+        top: 30%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 300px;
+        height: 300px;
+        position: absolute;
+        z-index: -1;
+    }
     > div {
         display: flex;
         align-items: center;
         justify-content: center;
         color: antiquewhite;
         position: relative;
-        background-color: rgba(0, 0, 0, 0.5);
         border-radius: 20px;
         height: 100%;
         display: flex;
         justify-content: flex-end;
         cursor: pointer;
-
+        border: 1px solid rgba($color: #eee, $alpha: .2);
         transition: all 0.03s ease-in-out;
         &:active {
             // iner box-shadow
@@ -54,7 +78,7 @@
             rgb(0, 0, 0) 1.41734px -1.41108px 0px,
             rgb(0, 0, 0) 1.92034px -0.558831px 0px;
     }
-    .hero-rol {
+    .hero_rol {
         z-index: 4;
         position: absolute;
         top: 0;
@@ -81,7 +105,7 @@
         display: flex;
     }
 }
-.hero-attribute {
+.hero_attribute {
     display: flex;
     > img {
         padding: 0px 5px;

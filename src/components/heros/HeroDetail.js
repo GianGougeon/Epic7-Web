@@ -13,7 +13,7 @@ const HeroDetail = (prop) => {
     const [uploadBuild, setUploadBuild] = useState(false);
 
     return (
-        <>
+        <section className="hero_section">
             <HeroCover
                 heroDetail={heroDetail}
                 setUploadBuild={setUploadBuild}
@@ -30,7 +30,7 @@ const HeroDetail = (prop) => {
                 <HeroPreview userDataPreview={userDataPreview} heroIdPage={heroIdPage}  heroDetail={heroDetail}/>
             )}
             <ListBuilds heroIdPage={heroIdPage} heroDetail={heroDetail}/>
-        </>
+        </section>
     );
 };
 

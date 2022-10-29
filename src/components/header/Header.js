@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import { FaUserCircle } from "react-icons/fa";
+import { IoMdArrowDropleft, IoMdArrowDropdown } from "react-icons/io";
 import styles from "../../styles/sass/base/header/header.module.scss";
 import Profile from "./Profile";
 import { useAuth } from "../context/AuthContext";
@@ -34,13 +35,18 @@ const Header = () => {
                     <Link href="/test">Caza</Link>
                 </li>
                 <li>
-                    <Link href="/admin">admin</Link>
+                    <Link href="#">About</Link>
                 </li>
                 <div onClick={() => setExpand(!expand)}>
                     {user ? (
                         <img src={user?.photoURL || ""} />
                     ) : (
                         <FaUserCircle />
+                    )}
+                    {expand ? (
+                        <IoMdArrowDropdown className={styles.arrowExpand} />
+                    ) : (
+                        <IoMdArrowDropleft className={styles.arrowExpand} />
                     )}
                 </div>
             </ul>

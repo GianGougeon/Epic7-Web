@@ -5,7 +5,7 @@ import Roles from "./Roles";
 import Attributes from "./Attributes";
 import Stars from "./Stars";
 import FilterText from "./FilterText";
-
+import styles from "./../../styles/sass/components/hero/filter.module.scss";
 const filterTypes = {
     elementTypes: ["wind", "fire", "light", "dark", "ice"],
     soldierTypes: [
@@ -136,7 +136,7 @@ const Filter = ({ Epic7Api }) => {
 
     return (
         <>
-            <div className="filter container">
+            <div className={`${styles.filter} container`}>
                 <div>
                     <div>
                         <div>

@@ -15,6 +15,7 @@ import { uuid } from "uuidv4";
 import SelectStats from "./SelectStats";
 
 import ReactLoading from "react-loading";
+import styles from "../../../styles/sass/components/hero/heroUpload.module.scss";
 const HeroUploadBuild = (prop) => {
     const { user } = useAuth();
     const { heroDetail, heroIdPage, setUserDataPreview } = prop;
@@ -136,7 +137,7 @@ const HeroUploadBuild = (prop) => {
                 <>
                     {loader.uploadhidden ? (
                         <>
-                            <div className="Upload-Build">
+                            <div className={styles.Upload_Build}>
                                 <form onSubmit={(e) => handleSubmit(e)}>
                                     <div>
                                         <div>
@@ -182,6 +183,7 @@ const HeroUploadBuild = (prop) => {
                                             <div>
                                                 <input
                                                     type="file"
+                                                    accept="image/*"
                                                     name="UploadFile"
                                                     id="UploadFile"
                                                     onChange={(e) =>
@@ -194,8 +196,8 @@ const HeroUploadBuild = (prop) => {
                                                     htmlFor="UploadFile"
                                                     className={
                                                         file
-                                                            ? "active-file"
-                                                            : "noActive-file"
+                                                            ? styles.active_file
+                                                            : styles.noActive_file
                                                     }
                                                 >
                                                     <FaCloudUploadAlt />
@@ -203,8 +205,8 @@ const HeroUploadBuild = (prop) => {
                                                         <p
                                                             className={
                                                                 file
-                                                                    ? "active-file"
-                                                                    : "noActive-file"
+                                                                    ? styles.active_file
+                                                                    : styles.noActive_file
                                                             }
                                                         >
                                                             Un archivo
@@ -214,8 +216,8 @@ const HeroUploadBuild = (prop) => {
                                                         <p
                                                             className={
                                                                 file
-                                                                    ? "active-file"
-                                                                    : "noActive-file"
+                                                                    ? styles.active_file
+                                                                    : styles.noActive_file
                                                             }
                                                         >
                                                             Selecciona una
@@ -229,7 +231,7 @@ const HeroUploadBuild = (prop) => {
                                     <div>
                                         <button
                                             type="button"
-                                            className="btn-preview"
+                                            className={styles.btn_preview}
                                             onClick={() =>
                                                 setUserDataPreview(
                                                     setData(file)
@@ -240,7 +242,7 @@ const HeroUploadBuild = (prop) => {
                                         </button>
                                         <button
                                             type="button"
-                                            className="btn-preview"
+                                            className={styles.btn_preview}
                                             onClick={() =>
                                                 setUserDataPreview("")
                                             }
@@ -253,13 +255,15 @@ const HeroUploadBuild = (prop) => {
                             </div>
                         </>
                     ) : (
-                        <div className="Upload-Build done">
+                        <div
+                            className={`${styles.Upload_Build} ${styles.done}`}
+                        >
                             <span>Gracias, su build queda en revisión.</span>
                         </div>
                     )}
                 </>
             ) : (
-                <div className="Upload-Build uploading">
+                <div className={`${styles.Upload_Build} ${styles.uploading}`}>
                     <ReactLoading type="bars" color="#eee" />
                 </div>
             )}

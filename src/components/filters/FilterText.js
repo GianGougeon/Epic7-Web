@@ -1,13 +1,13 @@
 import React from "react";
 import { IoCloseOutline } from "react-icons/io5";
+import styles from "../../styles/sass/components/hero/filter.module.scss";
 const FilterText = (prop) => {
     const { searchHero, setSearchHero } = prop;
     return (
         <>
-            <div className="filter-text">
+            <div className={styles.filter_text}>
                 <input
                     type="text"
-                    className="form-control"
                     onChange={(event) => {
                         setSearchHero(event.target.value);
                     }}
@@ -15,7 +15,6 @@ const FilterText = (prop) => {
                     placeholder="Buscar"
                 />
                 <button
-                    className="clear-text"
                     onClick={() => {
                         setSearchHero("");
                     }}

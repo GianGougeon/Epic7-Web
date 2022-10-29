@@ -12,9 +12,9 @@
                     > div {
                         height: 35px;
                         width: 35px;
-                        border-top: 1px solid black;
-                        border-bottom: 1px solid black;
-                        border-left: 1px solid black;
+                        border-top: 1px solid rgba($color: #eee, $alpha: .2);
+                        border-bottom: 1px solid rgba($color: #eee, $alpha: .2);
+                        border-left: 1px solid rgba($color: #eee, $alpha: .2);
                         position: relative;
                         > input {
                             cursor: pointer;
@@ -62,7 +62,7 @@
                         }
                     }
                     > div:last-child {
-                        border-right: 1px solid black;
+                        border-right: 1px solid rgba($color: #eee, $alpha: .2);
                     }
                 }
             }
@@ -70,14 +70,14 @@
     }
 }
 
-.filter-text {
+.filter_text {
     margin: 20px auto 10px auto;
     position: relative;
     width: 200px;
     > input,
     textarea {
         background-color: transparent;
-        border: 1px solid #40355c;
+        border: 1px solid rgba($color: #eee, $alpha: .2);
         border-radius: 5px;
         height: 35px;
         font-size: 1em;
@@ -86,7 +86,7 @@
             outline: none;
         }
         &::placeholder {
-            color: #40355c;
+            color: #eee;
             padding-left: 5px;
         }
     }
@@ -102,7 +102,7 @@
         justify-content: center;
         align-items: center;
         > svg {
-            fill: #40355c;
+            color: #eee
         }
     }
 }

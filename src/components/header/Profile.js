@@ -46,7 +46,7 @@ const Profile = (props) => {
                                 Perfil
                             </li>
                         </Link>
-                        <Link href={""}>
+                        <Link href={"/profile"}>
                             <li onClick={() => setExpand(false)}>
                                 <BsFillGearFill />
                                 Configuracion
@@ -59,7 +59,7 @@ const Profile = (props) => {
                         {user ? (
                             <Link href={""}>
                                 <li onClick={handleLogout}>
-                                    <AiOutlineLogout /> Logout
+                                    <AiOutlineLogout /> Cerrar Sesion
                                 </li>
                             </Link>
                         ) : (
@@ -68,7 +68,7 @@ const Profile = (props) => {
                                     <AiOutlineLogin
                                         className={styles.AiOutlineLogin}
                                     />{" "}
-                                    Login
+                                    Iniciar Sesion
                                 </li>
                             </Link>
                         )}

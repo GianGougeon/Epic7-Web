@@ -4,6 +4,8 @@ import ReactImageFallback from "react-image-fallback";
 import { rarity } from "../../ElementAndRoles";
 import { useAuth } from "../../context/AuthContext";
 import Router from "next/router";
+import styles from "../../../styles/sass/components/hero/heroCoverAnim.module.scss";
+import detailStyles from "../../../styles/sass/components/hero/herosDetail.module.scss";
 
 const HeroCover = (prop) => {
     const { heroDetail, setUploadBuild } = prop;
@@ -11,7 +13,7 @@ const HeroCover = (prop) => {
     const { attribute } = heroDetail.assets.icons;
 
     return (
-        <div className="Hero-Details" key={heroDetail._id}>
+        <div className={detailStyles.Hero_Details} key={heroDetail._id}>
             <div>
                 <ReactImageFallback
                     src={heroDetail.assets.image}
@@ -32,20 +34,31 @@ const HeroCover = (prop) => {
                     </div>
                 </div>
             </div>
+            <ul class={styles.background}>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
             {user ? (
                 <div>
                     <button
-                        className="btn-upload"
+                        className={detailStyles.btn_upload}
                         onClick={() => setUploadBuild(true)}
                     >
                         Publicar Build
                     </button>
                 </div>
             ) : (
-                <div className="publish-build">
-                    <span>¿Quieres publicar una build?</span>
+                <div className={detailStyles.publish_build}>
+                    <p>¿Quieres publicar una build?</p>
                     <button
-                        className="btn-upload"
+                        className={detailStyles.btn_upload}
                         onClick={() => Router.push("/login")}
                     >
                         Inicia sesión

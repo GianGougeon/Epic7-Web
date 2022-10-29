@@ -1,7 +1,8 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @next/next/no-img-element */
-import React, { useState } from "react";
+import React from "react";
 import Select from "react-select";
+import styles from "../../../styles/sass/components/hero/herosDetail.module.scss";
 const SelectStats = (prop) => {
     const { setCollar, type } = prop;
 
@@ -18,16 +19,18 @@ const SelectStats = (prop) => {
                         alignItems: "center",
                     }}
                 >
+                    
                     <div>
                         <img
-                        className="select-img-stat"
-                            style={{ marginRight: "5px" }}
+                        className={styles.select_img_stat}
+                            style={{ marginRight: "5px", filter: "invert(1)" }}
                             src={item.img}
                             height="30px"
                             width="30px"
                         />
                         {item.name}
                     </div>
+                    
                 </div>
             ),
         }));
@@ -50,7 +53,6 @@ const SelectStats = (prop) => {
     return (
         <>
             <Select
-                className="basic-single"
                 classNamePrefix="select"
                 options={optionsStats}
                 isDisabled={false}

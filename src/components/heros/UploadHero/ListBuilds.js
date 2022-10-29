@@ -5,6 +5,9 @@ import { findSet } from "../../ElementAndRoles";
 // loader
 import ReactLoading from "react-loading";
 
+import styles from "../../../styles/sass/components/hero/herosDetail.module.scss";
+import stylesU from "../../../styles/sass/components/hero/heroUpload.module.scss";
+
 const ListBuilds = (prop) => {
     const { heroIdPage, heroDetail } = prop;
     const [buildsList, setBuildsList] = useState([]);
@@ -51,7 +54,7 @@ const ListBuilds = (prop) => {
         <>
             {loader ? (
                 buildsList.map((build) => (
-                    <div className="detail-content" key={build.id}>
+                    <div className={styles.detail_content} key={build.id}>
                         <div>
                             <div>
                                 <div>
@@ -145,13 +148,19 @@ const ListBuilds = (prop) => {
                             </div>
                         </div>
                         <div>
-                            <img src={build.heroInfo.buildImage} />
+                            {build.heroInfo.buildImage != "" ? (
+                                <img src={build.heroInfo.buildImage} />
+                            ) : (
+                                <div>
+                                    <span>Imagen no encontrada</span>
+                                </div>
+                            )}
                         </div>
                     </div>
                 ))
             ) : (
                 <div
-                    className="Upload-Build uploading"
+                    className={`${stylesU.Upload_Build} ${stylesU.uploading}`}
                     style={{ height: "75vh", backgroundColor: "transparent" }}
                 >
                     <ReactLoading type="spinningBubbles" color="#2D2540" />

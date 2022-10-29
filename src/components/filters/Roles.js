@@ -1,4 +1,5 @@
 import React from "react";
+
 const Roles = (props) => {
     const { Epic7Api, handleChange } = props;
 
@@ -24,7 +25,7 @@ const Roles = (props) => {
     });
 
     return (
-        <div className="filter-role">
+        <div>
             {rolesWithImages.map((hero) => (
                 <div key={hero.role}>
                     <input
@@ -34,10 +35,7 @@ const Roles = (props) => {
                         id={hero.role}
                     />
                     <label htmlFor={hero.role}>
-                        <img
-                            src={hero.image}
-                            alt={hero.role}
-                        />
+                        <img src={hero.image} alt={hero.role} />
                     </label>
                 </div>
             ))}

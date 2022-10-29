@@ -4,7 +4,7 @@
 .pagination-container {
     display: flex;
     list-style-type: none;
-    border: 1px solid black;
+    border: 1px solid rgba($color: #eee, $alpha: .2);
     height: 40px;
     width: 320px;
     justify-content: center;
@@ -15,7 +15,7 @@
         padding: 0 12px;
         height: 100%;
         text-align: center;
-        color: rgba(0, 0, 0, 0.87);
+        color: #eee;
         display: flex;
         box-sizing: border-box;
         align-items: center;
@@ -48,8 +48,8 @@
                 display: inline-block;
                 width: 0.4em;
                 height: 0.4em;
-                border-right: 0.12em solid rgba(0, 0, 0, 0.87);
-                border-top: 0.12em solid rgba(0, 0, 0, 0.87);
+                border-right: 0.12em solid #eee;
+                border-top: 0.12em solid #eee;
             }
 
             &.left {
@@ -65,8 +65,8 @@
             pointer-events: none;
 
             .arrow::before {
-                border-right: 0.12em solid rgba(0, 0, 0, 0.43);
-                border-top: 0.12em solid rgba(0, 0, 0, 0.43);
+                border-right: 0.12em solid #eee;
+                border-top: 0.12em solid #eee;
             }
 
             &:hover {

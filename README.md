@@ -1,6 +1,7 @@
 # Epic Seven Builds
 
-![Intro](https://github.com/GianGougeon/Epic7Builds/blob/main/Screenshots/home.png?raw=true)
+![Home](https://github.com/GianGougeon/Epic7Builds/blob/main/Screenshots/home.png?raw=true) <br>
+![Home](https://github.com/GianGougeon/Epic7Builds/blob/main/Screenshots/heros.png?raw=true)
 
 ### Objetivo inicial
 

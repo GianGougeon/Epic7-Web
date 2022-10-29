@@ -11,7 +11,7 @@
         background: #4f2464;
         border-radius: 50%;
         filter: blur(150px);
-        top: 30%;
+        top: 40%;
         left: 50%;
         transform: translate(-50%, -50%);
         width: 300px;
@@ -26,12 +26,16 @@
         flex-direction: column;
         justify-content: center;
         z-index: 2;
-
+        margin-top: 7%;
         > h1 {
-            font-size: clamp(1rem, 5vw, 6rem);
+            font-size: clamp(1.4rem, 8vw, 6rem);
             margin: 0;
             z-index: 2;
             color: #eee;
+        }
+        > p {
+            font-size: clamp(12px, 8vw, 1rem);
+            text-align: center;
         }
         > div {
             display: flex;
@@ -83,6 +87,7 @@
     margin: 0px 5px;
     overflow: hidden;
     border-radius: 10px;
+    border: none;
     > img {
         height: 280px;
         cursor: pointer;

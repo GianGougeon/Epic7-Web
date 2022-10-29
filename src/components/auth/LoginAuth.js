@@ -3,7 +3,13 @@ import { useAuth } from "../context/AuthContext";
 // navegate next js
 import Router from "next/router";
 import Link from "next/link";
+// icons
 import { FcGoogle } from "react-icons/fc";
+import { FaUserAlt, FaLock, FaUserCircle } from "react-icons/fa";
+
+import styles from "../../styles/sass/components/loginForm.module.scss";
+import stylesBackground from "../../styles/sass/components/hero/heroCoverAnim.module.scss";
+
 const Login = () => {
     const [user, setUser] = useState({
         email: "",
@@ -48,13 +54,30 @@ const Login = () => {
     };
     return (
         <>
-            <div>
-                <div className="background"></div>
+            <div
+                class={stylesBackground.background}
+                style={{ height: "100vh" }}
+            >
+                <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
             </div>
-            <div className="auth-form">
+            <div className={`${styles.auth_form} ${styles.gradient_border}`}>
                 <h1>Iniciar Sesion</h1>
+                <FaUserCircle  className={styles.authProfile} style={{margin: "20px auto"}}/>
                 <form onSubmit={handleSubmit}>
                     <div>
+                        <label htmlFor="email">
+                            <FaUserAlt />
+                        </label>
                         <input
                             type="email"
                             name="email"
@@ -64,6 +87,9 @@ const Login = () => {
                         />
                     </div>
                     <div>
+                        <label htmlFor="password">
+                            <FaLock />
+                        </label>
                         <input
                             type="password"
                             name="password"
@@ -81,7 +107,7 @@ const Login = () => {
                         </a> */}
                     </div>
                 </form>
-                <div className="separador">
+                <div className={styles.separador}>
                     <hr />
                     <span>o</span>
                 </div>

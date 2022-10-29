@@ -1,16 +1,24 @@
-.profile-details {
+.profile_details {
     margin-top: 59px;
-    background: rgb(153, 132, 223);
-    background: linear-gradient(
-        360deg,
-        rgb(46, 39, 66) 0%,
-        rgba(62, 63, 99, 1) 100%
-    );
     height: calc(100vh - 59px);
     display: grid;
     grid-template-columns: 0.4fr 1fr;
     justify-items: center;
     align-items: center;
+    &::before {
+        content: "";
+        background: #4f2464;
+        border-radius: 50%;
+        filter: blur(150px);
+        top: 50%;
+        left: 52%;
+        transform: translate(-50%, -50%);
+        width: 500px;
+        height: 500px;
+        position: absolute;
+        z-index: -1;
+    }
+
     > div:nth-child(1) {
         box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
             rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;

@@ -4,6 +4,7 @@ import { findElement, findRole, rarity } from "../ElementAndRoles";
 import Pagination from "../pagination/Pagination";
 import { useAppContext } from "../context/AppContext";
 import ReactImageFallback from "react-image-fallback";
+import styles from "./../../styles/sass/components/hero/heros.module.scss";
 import Link from "next/link";
 
 const Heros = () => {
@@ -20,53 +21,51 @@ const Heros = () => {
 
     return (
         <>
-            <section>
-                <div className="heros container2">
-                    {currentTableData.map((hero) => (
-                        <Link  href={`/heros/${hero._id}`} key={hero.id}>
-                            <div >
-                                <div className="hero-rol">
-                                    <div>
-                                        <picture>
-                                            <img
-                                                src={findRole(hero.role)}
-                                                alt={hero.name}
-                                            ></img>
-                                        </picture>
-                                        <h2>{hero.name}</h2>
-                                    </div>
-                                    <div className="hero-attribute">
-                                        <Image
-                                            width={23}
-                                            height={23}
-                                            src={findElement(hero.attribute)}
-                                            alt={hero.attribute}
-                                            className="hero-attribute-img"
-                                        ></Image>
-                                        <div className="star" key="stars">
-                                            {rarity(hero.rarity, hero.name)}
-                                        </div>
+            <div className={styles.heros}>
+                {currentTableData.map((hero) => (
+                    <Link href={`/heros/${hero._id}`} key={hero.id}>
+                        <div>
+                            <div className={styles.hero_rol}>
+                                <div>
+                                    <picture>
+                                        <img
+                                            src={findRole(hero.role)}
+                                            alt={hero.name}
+                                        ></img>
+                                    </picture>
+                                    <h2>{hero.name}</h2>
+                                </div>
+                                <div className={styles.hero_attribute}>
+                                    <Image
+                                        width={23}
+                                        height={23}
+                                        src={findElement(hero.attribute)}
+                                        alt={hero.attribute}
+                                        className="hero-attribute-img"
+                                    ></Image>
+                                    <div className={styles.star} key="stars">
+                                        {rarity(hero.rarity, hero.name)}
                                     </div>
                                 </div>
-                                <picture>
-                                    <ReactImageFallback
-                                        src={hero.assets.thumbnail}
-                                        fallbackImage="https://toppng.com/public/uploads/thumbnail/epic-seven-logo-11562865023mn7s1k4x0a.png"
-                                        alt={hero.name}
-                                    ></ReactImageFallback>
-                                </picture>
                             </div>
-                        </Link>
-                    ))}
-                </div>
-                <Pagination
-                    className="pagination-bar"
-                    currentPage={currentPage}
-                    totalCount={showHero.length}
-                    pageSize={PageSize}
-                    onPageChange={(page) => setCurrentPage(page)}
-                />
-            </section>
+                            <picture>
+                                <ReactImageFallback
+                                    src={hero.assets.thumbnail}
+                                    fallbackImage="https://toppng.com/public/uploads/thumbnail/epic-seven-logo-11562865023mn7s1k4x0a.png"
+                                    alt={hero.name}
+                                ></ReactImageFallback>
+                            </picture>
+                        </div>
+                    </Link>
+                ))}
+            </div>
+            <Pagination
+                className="pagination-bar"
+                currentPage={currentPage}
+                totalCount={showHero.length}
+                pageSize={PageSize}
+                onPageChange={(page) => setCurrentPage(page)}
+            />
         </>
     );
 };

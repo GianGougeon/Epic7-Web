@@ -1,5 +1,6 @@
-.auth-form {
-    background-color: #eee;
+@import "./../base/variables";
+@import "./utils/borderRGB.scss";
+.auth_form {
     width: 350px;
     height: 500px;
     // center in screen
@@ -13,33 +14,52 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    border-radius: 5px;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    z-index: 3;
+    color: #eee;
+
+    .authProfile {
+        z-index: 3;
+        font-size: 4em;
+    }
     > h1 {
         text-align: center;
+        z-index: 3;
     }
     > div:nth-child(2) {
+        z-index: 3;
         display: flex;
         justify-content: center;
     }
     > form {
+        border-radius: 50px;
+
+        z-index: 3;
         > div {
             display: flex;
             justify-content: center;
+            > label {
+                height: 40px;
+                width: 40px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: #333b62;
+                border-top-left-radius: 5px;
+                border-bottom-left-radius: 5px;
+            }
             > input {
                 height: 40px;
                 width: 80%;
                 margin-bottom: 10px;
                 border-radius: 2px;
                 border: 1px solid rgba($color: #2c414e, $alpha: 0.5);
-                padding-left: 5px;
+                padding-left: 10px;
 
                 // placeholder color
                 &::placeholder {
                     font-size: 16px;
                     font-family: $font-default;
                     padding-left: 5px;
-
                 }
                 // on input selected
                 &:focus {
@@ -50,6 +70,7 @@
         }
     }
     .separador {
+        z-index: 3;
         display: flex;
         -webkit-box-pack: center;
         justify-content: center;
@@ -59,6 +80,8 @@
         flex-direction: row;
         margin: 25px 0;
         > hr {
+            z-index: 3;
+
             color: inherit;
             font: inherit;
             text-align: center;
@@ -67,9 +90,11 @@
             border-top: 1px solid rgb(204, 204, 204);
         }
         > span {
+            z-index: 3;
+
             position: absolute;
             padding: 0px 0.5rem;
-            background-color: #eee;
+            background-color: #1d1f20;
 
             font-weight: bold;
             margin-top: -0.6rem;
@@ -78,47 +103,39 @@
         }
     }
     p {
+        z-index: 3;
         display: flex;
         justify-content: center;
     }
     // inciado de sesion
     button {
+        z-index: 3;
         margin: 0 auto;
         height: 40px;
-        width: 80%;
+        width: 91%;
         border: 1px solid #1d212b;
+        border-radius: 5px;
         display: flex;
         justify-content: center;
         align-items: center;
-        border-radius: 2px;
         font-family: $font-default;
         font-size: 0.8em;
         font-size: 1.1em;
         cursor: pointer;
         // remove style from link
         text-decoration: none;
+        transition: all 0.05s ease;
+        > svg {
+            margin-right: 10px;
+        }
         &:hover {
-            background-color: lighten(#2c414e, 30);
+            background-color: #333b62;
+            color: #eee;
             border: none;
         }
     }
-    > button:nth-child(4) {
-        background-color: transparent;
-        color: #1d212b;
-        width: 90%;
-        font-size: 1em;
-        > svg {
-            // absolute left on the button
-            position: absolute;
-            left: 35px;
-            font-size: 1.3em;
-        }
-        &:hover {
-            background-color: lighten(#2c414e, 30);
-            color: #eee;
-        }
-    }
     > div:last-child {
+        z-index: 3;
         display: flex;
         justify-content: center;
         > li {
@@ -129,6 +146,7 @@
             > a {
                 cursor: pointer;
                 text-decoration: none;
+                color: #7088ff;
             }
         }
     }
