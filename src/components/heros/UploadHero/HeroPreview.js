@@ -1,5 +1,6 @@
 import { findSet } from "../../ElementAndRoles";
-import styles from '../../../styles/sass/components/hero/herosDetail.module.scss';
+import styles from "../../../styles/sass/components/hero/herosDetail.module.scss";
+import { FaUserCircle } from "react-icons/fa";
 const HeroPreview = (prop) => {
     const { heroDetail, userDataPreview } = prop;
     const { heroInfo, userInfo, uploadDate } = userDataPreview;
@@ -32,10 +33,11 @@ const HeroPreview = (prop) => {
             <div>
                 <div>
                     <div>
-                        <img
-                            src={photoURL || heroDetail.assets.icons.icon}
-                            alt={nickname}
-                        ></img>
+                        {photoURL ? (
+                            <img src={photoURL} alt={nickname}></img>
+                        ) : (
+                            <FaUserCircle />
+                        )}
                     </div>
                     <h2>{nickname}</h2>
                 </div>
@@ -86,9 +88,7 @@ const HeroPreview = (prop) => {
                     </div>
                 </div>
             </div>
-            <div>
-                {userDataPreview ? <img src={imageUrl()} /> : null}
-            </div>
+            <div>{userDataPreview ? <img src={imageUrl()} /> : null}</div>
         </div>
     );
 };

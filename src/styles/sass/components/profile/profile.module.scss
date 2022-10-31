@@ -29,7 +29,8 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        background-color: rgb(29, 32, 32);
+        background-color: rgb(29 32 32 / 70%);
+        border: 1px solid rgba($color: #eee, $alpha: 0.5);
         // selectors
         > input {
             display: none;
@@ -45,20 +46,21 @@
             background-color: rgb(29, 32, 32);
             cursor: pointer;
             transition: all 0.1s ease-in-out;
-            &:hover {
-                scale: 1.05;
-                border: 1px solid rgb(119, 119, 119);
-            }
+            border-bottom: 1px solid rgba($color: #eee, $alpha: 0.5);
         }
         // set background color if checked
         > input:checked + label {
-            background-color: rgb(100, 100, 100);
+            background-color: #3d1f4f;
+            scale: 1.05;
+            transition: all 0.1s ease-in-out;
+            border: 1px solid rgb(119, 119, 119);
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='800' height='50' preserveAspectRatio='none' viewBox='0 0 800 50'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1009%26quot%3b)' fill='none'%3e%3cpath d='M178.82151659401364 24.772137586727247L173.96885808541663 31.702452163180226 180.8991726618696 36.555110671777236 185.75183117046663 29.624796095324257z' fill='rgba(29%2c 32%2c 32%2c 1)' class='triangle-float3' data-darkreader-inline-fill='' style='--darkreader-inline-fill:%23d5d1cc%3b'%3e%3c/path%3e%3cpath d='M477.15022392462475 30.235494642154016L472.4962799801178 24.488352498408826 466.20253873675347 34.3428394870419z' fill='rgba(29%2c 32%2c 32%2c 1)' class='triangle-float1' data-darkreader-inline-fill='' style='--darkreader-inline-fill:%23d5d1cc%3b'%3e%3c/path%3e%3cpath d='M32.12858949167452 2.974659749797139L40.84688610004611 6.33083678217997 39.710348291048824-1.7560499323042436z' fill='rgba(29%2c 32%2c 32%2c 1)' class='triangle-float2' data-darkreader-inline-fill='' style='--darkreader-inline-fill:%23d5d1cc%3b'%3e%3c/path%3e%3cpath d='M77.02584048779966 6.038655353218531L71.14616464320082-2.054024177518378 63.05348511246391 3.8256516670804563 68.93316095706274 11.918331197817366z' fill='rgba(29%2c 32%2c 32%2c 1)' class='triangle-float2' data-darkreader-inline-fill='' style='--darkreader-inline-fill:%23d5d1cc%3b'%3e%3c/path%3e%3cpath d='M278.82490084911655 41.52926178711842L269.2500404638887 33.4949999692998 261.2157786460701 43.069860354527634 270.7906390312979 51.10412217234625z' fill='rgba(29%2c 32%2c 32%2c 1)' class='triangle-float3' data-darkreader-inline-fill='' style='--darkreader-inline-fill:%23d5d1cc%3b'%3e%3c/path%3e%3cpath d='M711.8780383483561 12.741719396517105L709.6997582511467 4.005115114729087 697.6839918770694 11.640837401437178z' fill='rgba(29%2c 32%2c 32%2c 1)' class='triangle-float2' data-darkreader-inline-fill='' style='--darkreader-inline-fill:%23d5d1cc%3b'%3e%3c/path%3e%3cpath d='M215.35538607502113 11.178362905570749L222.6991554120531 15.767259291773511 227.28805179825588 8.42348995474153 219.9442824612239 3.834593568538769z' fill='rgba(29%2c 32%2c 32%2c 1)' class='triangle-float3' data-darkreader-inline-fill='' style='--darkreader-inline-fill:%23d5d1cc%3b'%3e%3c/path%3e%3cpath d='M234.68424613114755 15.157569599483084L226.73865048754152 16.416028318540697 235.94270485020516 23.103165243089098z' fill='rgba(29%2c 32%2c 32%2c 1)' class='triangle-float3' data-darkreader-inline-fill='' style='--darkreader-inline-fill:%23d5d1cc%3b'%3e%3c/path%3e%3cpath d='M623.1631251050217-8.279174302172976L615.0435371509848 0.12890515972097383 623.4516166128788 8.248493113757867 631.5712045669156-0.1595863481360844z' fill='rgba(29%2c 32%2c 32%2c 1)' class='triangle-float2' data-darkreader-inline-fill='' style='--darkreader-inline-fill:%23d5d1cc%3b'%3e%3c/path%3e%3cpath d='M64.10730628170496 29.14348966288278L56.00709938353141 38.46171177049533 65.32532149114395 46.56191866866888 73.4255283893175 37.24369656105633z' fill='rgba(29%2c 32%2c 32%2c 1)' class='triangle-float1' data-darkreader-inline-fill='' style='--darkreader-inline-fill:%23d5d1cc%3b'%3e%3c/path%3e%3cpath d='M129.50858389214864 32.19281897524576L132.2236353897101 23.836749678617814 123.86756609308216 21.121698181056345 121.1525145955207 29.47776747768429z' fill='rgba(29%2c 32%2c 32%2c 1)' class='triangle-float1' data-darkreader-inline-fill='' style='--darkreader-inline-fill:%23d5d1cc%3b'%3e%3c/path%3e%3cpath d='M620.7469987931511 44.6430964326193L629.6330795322236 34.07355095475185 617.7839586174546 31.77031516832883z' fill='rgba(29%2c 32%2c 32%2c 1)' class='triangle-float2' data-darkreader-inline-fill='' style='--darkreader-inline-fill:%23d5d1cc%3b'%3e%3c/path%3e%3cpath d='M142.53266247883693 3.407475155393021L143.5360248454764 14.875959484704467 155.00450917478784 13.872597118065004 154.00114680814838 2.404112788753558z' fill='rgba(29%2c 32%2c 32%2c 1)' class='triangle-float1' data-darkreader-inline-fill='' style='--darkreader-inline-fill:%23d5d1cc%3b'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1009'%3e%3crect width='800' height='50' fill='white' data-darkreader-inline-fill='' style='--darkreader-inline-fill:%23181a1b%3b'%3e%3c/rect%3e%3c/mask%3e%3cstyle%3e %40keyframes float1 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(-10px%2c 0)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float1 %7b animation: float1 5s infinite%3b %7d %40keyframes float2 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(-5px%2c -5px)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float2 %7b animation: float2 4s infinite%3b %7d %40keyframes float3 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(0%2c -10px)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float3 %7b animation: float3 6s infinite%3b %7d %3c/style%3e%3cstyle class='darkreader darkreader--sync' media='screen'%3e%3c/style%3e%3c/defs%3e%3c/svg%3e");
         }
     }
     > div:nth-child(2) {
         box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
             rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
         height: 80%;
-        width: 90%;
+        width: 60vw;
     }
 }

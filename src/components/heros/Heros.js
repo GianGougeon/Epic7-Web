@@ -2,22 +2,21 @@ import Image from "next/image";
 import React, { useState, useMemo } from "react";
 import { findElement, findRole, rarity } from "../ElementAndRoles";
 import Pagination from "../pagination/Pagination";
-import { useAppContext } from "../context/AppContext";
 import ReactImageFallback from "react-image-fallback";
 import styles from "./../../styles/sass/components/hero/heros.module.scss";
 import Link from "next/link";
 
-const Heros = () => {
+const Heros = (prop) => {
+    const { filterHeros } = prop;
     const [currentPage, setCurrentPage] = useState(1);
-    const { showHero } = useAppContext();
 
     let PageSize = 16;
 
     const currentTableData = useMemo(() => {
         const firstPageIndex = (currentPage - 1) * PageSize;
         const lastPageIndex = firstPageIndex + PageSize;
-        return showHero.slice(firstPageIndex, lastPageIndex);
-    }, [PageSize, currentPage, showHero]);
+        return filterHeros.slice(firstPageIndex, lastPageIndex);
+    }, [PageSize, currentPage, filterHeros]);
 
     return (
         <>
@@ -62,7 +61,7 @@ const Heros = () => {
             <Pagination
                 className="pagination-bar"
                 currentPage={currentPage}
-                totalCount={showHero.length}
+                totalCount={filterHeros.length}
                 pageSize={PageSize}
                 onPageChange={(page) => setCurrentPage(page)}
             />

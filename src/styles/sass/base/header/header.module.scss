@@ -1,5 +1,5 @@
 @import "../../mixin/border-bottom.scss";
-
+@import "../../mixin/logo.scss";
 .header {
     // border-bottom: 1px solid rgba($color: #361349, $alpha: 1);
     position: absolute;
@@ -26,26 +26,7 @@
         }
     }
 
-    .logo {
-        display: block;
-        display: flex;
-        justify-content: flex-start;
-        font-size: 2em;
-        padding: 10px 20px;
-        text-decoration: none;
-        position: absolute;
-
-        left: 50%;
-        top: 30px;
-        transform: translate(-50%, -50%);
-
-        cursor: pointer;
-        @media (min-width: 768px) {
-            left: 0;
-            top: 30px;
-            transform: translate(0%, -50%);
-        }
-    }
+   
 
     .menu {
         clear: both;

@@ -1,24 +1,24 @@
 import React, { useState, useEffect } from "react";
 import styles from "../../styles/sass/base/header/profile.module.scss";
-import { motion } from "framer-motion";
+import Router from "next/router";
 import Link from "next/link";
 import { CgProfile } from "react-icons/cg";
 import { AiOutlineLogout, AiOutlineLogin } from "react-icons/ai";
 import { BsFillGearFill } from "react-icons/bs";
 import { useOuterClick } from "../hooks/useOuterClick";
-import {FaUserCircle} from "react-icons/fa"
+import { FaUserCircle } from "react-icons/fa";
 const Profile = (props) => {
     const { setExpand, user, logout } = props;
 
     const innerRef = useOuterClick(() => {
         setExpand(false);
     });
-    AiOutlineLogin;
     // Handle logout function
     const handleLogout = async () => {
         try {
             await logout();
             setExpand(false);
+            Router.push("/");
         } catch (error) {
             console.error(error.message);
         }
@@ -29,7 +29,16 @@ const Profile = (props) => {
             <div className={styles.cardContent}>
                 <div>
                     {user ? (
-                        <img src={user?.photoURL} alt="user-image"></img>
+                        user?.photoURL ? (
+                            <>
+                                <img
+                                    src={user?.photoURL}
+                                    alt="user-image"
+                                ></img>
+                            </>
+                        ) : (
+                            <FaUserCircle />
+                        )
                     ) : (
                         <FaUserCircle />
                     )}
@@ -57,14 +66,12 @@ const Profile = (props) => {
                 <div>
                     <ul>
                         {user ? (
-                            <Link href={""}>
-                                <li onClick={handleLogout}>
-                                    <AiOutlineLogout /> Cerrar Sesion
-                                </li>
-                            </Link>
+                            <li onClick={handleLogout}>
+                                <AiOutlineLogout /> Cerrar Sesion
+                            </li>
                         ) : (
                             <Link href={"/login"}>
-                                <li onClick={handleLogout}>
+                                <li>
                                     <AiOutlineLogin
                                         className={styles.AiOutlineLogin}
                                     />{" "}

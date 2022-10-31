@@ -12,17 +12,24 @@ const Header = () => {
     return (
         <header className={styles.header}>
             <Link href="/">
-                <a className={styles.logo}>E7B</a>
+                <div className={styles.logo}>
+                    <span> E7B </span>
+                    <span> Epic seven builds </span>
+                </div>
             </Link>
             <input className={styles.menuBtn} type="checkbox" id="menu-btn" />
             <label className={styles.menuIcon} htmlFor="menu-btn">
                 <span className={styles.navicon} />
             </label>
             <div className={styles.menuProfile}>
-                <img
-                    src={user?.photoURL || ""}
-                    onClick={() => setExpand(!expand)}
-                />
+                {user?.photoURL ? (
+                    <img
+                        src={user?.photoURL}
+                        onClick={() => setExpand(!expand)}
+                    />
+                ) : (
+                    <FaUserCircle onClick={() => setExpand(!expand)} />
+                )}
             </div>
             <ul className={styles.menu}>
                 <li>
@@ -38,10 +45,13 @@ const Header = () => {
                     <Link href="#">About</Link>
                 </li>
                 <div onClick={() => setExpand(!expand)}>
-                    {user ? (
-                        <img src={user?.photoURL || ""} />
+                    {user?.photoURL ? (
+                        <img
+                            src={user?.photoURL}
+                            onClick={() => setExpand(!expand)}
+                        />
                     ) : (
-                        <FaUserCircle />
+                        <FaUserCircle onClick={() => setExpand(!expand)} />
                     )}
                     {expand ? (
                         <IoMdArrowDropdown className={styles.arrowExpand} />

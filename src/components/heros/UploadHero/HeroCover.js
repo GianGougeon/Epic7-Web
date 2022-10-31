@@ -34,7 +34,7 @@ const HeroCover = (prop) => {
                     </div>
                 </div>
             </div>
-            <ul class={styles.background}>
+            <ul className={styles.background}>
                 <li></li>
                 <li></li>
                 <li></li>

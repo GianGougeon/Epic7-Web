@@ -33,7 +33,7 @@ const Register = () => {
     return (
         <>
             <div
-                class={stylesBackground.background}
+                className={stylesBackground.background}
                 style={{ height: "100vh" }}
             >
                 <ul>

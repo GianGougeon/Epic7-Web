@@ -1,16 +1,16 @@
 import React from "react";
 const Stars = (props) => {
-    const { Epic7Api, handleChange } = props;
+    const { showHero, handleChange } = props;
 
     // extrae el numero de raresa y su imagen  
-    const stars = Epic7Api.reduce((acc, hero) => {
+    const stars = showHero.reduce((acc, hero) => {
         if (!acc.includes(hero.rarity)) {
             acc.push(hero.rarity);
         }
         return acc;
     }, []);
     // 
-    const starImage = Epic7Api.reduce((acc, hero) => {
+    const starImage = showHero.reduce((acc, hero) => {
         if (!acc.includes(hero.assets.icons.star)) {
             acc.push(hero.assets.icons.star);
         }

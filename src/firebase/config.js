@@ -1,6 +1,7 @@
+import React, { useEffect, useState } from "React";
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
+import { getFirestore, collection, getDocs } from "firebase/firestore";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -23,20 +24,18 @@ export const storage = getStorage(app);
 
 export const uploadFile = async (file, heroFolder, imageName) => {
     // crear una carpeta por el id del heroe y guardar su imagen de build
-    const storageRef = ref(storage, `/heros-builds-images/${heroFolder}/${imageName}`);
+    const storageRef = ref(
+        storage,
+        `/heros-builds-images/${heroFolder}/${imageName}`
+    );
     await uploadBytes(storageRef, file);
     const url = await getDownloadURL(storageRef);
     return url;
 };
-// export const uploadFile = (file) => {
-//     const storageRef = ref(storage, file.name);
-//     uploadBytes(storageRef, file).then((snapshot) => {
-//         console.log('Uploaded a blob or file!');
-//     });
-// }
-    
-// const storageRef = ref(storage, name);
-//     await uploadBytes(storageRef, file);
-//     const url = await getDownloadURL(storageRef);
-//     // create folder con el id del heroe
-//     return url;
+// Recibe la coleccion y devuelve un array con los datos
+export const getCollection = async (collectionName) => {
+    const colRef = collection(db, collectionName);
+    const colSnap = await getDocs(colRef);
+    const data = colSnap.docs.map((doc) => doc.data());
+    return data;
+};

@@ -111,6 +111,11 @@ const sets = [
         setPiece: 2,
     },
     {
+        name: "Perforación",
+        img: "https://static.smilegatemegaport.com/event/live/epic7/guide/wearingStatus/images/sets/set_penetrate.png",
+        setPiece: 2,
+    },
+    {
         name: "Furia",
         img: "https://static.smilegatemegaport.com/event/live/epic7/guide/wearingStatus/images/sets/set_rage.png",
         setPiece: 4,

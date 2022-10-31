@@ -1,16 +1,27 @@
+import React, { useState, useEffect } from "react";
 import { useAuth } from "../../components/context/AuthContext";
-import React, { useState } from "react";
+
 import ListPublished from "./ListPublished";
 import Info from "./Info";
-import styles from "../../styles/sass/components/profile/profile.module.scss";
 // styles
+import styles from "../../styles/sass/components/profile/profile.module.scss";
+import Avatar from "./Avatar";
+// data
+import { getCollection } from "../../firebase/config";
 
 const Profile = () => {
+    const { user, updateProfileUserImage } = useAuth();
     const [currentSection, setCurrentSection] = useState("info");
-    const { user, updateProfileUser, findUserAlreadyExist } = useAuth();
+    const [data, setData] = useState([]);
+    // avatar selected
 
-
-    console.log(user);
+    useEffect(() => {
+        const getIcons = async () => {
+            const data = await getCollection("characters");
+            setData(data);
+        };
+        getIcons();
+    }, []);
 
     return (
         <>
@@ -28,6 +39,14 @@ const Profile = () => {
                     <input
                         type="radio"
                         name="profile"
+                        id="avatar"
+                        value="avatar"
+                        onClick={() => setCurrentSection("avatar")}
+                    />
+                    <label htmlFor="avatar">Cambiar Avatar</label>
+                    <input
+                        type="radio"
+                        name="profile"
                         id="listPublished"
                         value="listPublished"
                         onClick={() => setCurrentSection("listPublished")}
@@ -38,9 +57,15 @@ const Profile = () => {
                 </div>
 
                 {currentSection === "info" && (
-                    <Info user={user} updateProfileUser={updateProfileUser} />
+                    <Info user={user}/>
                 )}
                 {currentSection === "listPublished" && <ListPublished />}
+                {currentSection === "avatar" && (
+                    <Avatar
+                        data={data}
+                        updateProfileUserImage={updateProfileUserImage}
+                    />
+                )}
             </div>
         </>
     );

@@ -41,24 +41,11 @@ export function AuthProvider({ children }) {
 
     const resetPassword = async (email) => sendPasswordResetEmail(auth, email);
 
-    const updateProfileUser = (displayName, image) => {
+    const updateProfileUserImage = (image) => {
         return updateProfile(auth.currentUser, {
-            displayName,
             photoURL: image,
         });
     };
-    //////////////////////
-    //////////////////////
-    //////////////////////
-    //////////////////////
-    //////////////////////
-    
-    //////////////////////
-    //////////////////////
-    //////////////////////
-    //////////////////////
-    //////////////////////
-    //////////////////////
 
     useEffect(() => {
         const unsubuscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -78,7 +65,7 @@ export function AuthProvider({ children }) {
                 loading,
                 loginWithGoogle,
                 resetPassword,
-                updateProfileUser,
+                updateProfileUserImage,
             }}
         >
             {children}

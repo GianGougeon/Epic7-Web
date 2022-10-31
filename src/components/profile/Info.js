@@ -3,9 +3,14 @@ import ReactImageFallback from "react-image-fallback";
 // styles
 import styles from "./../../styles/sass/components/profile/info.module.scss";
 const Info = (prop) => {
-    const { user, updateProfileUser } = prop;
+    const { user, updateProfileUser, showHero } = prop;
     const [imageSelector, setImageSelector] = useState("");
     const [changeNickname, setChangeNickname] = useState("");
+
+    // extact assets.icons.icon and id
+
+    
+
     const images = [
         {
             id: 1,
@@ -22,6 +27,18 @@ const Info = (prop) => {
         {
             id: 4,
             url: "https://64.media.tumblr.com/070999177c1bb910fd623fd9ebed0474/1452d092177ec38a-6a/s250x400/62c0ff39b37463e6a4b0e3aa2465600d897e12c3.png",
+        },
+        {
+            id: 5,
+            url: "https://64.media.tumblr.com/0cdefd90fad7fa36cfdc85a7b17c71e2/6e119495c6a13ede-94/s250x400/87019f1cf7021782fa12719ad3ca7aeac0d1fc40.png",
+        },
+        {
+            id: 6,
+            url: "https://64.media.tumblr.com/22cfad0cd39ab79b85ecd7cfcea177be/a9d4f5886771cb4b-26/s250x400/d1a222ce0aef10d07bfe297adde3179d2b5a4110.png",
+        },
+        {
+            id: 7,
+            url: "https://64.media.tumblr.com/fed2a8dd7571a5d7783f806c2062b79d/tumblr_r1h2wc2Zzo1rpwm80o1_250.png",
         },
     ];
     const handleSubmit = async (e) => {
@@ -70,48 +87,7 @@ const Info = (prop) => {
         <div className={styles.info}>
             <form onSubmit={handleSubmit}>
                 <div className={styles.title}>
-                    <h1>Información</h1>
-                </div>
-                <div className={styles.imagePreview}>
-                    {/* Preview */}
-                    <div>
-                        <h2>Preview:</h2>
-                        <div>
-                            <ReactImageFallback
-                                src={imageSelector}
-                                alt="preview"
-                            ></ReactImageFallback>
-                        </div>
-                    </div>
-                    <div>
-                        <h2>Elije una image</h2>
-                        <div>
-                            {images.map((image) => (
-                                <>
-                                    <div>
-                                        <label
-                                            htmlFor={image.id}
-                                            key={image.id}
-                                        >
-                                            <img
-                                                src={image.url}
-                                                alt="profile"
-                                            ></img>
-                                        </label>
-                                        <input
-                                            type="radio"
-                                            name="image"
-                                            id={image.id}
-                                            value={image.url}
-                                            onChange={(e) =>
-                                                setImageSelector(e.target.value)
-                                            }
-                                        />
-                                    </div>
-                                </>
-                            ))}
-                        </div>
-                    </div>
+                    <h1>Información General</h1>
                 </div>
                 <div className={styles.edit}>
                     <h2>Editar Información</h2>

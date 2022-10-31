@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useMemo, useState } from "react";
-import { useAppContext } from "../context/AppContext";
 import Roles from "./Roles";
 import Attributes from "./Attributes";
 import Stars from "./Stars";
@@ -18,8 +17,8 @@ const filterTypes = {
     ],
     starTypes: [3, 4, 5],
 };
-const Filter = ({ Epic7Api }) => {
-    const { setShowHero } = useAppContext();
+const Filter = (prop) => {
+    const { setFilterHeros, showHero } = prop;
     const [activeFilter, setActiveFilter] = useState([]);
     const [searchHero, setSearchHero] = useState("");
 
@@ -118,10 +117,10 @@ const Filter = ({ Epic7Api }) => {
                     matchesStars(hero)
                 );
         };
-        return Epic7Api.filter((hero) =>
+        return showHero.filter((hero) =>
             hero.name.toLowerCase().includes(searchHero.toLowerCase())
         ).filter(matchesFilter);
-    }, [activeFilter, Epic7Api, searchHero]);
+    }, [activeFilter, showHero, searchHero]);
 
     const handleChange = (x) => (event) => {
         setActiveFilter((prev) => ({
@@ -131,8 +130,8 @@ const Filter = ({ Epic7Api }) => {
     };
 
     useEffect(() => {
-        setShowHero(filtredHeros);
-    }, [Epic7Api, filtredHeros]);
+        setFilterHeros(filtredHeros);
+    }, [showHero, filtredHeros]);
 
     return (
         <>
@@ -141,21 +140,21 @@ const Filter = ({ Epic7Api }) => {
                     <div>
                         <div>
                             <Roles
-                                Epic7Api={Epic7Api}
+                                showHero={showHero}
                                 setActiveFilter={setActiveFilter}
                                 handleChange={handleChange}
                             />
                         </div>
                         <div>
                             <Attributes
-                                Epic7Api={Epic7Api}
+                                showHero={showHero}
                                 setActiveFilter={setActiveFilter}
                                 handleChange={handleChange}
                             />
                         </div>
                         <div>
                             <Stars
-                                Epic7Api={Epic7Api}
+                                showHero={showHero}
                                 setActiveFilter={setActiveFilter}
                                 handleChange={handleChange}
                             />

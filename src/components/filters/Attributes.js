@@ -1,15 +1,15 @@
 import React from "react";
 const Roles = (props) => {
-    const { Epic7Api, handleChange } = props;
+    const { showHero, handleChange } = props;
 
     // extrae los attributos y sus imagenes
-    const attributes = Epic7Api.reduce((acc, hero) => {
+    const attributes = showHero.reduce((acc, hero) => {
         if (!acc.includes(hero.attribute)) {
             acc.push(hero.attribute);
         }
         return acc;
     }, []);
-    const attributeImages = Epic7Api.reduce((acc, hero) => {
+    const attributeImages = showHero.reduce((acc, hero) => {
         if (!acc.includes(hero.assets.icons.attribute.img)) {
             acc.push(hero.assets.icons.attribute.img);
         }

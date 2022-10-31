@@ -35,7 +35,6 @@ const Login = () => {
     const handleGoogleSignin = async () => {
         try {
             await loginWithGoogle();
-            // Router.push("/");
             history.back();
         } catch (error) {
             setError(error.message);
@@ -55,7 +54,7 @@ const Login = () => {
     return (
         <>
             <div
-                class={stylesBackground.background}
+                className={stylesBackground.background}
                 style={{ height: "100vh" }}
             >
                 <ul>
