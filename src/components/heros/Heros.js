@@ -5,6 +5,7 @@ import Pagination from "../pagination/Pagination";
 import ReactImageFallback from "react-image-fallback";
 import styles from "./../../styles/sass/components/hero/heros.module.scss";
 import Link from "next/link";
+import RenderIfVisible from "react-render-if-visible";
 
 const Heros = (prop) => {
     const { filterHeros } = prop;
@@ -22,40 +23,49 @@ const Heros = (prop) => {
         <>
             <div className={styles.heros}>
                 {currentTableData.map((hero) => (
-                    <Link href={`/heros/${hero._id}`} key={hero.id}>
-                        <div>
-                            <div className={styles.hero_rol}>
-                                <div>
-                                    <picture>
-                                        <img
-                                            src={findRole(hero.role)}
-                                            alt={hero.name}
-                                        ></img>
-                                    </picture>
-                                    <h2>{hero.name}</h2>
-                                </div>
-                                <div className={styles.hero_attribute}>
-                                    <Image
-                                        width={23}
-                                        height={23}
-                                        src={findElement(hero.attribute)}
-                                        alt={hero.attribute}
-                                        className="hero-attribute-img"
-                                    ></Image>
-                                    <div className={styles.star} key="stars">
-                                        {rarity(hero.rarity, hero.name)}
+                    <RenderIfVisible key={hero.id} defaultHeight={false}
+                    stayRendered={true}
+                    visibleOffset={PageSize}
+                    >
+                        <Link href={`/heros/${hero._id}`}>
+                            <div>
+                                <div className={styles.hero_rol}>
+                                    <div>
+                                        <picture>
+                                            <img
+                                                src={findRole(hero.role)}
+                                                alt={hero.name}
+                                            ></img>
+                                        </picture>
+                                        <h2>{hero.name}</h2>
+                                    </div>
+                                    <div className={styles.hero_attribute}>
+                                        <Image
+                                            width={23}
+                                            height={23}
+                                            src={findElement(hero.attribute)}
+                                            alt={hero.attribute}
+                                            className="hero-attribute-img"
+                                        ></Image>
+                                        <div
+                                            className={styles.star}
+                                            key="stars"
+                                        >
+                                            {rarity(hero.rarity, hero.name)}
+                                        </div>
                                     </div>
                                 </div>
+                                <picture>
+                                    <ReactImageFallback
+                                        src={hero.assets.thumbnail}
+                                        className={styles.hero_img}
+                                        fallbackImage="https://toppng.com/public/uploads/thumbnail/epic-seven-logo-11562865023mn7s1k4x0a.png"
+                                        alt={hero.name}
+                                    ></ReactImageFallback>
+                                </picture>
                             </div>
-                            <picture>
-                                <ReactImageFallback
-                                    src={hero.assets.thumbnail}
-                                    fallbackImage="https://toppng.com/public/uploads/thumbnail/epic-seven-logo-11562865023mn7s1k4x0a.png"
-                                    alt={hero.name}
-                                ></ReactImageFallback>
-                            </picture>
-                        </div>
-                    </Link>
+                        </Link>
+                    </RenderIfVisible>
                 ))}
             </div>
             <Pagination

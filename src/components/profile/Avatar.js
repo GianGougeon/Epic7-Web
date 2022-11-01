@@ -3,11 +3,8 @@ import ReactImageFallback from "react-image-fallback";
 // styles
 import styles from "./../../styles/sass/components/profile/avatar.module.scss";
 import ReactLoading from "react-loading";
+import RenderIfVisible from "react-render-if-visible";
 
-// updateprofile
-import { updateProfile } from "firebase/auth";
-import { useAuth } from "../../components/context/AuthContext";
-import { async } from "@firebase/util";
 const Avatar = (prop) => {
     const { user, updateProfileUserImage, data } = prop;
     const [searchAvatar, setSearchAvatar] = useState("");
@@ -92,30 +89,27 @@ const Avatar = (prop) => {
                         </div>
                         <div>
                             {filterAvatar.map((image) => (
-                                <>
-                                    <div key={image.id}>
-                                        <label
-                                            htmlFor={image.id}
-                                            key={image.id}
-                                        >
-                                            <img
-                                                src={image.url}
-                                                alt={image.id}
-                                            ></img>
-                                        </label>
-                                        <input
-                                            type="radio"
-                                            name="image"
-                                            id={image.id}
-                                            value={image.url}
-                                            onChange={(e) =>
-                                                setAvatarSelected(
-                                                    e.target.value
-                                                )
-                                            }
-                                        />
-                                    </div>
-                                </>
+                                <RenderIfVisible
+                                    key={image.id}
+                                    defaultHeight={false}
+                                    stayRendered={true}
+                                >
+                                    <label htmlFor={image.id} key={image.id}>
+                                        <img
+                                            src={image.url}
+                                            alt={image.id}
+                                        ></img>
+                                    </label>
+                                    <input
+                                        type="radio"
+                                        name="image"
+                                        id={image.id}
+                                        value={image.url}
+                                        onChange={(e) =>
+                                            setAvatarSelected(e.target.value)
+                                        }
+                                    />
+                                </RenderIfVisible>
                             ))}
                         </div>
                     </div>

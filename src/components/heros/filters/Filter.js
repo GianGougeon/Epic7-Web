@@ -4,7 +4,7 @@ import Roles from "./Roles";
 import Attributes from "./Attributes";
 import Stars from "./Stars";
 import FilterText from "./FilterText";
-import styles from "./../../styles/sass/components/hero/filter.module.scss";
+import styles from "../../../styles/sass/components/hero/filter.module.scss";
 const filterTypes = {
     elementTypes: ["wind", "fire", "light", "dark", "ice"],
     soldierTypes: [
@@ -23,7 +23,6 @@ const Filter = (prop) => {
     const [searchHero, setSearchHero] = useState("");
 
     const filtredHeros = useMemo(() => {
-        console.log(activeFilter);
         const hasCategoryFilter = Object.values(activeFilter).includes(true);
         const matchesRol = (hero) => {
             if (hasCategoryFilter) {

@@ -8,19 +8,38 @@ import styles from "../../styles/sass/components/profile/profile.module.scss";
 import Avatar from "./Avatar";
 // data
 import { getCollection } from "../../firebase/config";
+import { usefetchStorageData } from "../../components/context/FetchStorageDataContext";
+// sort
+import { sortData } from "../../components/hooks/useSortHero";
 
 const Profile = () => {
+    const {
+        saveDataToLocalStorage,
+        loadDataFromLocalStorage,
+        isLocalStorageEmpty,
+    } = usefetchStorageData();
+
     const { user, updateProfileUserImage } = useAuth();
     const [currentSection, setCurrentSection] = useState("info");
     const [data, setData] = useState([]);
-    // avatar selected
+    // get data from firebase
+    const getHeros = async () => {
+        const data = await getCollection("characters");
+        setData(sortData(data));
+        saveDataToLocalStorage(data);
+    };
+    // get from storage
+    const getHerosFromLocalStorage = async () => {
+        const data = await loadDataFromLocalStorage();
+        setData(sortData(data));
+    };
 
     useEffect(() => {
-        const getIcons = async () => {
-            const data = await getCollection("characters");
-            setData(data);
-        };
-        getIcons();
+        if (!isLocalStorageEmpty()) {
+            getHerosFromLocalStorage();
+        } else {
+            getHeros();
+        }
     }, []);
 
     return (
@@ -56,9 +75,7 @@ const Profile = () => {
                     </label>
                 </div>
 
-                {currentSection === "info" && (
-                    <Info user={user}/>
-                )}
+                {currentSection === "info" && <Info user={user} />}
                 {currentSection === "listPublished" && <ListPublished />}
                 {currentSection === "avatar" && (
                     <Avatar

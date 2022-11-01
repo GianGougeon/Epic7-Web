@@ -5,19 +5,24 @@ import HeroPreview from "./UploadHero/HeroPreview";
 import HeroCover from "./UploadHero/HeroCover";
 import ListBuilds from "./UploadHero/ListBuilds";
 
+import styles from './../../styles/sass/components/hero/herosDetail.module.scss'
+
 const HeroDetail = (prop) => {
     const { heroDetail, heroIdPage } = prop;
+    const [loader, setLoader] = useState(false);
     // preview build
     const [userDataPreview, setUserDataPreview] = useState("");
     // loader
     const [uploadBuild, setUploadBuild] = useState(false);
 
     return (
-        <section className="hero_section">
-            <HeroCover
-                heroDetail={heroDetail}
-                setUploadBuild={setUploadBuild}
-            />
+        <section className={styles.hero_section}>
+            {loader ? (
+                <HeroCover
+                    heroDetail={heroDetail}
+                    setUploadBuild={setUploadBuild}
+                />
+            ) : null}
             {uploadBuild && (
                 <HeroUploadBuild
                     heroDetail={heroDetail}
@@ -27,9 +32,18 @@ const HeroDetail = (prop) => {
             )}
 
             {userDataPreview != "" && (
-                <HeroPreview userDataPreview={userDataPreview} heroIdPage={heroIdPage}  heroDetail={heroDetail}/>
+                <HeroPreview
+                    userDataPreview={userDataPreview}
+                    heroIdPage={heroIdPage}
+                    heroDetail={heroDetail}
+                />
             )}
-            <ListBuilds heroIdPage={heroIdPage} heroDetail={heroDetail}/>
+            <ListBuilds
+                heroIdPage={heroIdPage}
+                heroDetail={heroDetail}
+                setLoader={setLoader}
+                loader={loader}
+            />
         </section>
     );
 };

@@ -40,7 +40,7 @@
         display: flex;
         justify-content: flex-end;
         cursor: pointer;
-        border: 1px solid rgba($color: #eee, $alpha: .2);
+        border: 1px solid rgba($color: #eee, $alpha: 0.2);
         transition: all 0.03s ease-in-out;
         &:active {
             // iner box-shadow
@@ -49,13 +49,12 @@
         &:hover {
             background-color: rgba(0, 0, 0, 0.6);
         }
-        > picture {
-            display: flex;
-            > img {
-                height: 100%;
-                position: absolute;
-                top: 0;
-                right: 0;
+        > div {
+            height: 102px;
+            > picture {
+                .hero_img {
+                    height: 102px;
+                }
             }
         }
     }

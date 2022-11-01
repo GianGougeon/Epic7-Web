@@ -1,34 +1,46 @@
 import React, { useEffect, useState } from "react";
 
-import Filter from "../../components/filters/Filter";
+import Filter from "../../components/heros/filters/Filter";
 import Heros from "../../components/heros/Heros";
 import Loader from "../../components/Loader";
 import styles from "../../styles/sass/components/hero/heros.module.scss";
+// hook sort
+import { sortData } from "../../components/hooks/useSortHero";
+//  storage
+import { usefetchStorageData } from "../../components/context/FetchStorageDataContext";
 
 import { getCollection } from "../../firebase/config";
 
 export const Home = () => {
+    const {
+        saveDataToLocalStorage,
+        loadDataFromLocalStorage,
+        isLocalStorageEmpty,
+    } = usefetchStorageData();
     const [showHero, setShowHero] = useState([]);
     const [filterHeros, setFilterHeros] = useState([]);
     const [loader, setLoader] = useState(true);
 
+    const getHeros = async () => {
+        const data = await getCollection("characters");
+        saveDataToLocalStorage(data);
+        setShowHero(sortData(data));
+        setLoader(false);
+    };
+
+
+    const getHerosFromLocalStorage = async () => {
+        const data = await loadDataFromLocalStorage();
+        setShowHero(sortData(data));
+        setLoader(false);
+    };
+
     useEffect(() => {
-        const getIcons = async () => {
-            const data = await getCollection("characters");
-            // ordena alfabeticamente y prioriza a los heroes 5 estrellas
-            const sortData = data.sort((a, b) => {
-                if (a.rarity === b.rarity) {
-                    if (a.name < b.name) {
-                        return -1;
-                    }
-                    return 0;
-                }
-                return b.rarity - a.rarity;
-            });
-            setShowHero(sortData);
-            setLoader(false);
-        };
-        getIcons();
+        if (!isLocalStorageEmpty()) {
+            getHerosFromLocalStorage();
+        } else {
+            getHeros();
+        }
     }, []);
 
     return (
