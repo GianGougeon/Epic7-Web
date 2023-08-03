@@ -1,27 +1,24 @@
 import React from "react";
-import { IoCloseOutline } from "react-icons/io5";
 import styles from "../../../styles/sass/components/hero/filter.module.scss";
+import { BiSearch } from "react-icons/bi";
 const FilterText = (prop) => {
     const { searchHero, setSearchHero } = prop;
     return (
         <>
-            <div className={styles.filter_text}>
+            <form className={styles.filter_text}>
                 <input
-                    type="text"
+                    id="searchHero"
+                    type="search"
                     onChange={(event) => {
                         setSearchHero(event.target.value);
                     }}
                     value={searchHero}
                     placeholder="Buscar"
                 />
-                <button
-                    onClick={() => {
-                        setSearchHero("");
-                    }}
-                >
-                    <IoCloseOutline />
-                </button>
-            </div>
+                <label htmlFor="searchHero">
+                    <BiSearch className={styles.search_icon} />
+                </label>
+            </form>
         </>
     );
 };

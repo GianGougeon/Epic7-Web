@@ -1,225 +1,80 @@
-const elementAndRoles = [
-    {
-        name: "fire",
-        img: "https://static.wikia.nocookie.net/epic-seven/images/5/5e/Fire_icon.png",
-    },
-    {
-        name: "ice",
-        img: "https://static.wikia.nocookie.net/epic-seven/images/7/77/Ice.png",
-    },
-    {
-        name: "light",
-        img: "https://static.wikia.nocookie.net/epic-seven/images/a/a6/Light.png",
-    },
-    {
-        name: "dark",
-        img: "https://static.wikia.nocookie.net/epic-seven/images/0/0e/Dark.png",
-    },
-    {
-        name: "wind",
-        img: "https://static.wikia.nocookie.net/epic-seven/images/1/1e/Earth.png",
-    },
-    {
-        name: "warrior",
-        img: "https://static.wikia.nocookie.net/epic-seven/images/9/97/Warrior.png",
-    },
-    {
-        name: "mage",
-        img: "https://static.wikia.nocookie.net/epic-seven/images/2/20/Mage.png",
-    },
-    {
-        name: "assassin",
-        img: "https://static.wikia.nocookie.net/epic-seven/images/f/fc/Thief.png",
-    },
-    {
-        name: "ranger",
-        img: "https://static.wikia.nocookie.net/epic-seven/images/e/e9/Ranger.png",
-    },
-    {
-        name: "manauser",
-        img: "https://static.wikia.nocookie.net/epic-seven/images/3/3f/Soulweaver.png",
-    },
-    {
-        name: "knight",
-        img: "https://static.wikia.nocookie.net/epic-seven/images/6/6b/Knight.png",
-    },
-    {
-        name: "star",
-        img: "https://static.wikia.nocookie.net/epic-seven/images/2/2e/Star.png",
-    },
+import {
+    getImagePathElement,
+    getImagePathRol,
+    getImagePathSet,
+    createGearObject,
+} from "../utils/getImagePath";
+
+const element = [
+    { name: "fire", img: getImagePathElement("Fire") },
+    { name: "ice", img: getImagePathElement("Ice") },
+    { name: "light", img: getImagePathElement("Light") },
+    { name: "dark", img: getImagePathElement("Dark") },
+    { name: "wind", img: getImagePathElement("Wind") },
 ];
 
-const sets = [
-    {
-        name: "Velocidad",
-        img: "https://static.smilegatemegaport.com/event/live/epic7/guide/wearingStatus/images/sets/set_speed.png",
-        setPiece: 4,
-    },
-    {
-        name: "Golpe",
-        img: "https://static.smilegatemegaport.com/event/live/epic7/guide/wearingStatus/images/sets/set_acc.png",
-        setPiece: 2,
-    },
-    {
-        name: "Critico",
-        img: "https://static.smilegatemegaport.com/event/live/epic7/guide/wearingStatus/images/sets/set_cri.png",
-        setPiece: 2,
-    },
-    {
-        name: "Ataque",
-        img: "https://static.smilegatemegaport.com/event/live/epic7/guide/wearingStatus/images/sets/set_att.png",
-        setPiece: 4,
-    },
-    {
-        name: "Vida",
-        img: "https://static.smilegatemegaport.com/event/live/epic7/guide/wearingStatus/images/sets/set_max_hp.png",
-        setPiece: 2,
-    },
-    {
-        name: "Defensa",
-        img: "https://static.smilegatemegaport.com/event/live/epic7/guide/wearingStatus/images/sets/set_def.png",
-        setPiece: 2,
-    },
-    {
-        name: "Resistencia",
-        img: "https://static.smilegatemegaport.com/event/live/epic7/guide/wearingStatus/images/sets/set_res.png",
-        setPiece: 2,
-    },
-    {
-        name: "Destruccion",
-        img: "https://static.smilegatemegaport.com/event/live/epic7/guide/wearingStatus/images/sets/set_cri_dmg.png",
-        setPiece: 4,
-    },
-    {
-        name: "Robo vital",
-        img: "https://static.smilegatemegaport.com/event/live/epic7/guide/wearingStatus/images/sets/set_vampire.png",
-        setPiece: 4,
-    },
-    {
-        name: "Contraataque",
-        img: "https://static.smilegatemegaport.com/event/live/epic7/guide/wearingStatus/images/sets/set_counter.png",
-        setPiece: 4,
-    },
-    {
-        name: "Unidad",
-        img: "https://static.smilegatemegaport.com/event/live/epic7/guide/wearingStatus/images/sets/set_coop.png",
-        setPiece: 2,
-    },
-    {
-        name: "Inmunidad",
-        img: "https://static.smilegatemegaport.com/event/live/epic7/guide/wearingStatus/images/sets/set_immune.png",
-        setPiece: 2,
-    },
-    {
-        name: "Perforación",
-        img: "https://static.smilegatemegaport.com/event/live/epic7/guide/wearingStatus/images/sets/set_penetrate.png",
-        setPiece: 2,
-    },
-    {
-        name: "Furia",
-        img: "https://static.smilegatemegaport.com/event/live/epic7/guide/wearingStatus/images/sets/set_rage.png",
-        setPiece: 4,
-    },
-    {
-        name: "Venganza",
-        img: "https://static.smilegatemegaport.com/event/live/epic7/guide/wearingStatus/images/sets/set_revenge.png",
-        setPiece: 4,
-    },
+const rol = [
+    { name: "warrior", img: getImagePathRol("warrior") },
+    { name: "mage", img: getImagePathRol("Mage") },
+    { name: "assassin", img: getImagePathRol("Thief") },
+    { name: "ranger", img: getImagePathRol("Ranger") },
+    { name: "manauser", img: getImagePathRol("Soulweaver") },
+    { name: "knight", img: getImagePathRol("Knight") },
 ];
-const setStats = {
-    collar: [
-        {
-            name: "Prob. Crítico",
-            img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619812839313478/unknown.png",
-        },
-        {
-            name: "Prob. Daño Crítico",
-            img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619812839313478/unknown.png",
-        },
-        {
-            name: "Vida",
-            img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619812839313478/unknown.png",
-        },
-        {
-            name: "Vida%",
-            img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619812839313478/unknown.png",
-        },
-        {
-            name: "Ataque",
-            img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619812839313478/unknown.png",
-        },
-        {
-            name: "Ataque%",
-            img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619812839313478/unknown.png",
-        },
-        {
-            name: "Defensa",
-            img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619812839313478/unknown.png",
-        },
-        {
-            name: "Defensa%",
-            img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619812839313478/unknown.png",
-        },
-    ],
-    anillo: [
-        {
-            name: "Ataque",
-            img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619839578001438/unknown.png",
-        },
-        {
-            name: "Ataque%",
-            img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619839578001438/unknown.png",
-        },
-        {
-            name: "Vida",
-            img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619839578001438/unknown.png",
-        },
-        {
-            name: "Vida%",
-            img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619839578001438/unknown.png",
-        },
-        {
-            name: "Defensa",
-            img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619839578001438/unknown.png",
-        },
-        {
-            name: "Defensa%",
-            img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619839578001438/unknown.png",
-        },
-        {
-            name: "Resistencia de efectos%",
-            img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619839578001438/unknown.png",
-        },
-    ],
-    botas: [
-        {
-            name: "Velocidad",
-            img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619862151741510/unknown.png",
-        },
-        {
-            name: "Ataque",
-            img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619862151741510/unknown.png",
-        },
-        {
-            name: "Ataque%",
-            img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619862151741510/unknown.png",
-        },
-        {
-            name: "Vida",
-            img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619862151741510/unknown.png",
-        },
-        {
-            name: "Vida%",
-            img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619862151741510/unknown.png",
-        },
-        {
-            name: "Defensa%",
-            img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619862151741510/unknown.png",
-        },
-        {
-            name: "Defensa",
-            img: "https://cdn.discordapp.com/attachments/955717990937137153/1030619862151741510/unknown.png",
-        },
-    ],
+
+const star = { name: "star", img: getImagePathRol("star") }
+
+const sets = [
+    { id: 1, name: "Speed", img: getImagePathSet("set_speed") },
+    { id: 2, name: "Hit", img: getImagePathSet("set_acc") },
+    { id: 3, name: "Critical", img: getImagePathSet("set_cri") },
+    { id: 4, name: "Attack", img: getImagePathSet("set_att") },
+    { id: 5, name: "Health", img: getImagePathSet("set_max_hp") },
+    { id: 6, name: "Defense", img: getImagePathSet("set_def") },
+    { id: 7, name: "Resistance", img: getImagePathSet("set_res") },
+    { id: 8, name: "Destruction", img: getImagePathSet("set_cri_dmg") },
+    { id: 9, name: "Lifesteal", img: getImagePathSet("set_vampire") },
+    { id: 10, name: "Counter", img: getImagePathSet("set_counter") },
+    { id: 11, name: "Unity", img: getImagePathSet("set_coop") },
+    { id: 12, name: "Immunity", img: getImagePathSet("set_immune") },
+    { id: 13, name: "Penetration", img: getImagePathSet("set_penetrate") },
+    { id: 14, name: "Rage", img: getImagePathSet("set_rage") },
+    { id: 15, name: "Revenge", img: getImagePathSet("set_revenge") },
+    { id: 16, name: "Torrent", img: getImagePathSet("set_torrent") },
+    { id: 17, name: "Protection", img: getImagePathSet("set_shield") },
+    { id: 18, name: "Injury", img: getImagePathSet("set_injury") },
+];
+
+const gear = {
+    boots: createGearObject("boots", [
+        { id: 1, name: "Speed" },
+        { id: 2, name: "Attack" },
+        { id: 3, name: "Attack%" },
+        { id: 4, name: "Health" },
+        { id: 5, name: "Health%" },
+        { id: 6, name: "Defense%" },
+        { id: 7, name: "Defense" },
+    ]),
+    necklace: createGearObject("necklace", [
+        { id: 8, name: "Critical Hit Rate" },
+        { id: 9, name: "Critical Hit Damage" },
+        { id: 10, name: "Health" },
+        { id: 11, name: "Health%" },
+        { id: 12, name: "Attack" },
+        { id: 13, name: "Attack%" },
+        { id: 14, name: "Defense" },
+        { id: 15, name: "Defense%" },
+    ]),
+    ring: createGearObject("ring", [
+        { id: 16, name: "Attack" },
+        { id: 17, name: "Attack%" },
+        { id: 18, name: "Health" },
+        { id: 19, name: "Health%" },
+        { id: 20, name: "Defense" },
+        { id: 21, name: "Defense%" },
+        { id: 22, name: "Effect Resistance" },
+    ]),
 };
-export { elementAndRoles, sets, setStats };
+
+
+export { element, rol, sets, gear, star };

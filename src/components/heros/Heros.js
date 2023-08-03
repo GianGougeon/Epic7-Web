@@ -23,9 +23,11 @@ const Heros = (prop) => {
         <>
             <div className={styles.heros}>
                 {currentTableData.map((hero) => (
-                    <RenderIfVisible key={hero.id} defaultHeight={false}
-                    stayRendered={true}
-                    visibleOffset={PageSize}
+                    <RenderIfVisible
+                        key={hero.id}
+                        defaultHeight={false}
+                        stayRendered={true}
+                        visibleOffset={PageSize}
                     >
                         <Link href={`/heros/${hero._id}`}>
                             <div>
@@ -56,12 +58,13 @@ const Heros = (prop) => {
                                     </div>
                                 </div>
                                 <picture>
-                                    <ReactImageFallback
-                                        src={hero.assets.thumbnail}
-                                        className={styles.hero_img}
-                                        fallbackImage="https://toppng.com/public/uploads/thumbnail/epic-seven-logo-11562865023mn7s1k4x0a.png"
-                                        alt={hero.name}
-                                    ></ReactImageFallback>
+                                    <div>
+                                        <img
+                                            src={hero.assets.thumbnail}
+                                            className={styles.hero_img}
+                                            alt={hero.name}
+                                        ></img>
+                                    </div>
                                 </picture>
                             </div>
                         </Link>

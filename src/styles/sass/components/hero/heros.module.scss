@@ -52,9 +52,22 @@
         > div {
             height: 102px;
             > picture {
-                .hero_img {
-                    height: 102px;
+                > div {
+                    height: 100%;
+                    overflow: hidden;
+                    > img {
+                        width: 70%;
+                        object-fit: cover;
+                        margin-left: 40%;
+                        margin-bottom: 30%;
+                        // image size
+                        scale: 1.4;
+                    }
                 }
+                // .hero_img {
+                //     height: 100%;
+                //     width: 100%;
+                // }
             }
         }
     }

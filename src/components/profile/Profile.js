@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useAuth } from "../../components/context/AuthContext";
-
+import { useProfileContext } from "../../components/context/ProfileContext";
+import ProfileSelector from "./ProfileSelector";
 import ListPublished from "./ListPublished";
 import Info from "./Info";
 // styles
@@ -20,7 +21,9 @@ const Profile = () => {
     } = usefetchStorageData();
 
     const { user, updateProfileUserImage } = useAuth();
-    const [currentSection, setCurrentSection] = useState("info");
+    
+    const { currentSection, setCurrentSection } = useProfileContext();
+
     const [data, setData] = useState([]);
     // get data from firebase
     const getHeros = async () => {
@@ -46,35 +49,25 @@ const Profile = () => {
         <>
             <div className={styles.profile_details}>
                 <div>
-                    <input
-                        type="radio"
-                        name="profile"
-                        id="info"
-                        value="info"
-                        onClick={() => setCurrentSection("info")}
+                    <ProfileSelector
+                        setCurrentSection={setCurrentSection}
+                        select="info"
+                        selectInfo="Información"
                         defaultChecked={true}
                     />
-                    <label htmlFor="info">Información</label>
-                    <input
-                        type="radio"
-                        name="profile"
-                        id="avatar"
-                        value="avatar"
-                        onClick={() => setCurrentSection("avatar")}
+                    <ProfileSelector
+                        setCurrentSection={setCurrentSection}
+                        select="avatar"
+                        selectInfo="Cambiar Avatar"
+                        defaultChecked={false}
                     />
-                    <label htmlFor="avatar">Cambiar Avatar</label>
-                    <input
-                        type="radio"
-                        name="profile"
-                        id="listPublished"
-                        value="listPublished"
-                        onClick={() => setCurrentSection("listPublished")}
+                    <ProfileSelector
+                        setCurrentSection={setCurrentSection}
+                        select="listPublished"
+                        selectInfo="Lista de builds publicadas"
+                        defaultChecked={false}
                     />
-                    <label htmlFor="listPublished">
-                        Lista de builds publicadas
-                    </label>
                 </div>
-
                 {currentSection === "info" && <Info user={user} />}
                 {currentSection === "listPublished" && <ListPublished />}
                 {currentSection === "avatar" && (

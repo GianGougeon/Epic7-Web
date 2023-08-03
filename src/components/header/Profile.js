@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from "react";
 import styles from "../../styles/sass/base/header/profile.module.scss";
 import Router from "next/router";
 import Link from "next/link";
@@ -7,8 +6,10 @@ import { AiOutlineLogout, AiOutlineLogin } from "react-icons/ai";
 import { BsFillGearFill } from "react-icons/bs";
 import { useOuterClick } from "../hooks/useOuterClick";
 import { FaUserCircle } from "react-icons/fa";
+import { useProfileContext } from "../context/ProfileContext";
 const Profile = (props) => {
     const { setExpand, user, logout } = props;
+    const { setCurrentSection } = useProfileContext();
 
     const innerRef = useOuterClick(() => {
         setExpand(false);
@@ -24,6 +25,19 @@ const Profile = (props) => {
         }
     };
 
+    // oculta el email, antes del @ y cambia el texto por ****
+    const hideEmail = (email) => {
+        if (!email) return;
+        const emailArray = email.split("@");
+        const emailHidden = emailArray[0].replace(/./g, "*");
+        return `${emailHidden}@${emailArray[1]}`;
+    };
+
+    const setExpandFalse = (currentSection) => {
+        setExpand(false);
+        setCurrentSection(currentSection);
+    };
+
     return (
         <div ref={innerRef} className={styles.card}>
             <div className={styles.cardContent}>
@@ -32,8 +46,8 @@ const Profile = (props) => {
                         user?.photoURL ? (
                             <>
                                 <img
-                                    src={user?.photoURL}
                                     alt="user-image"
+                                    src={user?.photoURL}
                                 ></img>
                             </>
                         ) : (
@@ -44,21 +58,21 @@ const Profile = (props) => {
                     )}
                     <div>
                         <span>{user?.displayName || "Usuario"}</span>
-                        <span>{user?.email}</span>
+                        <span>{hideEmail(user?.email)}</span>
                     </div>
                 </div>
                 <div>
                     <ul>
                         <Link href={"/profile"}>
-                            <li onClick={() => setExpand(false)}>
+                            <li onClick={() => setExpandFalse("listPublished")}>
                                 <CgProfile />
-                                Perfil
+                                Mis publicaciones
                             </li>
                         </Link>
                         <Link href={"/profile"}>
-                            <li onClick={() => setExpand(false)}>
+                            <li onClick={() => setExpandFalse("info")}>
                                 <BsFillGearFill />
-                                Configuracion
+                                Información
                             </li>
                         </Link>
                     </ul>

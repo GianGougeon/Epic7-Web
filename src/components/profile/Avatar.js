@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ReactImageFallback from "react-image-fallback";
+import { AvatarList } from "./AvatarList";
 // styles
 import styles from "./../../styles/sass/components/profile/avatar.module.scss";
 import ReactLoading from "react-loading";
@@ -87,31 +88,7 @@ const Avatar = (prop) => {
                                 className={styles.search}
                             />
                         </div>
-                        <div>
-                            {filterAvatar.map((image) => (
-                                <RenderIfVisible
-                                    key={image.id}
-                                    defaultHeight={false}
-                                    stayRendered={true}
-                                >
-                                    <label htmlFor={image.id} key={image.id}>
-                                        <img
-                                            src={image.url}
-                                            alt={image.id}
-                                        ></img>
-                                    </label>
-                                    <input
-                                        type="radio"
-                                        name="image"
-                                        id={image.id}
-                                        value={image.url}
-                                        onChange={(e) =>
-                                            setAvatarSelected(e.target.value)
-                                        }
-                                    />
-                                </RenderIfVisible>
-                            ))}
-                        </div>
+                        <AvatarList filterAvatar={filterAvatar} />
                     </div>
                 </div>
                 {loader.subiendo ? (

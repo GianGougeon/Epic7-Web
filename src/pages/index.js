@@ -28,7 +28,7 @@ const Index = () => {
                 <h2>Publicado recientemente:</h2>
                 <Marquee
                     className={styles.marque}
-                    direction="right"
+                    direction="left"
                     speed={30}
                     gradientWidth={100}
                     gradientColor={[0, 0, 0]}

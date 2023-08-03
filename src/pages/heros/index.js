@@ -7,40 +7,23 @@ import styles from "../../styles/sass/components/hero/heros.module.scss";
 // hook sort
 import { sortData } from "../../components/hooks/useSortHero";
 //  storage
-import { usefetchStorageData } from "../../components/context/FetchStorageDataContext";
-
 import { getCollection } from "../../firebase/config";
+import pj from "../../../api.json";
 
 export const Home = () => {
-    const {
-        saveDataToLocalStorage,
-        loadDataFromLocalStorage,
-        isLocalStorageEmpty,
-    } = usefetchStorageData();
-    const [showHero, setShowHero] = useState([]);
-    const [filterHeros, setFilterHeros] = useState([]);
+    const [heroList, setHeroList] = useState([]);
     const [loader, setLoader] = useState(true);
 
+    // personajes
     const getHeros = async () => {
-        const data = await getCollection("characters");
-        saveDataToLocalStorage(data);
-        setShowHero(sortData(data));
-        setLoader(false);
+        // const data = await getCollection("characters");
+        const data = await pj;
+        setHeroList(data);
     };
-
-
-    const getHerosFromLocalStorage = async () => {
-        const data = await loadDataFromLocalStorage();
-        setShowHero(sortData(data));
-        setLoader(false);
-    };
-
+    
     useEffect(() => {
-        if (!isLocalStorageEmpty()) {
-            getHerosFromLocalStorage();
-        } else {
-            getHeros();
-        }
+        getHeros();
+        setLoader(false);
     }, []);
 
     return (
@@ -55,11 +38,8 @@ export const Home = () => {
                     <div>
                         <h1>Heroes</h1>
                     </div>
-                    <Filter
-                        setFilterHeros={setFilterHeros}
-                        showHero={showHero}
-                    />
-                    <Heros filterHeros={filterHeros} />
+                    <Filter data={heroList} />
+                    {/* <Heros filterHeros={filterHeros} /> */}
                 </section>
             )}
         </>

@@ -6,7 +6,7 @@
 
 ### Objetivo inicial
 
-El objetivo de este proyecto es proporcionar a los jugadores una herramienta para encontrar las mejores builds/recomendadas de equipo para cada personaje.
+El objetivo de este proyecto es proporcionar a los jugadores una herramienta para encontrar/publicar las mejores builds/recomendadas para cada personaje.
 
 
 ### Algunas características del proyecto:

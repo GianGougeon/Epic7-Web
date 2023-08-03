@@ -1,10 +1,12 @@
 import Link from "next/link";
 import React, { useState } from "react";
-import { FaUserCircle } from "react-icons/fa";
-import { IoMdArrowDropleft, IoMdArrowDropdown } from "react-icons/io";
 import styles from "../../styles/sass/base/header/header.module.scss";
 import Profile from "./Profile";
 import { useAuth } from "../context/AuthContext";
+import { Expand } from "./Expand";
+import { MenuProfile } from "./MenuProfile";
+import { MobileBtn } from "./MobileBtn";
+
 const Header = () => {
     const { user, logout } = useAuth();
     const [expand, setExpand] = useState(false);
@@ -17,20 +19,8 @@ const Header = () => {
                     <span> Epic seven builds </span>
                 </div>
             </Link>
-            <input className={styles.menuBtn} type="checkbox" id="menu-btn" />
-            <label className={styles.menuIcon} htmlFor="menu-btn">
-                <span className={styles.navicon} />
-            </label>
-            <div className={styles.menuProfile}>
-                {user?.photoURL ? (
-                    <img
-                        src={user?.photoURL}
-                        onClick={() => setExpand(!expand)}
-                    />
-                ) : (
-                    <FaUserCircle onClick={() => setExpand(!expand)} />
-                )}
-            </div>
+            <MobileBtn />
+            <MenuProfile user={user} expand={expand} setExpand={setExpand} />
             <ul className={styles.menu}>
                 <li>
                     <Link href="/">Inicio</Link>
@@ -39,26 +29,12 @@ const Header = () => {
                     <Link href="/heros">Heroes</Link>
                 </li>
                 <li>
-                    <Link href="/test">Caza</Link>
+                    <Link href="">Caza</Link>
                 </li>
                 <li>
-                    <Link href="#">About</Link>
+                    <Link href="">About</Link>
                 </li>
-                <div onClick={() => setExpand(!expand)}>
-                    {user?.photoURL ? (
-                        <img
-                            src={user?.photoURL}
-                            onClick={() => setExpand(!expand)}
-                        />
-                    ) : (
-                        <FaUserCircle onClick={() => setExpand(!expand)} />
-                    )}
-                    {expand ? (
-                        <IoMdArrowDropdown className={styles.arrowExpand} />
-                    ) : (
-                        <IoMdArrowDropleft className={styles.arrowExpand} />
-                    )}
-                </div>
+                <Expand expand={expand} setExpand={setExpand} user={user} />
             </ul>
             {expand && (
                 <Profile setExpand={setExpand} user={user} logout={logout} />

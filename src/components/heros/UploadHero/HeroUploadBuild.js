@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-key */
-import React, { useMemo, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { uploadFile } from "../../../firebase/config";
 // firebase
 import { updateDoc, doc, setDoc, onSnapshot } from "firebase/firestore";
@@ -67,6 +67,7 @@ const HeroUploadBuild = (prop) => {
         };
         return setData;
     };
+
     // Enviar formulario a firebase
     const handleSubmit = async (e) => {
         setUserDataPreview("");

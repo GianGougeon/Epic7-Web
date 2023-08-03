@@ -1,171 +1,134 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useMemo, useState } from "react";
-import Roles from "./Roles";
-import Attributes from "./Attributes";
-import Stars from "./Stars";
 import FilterText from "./FilterText";
 import styles from "../../../styles/sass/components/hero/filter.module.scss";
-const filterTypes = {
-    elementTypes: ["wind", "fire", "light", "dark", "ice"],
-    soldierTypes: [
-        "warrior",
-        "mage",
-        "ranger",
-        "knight",
-        "manuser",
-        "assassin",
-    ],
-    starTypes: [3, 4, 5],
-};
+import { gear, sets, element, rol } from "../../../data/dataProp";
 const Filter = (prop) => {
-    const { setFilterHeros, showHero } = prop;
-    const [activeFilter, setActiveFilter] = useState([]);
+    const { data } = prop;
+    // Estado para almacenar las opciones seleccionadas
+    const [selectedRoles, setSelectedRoles] = useState([]);
+    const [selectedElements, setSelectedElements] = useState([]);
     const [searchHero, setSearchHero] = useState("");
-
-    const filtredHeros = useMemo(() => {
-        const hasCategoryFilter = Object.values(activeFilter).includes(true);
-        const matchesRol = (hero) => {
-            if (hasCategoryFilter) {
-                return hero.roles.some(
-                    (category) => activeFilter[category] === true
-                );
-            } else return true;
-        };
-        const matchesAttribute = (hero) => {
-            if (hasCategoryFilter) {
-                return hero.attributes.some(
-                    (category) => activeFilter[category] === true
-                );
-            } else return true;
-        };
-        const matchesStars = (hero) => {
-            if (hasCategoryFilter) {
-                return hero.stars.some(
-                    (category) => activeFilter[category] === true
-                );
-            }
-        };
-        const matchesFilter = (hero) => {
-            // los 3 filtros juntos
-            if (
-                (activeFilter.wind ||
-                    activeFilter.fire ||
-                    activeFilter.light ||
-                    activeFilter.dark ||
-                    activeFilter.ice) &&
-                (activeFilter.warrior ||
-                    activeFilter.knight ||
-                    activeFilter.mage ||
-                    activeFilter.assassin ||
-                    activeFilter.ranger ||
-                    activeFilter.manauser) &&
-                (activeFilter[5] || activeFilter[4] || activeFilter[3])
-            ) {
-                return (
-                    matchesRol(hero) &&
-                    matchesAttribute(hero) &&
-                    matchesStars(hero)
-                );
-            }
-            // solo roles y estrellas
-            else if (
-                (activeFilter.wind ||
-                    activeFilter.fire ||
-                    activeFilter.light ||
-                    activeFilter.dark ||
-                    activeFilter.ice) &&
-                (activeFilter[5] || activeFilter[4] || activeFilter[3])
-            ) {
-                return matchesAttribute(hero) && matchesStars(hero);
-            }
-            // solo atributos y estrellas
-            else if (
-                (activeFilter.warrior ||
-                    activeFilter.knight ||
-                    activeFilter.mage ||
-                    activeFilter.assassin ||
-                    activeFilter.ranger ||
-                    activeFilter.manauser) &&
-                (activeFilter[5] || activeFilter[4] || activeFilter[3])
-            ) {
-                return matchesRol(hero) && matchesStars(hero);
-            }
-            // solo roles y atributos
-            else if (
-                (activeFilter.warrior ||
-                    activeFilter.knight ||
-                    activeFilter.mage ||
-                    activeFilter.assassin ||
-                    activeFilter.ranger ||
-                    activeFilter.manauser) &&
-                (activeFilter.wind ||
-                    activeFilter.fire ||
-                    activeFilter.light ||
-                    activeFilter.dark ||
-                    activeFilter.ice)
-            ) {
-                return matchesRol(hero) && matchesAttribute(hero);
-            }
-            // solo estrellas y roles
-            else if (matchesRol(hero) && matchesStars(hero)) {
-                return matchesRol(hero) && matchesStars(hero);
-            } else
-                return (
-                    matchesRol(hero) ||
-                    matchesAttribute(hero) ||
-                    matchesStars(hero)
-                );
-        };
-        return showHero.filter((hero) =>
-            hero.name.toLowerCase().includes(searchHero.toLowerCase())
-        ).filter(matchesFilter);
-    }, [activeFilter, showHero, searchHero]);
-
-    const handleChange = (x) => (event) => {
-        setActiveFilter((prev) => ({
-            ...prev,
-            [x]: event.target.checked,
-        }));
+    // Estado para la rareza seleccionada (por defecto, todas las rarezas)
+    const [selectedRarity, setSelectedRarity] = useState([]);
+    // Función para manejar los cambios en los checkboxes de rol
+    const handleRolChange = (event) => {
+        const roleName = event.target.name;
+        if (event.target.checked) {
+            setSelectedRoles([...selectedRoles, roleName]);
+        } else {
+            setSelectedRoles(selectedRoles.filter((role) => role !== roleName));
+        }
     };
 
-    useEffect(() => {
-        setFilterHeros(filtredHeros);
-    }, [showHero, filtredHeros]);
+    // Función para manejar los cambios en los checkboxes de rareza
+    const handleRarityChange = (event) => {
+        const rarityValue = parseInt(event.target.value); // Convertir el valor a número
+        if (event.target.checked) {
+            setSelectedRarity([...selectedRarity, rarityValue]);
+        } else {
+            setSelectedRarity(
+                selectedRarity.filter((rarity) => rarity !== rarityValue)
+            );
+        }
+    };
 
+    // Función para manejar los cambios en los checkboxes de elemento
+    const handleElementChange = (event) => {
+        const elementName = event.target.name;
+        if (event.target.checked) {
+            setSelectedElements([...selectedElements, elementName]);
+        } else {
+            setSelectedElements(
+                selectedElements.filter((elem) => elem !== elementName)
+            );
+        }
+    };
+
+    // Filtrar los personajes en función de las opciones seleccionadas
+    const filteredCharacters = data.filter(
+        (character) =>
+            (selectedRoles.length === 0 ||
+                selectedRoles.includes(character.role)) &&
+            (selectedElements.length === 0 ||
+                selectedElements.includes(character.attribute)) &&
+            character.name.toLowerCase().includes(searchHero.toLowerCase()) &&
+            (selectedRarity.length === 0 ||
+                selectedRarity.includes(character.rarity))
+    );
     return (
-        <>
-            <div className={`${styles.filter} container`}>
-                <div>
-                    <div>
-                        <div>
-                            <Roles
-                                showHero={showHero}
-                                setActiveFilter={setActiveFilter}
-                                handleChange={handleChange}
-                            />
-                        </div>
-                        <div>
-                            <Attributes
-                                showHero={showHero}
-                                setActiveFilter={setActiveFilter}
-                                handleChange={handleChange}
-                            />
-                        </div>
-                        <div>
-                            <Stars
-                                showHero={showHero}
-                                setActiveFilter={setActiveFilter}
-                                handleChange={handleChange}
-                            />
-                        </div>
-                    </div>
-                </div>
-                <FilterText
-                    setSearchHero={setSearchHero}
-                    searchHero={searchHero}
-                />
+        <div>
+            <ul>
+                {rol.map((role) => (
+                    <li key={role.id}>
+                        <input
+                            type="checkbox"
+                            name={role.name}
+                            id={role.name}
+                            onChange={handleRolChange}
+                        />
+                        <img src={role.img} alt={role.name} />
+                        <label htmlFor={role.name}>{role.name}</label>
+                    </li>
+                ))}
+            </ul>
+            <ul>
+                {element.map((elem) => (
+                    <li key={elem.id}>
+                        <input
+                            type="checkbox"
+                            name={elem.name}
+                            id={elem.name}
+                            onChange={handleElementChange}
+                        />
+                        <img src={elem.img} alt={elem.name} />
+
+                        <label htmlFor={elem.name}>{elem.name}</label>
+                    </li>
+                ))}
+            </ul>
+            {/* Agregar el filtro de rareza */}
+            <div>
+                <h3>Rareza:</h3>
+                <label>
+                    <input
+                        type="checkbox"
+                        value="3"
+                        checked={selectedRarity.includes(3)}
+                        onChange={handleRarityChange}
+                    />
+                    3 estrellas
+                </label>
+                <label>
+                    <input
+                        type="checkbox"
+                        value="4"
+                        checked={selectedRarity.includes(4)}
+                        onChange={handleRarityChange}
+                    />
+                    4 estrellas
+                </label>
+                <label>
+                    <input
+                        type="checkbox"
+                        value="5"
+                        checked={selectedRarity.includes(5)}
+                        onChange={handleRarityChange}
+                    />
+                    5 estrellas
+                </label>
             </div>
-        </>
+            <FilterText setSearchHero={setSearchHero} />
+            {/* Muestra los resultados filtrados */}
+            <div>
+                <h3>Resultados filtrados de personajes:</h3>
+                <ul>
+                    {filteredCharacters.map((character) => (
+                        <li key={character._id}>{character.name}</li>
+                    ))}
+                </ul>
+            </div>
+        </div>
     );
 };
 

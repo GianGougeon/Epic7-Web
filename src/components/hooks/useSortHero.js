@@ -9,5 +9,4 @@ export const sortData = (data) => {
         return b.rarity - a.rarity;
     });
     return sortData;
-}
-
+};
