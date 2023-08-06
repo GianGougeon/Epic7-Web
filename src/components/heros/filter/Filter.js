@@ -49,7 +49,6 @@ const Filter = (prop) => {
             );
         }
     };
-
     // Filtrar los personajes en función de las opciones seleccionadas
     const filteredCharacters = data.filter(
         (character) =>
@@ -61,6 +60,14 @@ const Filter = (prop) => {
             (selectedRarity.length === 0 ||
                 selectedRarity.includes(character.rarity))
     );
+    // Filtrar los propiedades de los personajes en función de las opciones seleccionadas
+    const filterPropsByKeyword = (data, filterName) => {
+        const filteredItem = data.find(
+            (item) => item.name.toLowerCase() === filterName.toLowerCase()
+        );
+        return filteredItem ? filteredItem.img : null;
+    };
+
     return (
         <>
             <div className={styles.filter}>
@@ -124,7 +131,14 @@ const Filter = (prop) => {
                 <FilterText setSearchHero={setSearchHero} />
             </div>
             {/* Muestra los resultados filtrados */}
-            <Heros data={filteredCharacters} />
+            <Heros
+                data={filteredCharacters}
+                star={star}
+                element={element}
+                rol={rol}
+                filterPropsByKeyword={filterPropsByKeyword}
+                handleElementChange={handleElementChange}
+            />
         </>
     );
 };

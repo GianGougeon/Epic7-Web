@@ -8,6 +8,8 @@ import RenderIfVisible from "react-render-if-visible";
 
 const Avatar = (prop) => {
     const { user, updateProfileUserImage, data } = prop;
+
+    console.log(data);
     const [searchAvatar, setSearchAvatar] = useState("");
     const [avatarSelected, setAvatarSelected] = useState("");
     const [loader, setLoader] = useState({

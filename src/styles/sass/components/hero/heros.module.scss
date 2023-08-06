@@ -4,7 +4,6 @@
         flex-direction: column;
         align-items: center;
         color: #eee;
-
         > h1 {
             font-size: clamp(1rem, 5vw, 3rem);
             margin: 0;
@@ -29,6 +28,7 @@
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-gap: 1rem;
     grid-auto-rows: minmax(100px, auto);
+    margin: 2% 10%;
     &::before {
         content: "";
         background: #4f2464;
@@ -49,12 +49,12 @@
         color: antiquewhite;
         position: relative;
         border-radius: 20px;
-        height: 100%;
         display: flex;
         justify-content: flex-end;
         cursor: pointer;
         border: 1px solid rgba($color: #eee, $alpha: 0.2);
         transition: all 0.03s ease-in-out;
+        height: 100%;
         &:active {
             // iner box-shadow
             box-shadow: inset 0 0 0 1000px rgba(180, 187, 254, 0.2);
@@ -62,8 +62,16 @@
         &:hover {
             background-color: rgba(0, 0, 0, 0.6);
         }
+        > picture {
+            height: 100%;
+            > div {
+                height: 100%;
+                > img {
+                    height: 100%;
+                }
+            }
+        }
         > div {
-            height: 102px;
             > picture {
                 > div {
                     height: 100%;
@@ -77,10 +85,6 @@
                         scale: 1.4;
                     }
                 }
-                // .hero_img {
-                //     height: 100%;
-                //     width: 100%;
-                // }
             }
         }
     }
