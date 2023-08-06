@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import Filter from "../../components/heros/filters/Filter";
-import Heros from "../../components/heros/Heros";
+import Filter from "../../components/heros/filter/Filter";
 import Loader from "../../components/Loader";
 import styles from "../../styles/sass/components/hero/heros.module.scss";
 // hook sort
@@ -20,7 +19,7 @@ export const Home = () => {
         const data = await pj;
         setHeroList(data);
     };
-    
+
     useEffect(() => {
         getHeros();
         setLoader(false);
@@ -32,14 +31,13 @@ export const Home = () => {
                 <Loader />
             ) : (
                 <section
-                    className={`${styles.heros_section} container2`}
+                    className={styles.heros_section}
                     style={{ marginTop: 80 }}
                 >
                     <div>
                         <h1>Heroes</h1>
                     </div>
                     <Filter data={heroList} />
-                    {/* <Heros filterHeros={filterHeros} /> */}
                 </section>
             )}
         </>

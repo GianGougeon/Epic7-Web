@@ -1,14 +1,15 @@
 import Image from "next/image";
 import React, { useState, useMemo } from "react";
-import { findElement, findRole, rarity } from "../ElementAndRoles";
-import Pagination from "../pagination/Pagination";
+import Pagination from "../../pagination/Pagination";
 import ReactImageFallback from "react-image-fallback";
-import styles from "./../../styles/sass/components/hero/heros.module.scss";
+import styles from "./../../../styles/sass/components/hero/heros.module.scss";
 import Link from "next/link";
 import RenderIfVisible from "react-render-if-visible";
 
 const Heros = (prop) => {
-    const { filterHeros } = prop;
+    const { data } = prop;
+
+    console.log(data);
     const [currentPage, setCurrentPage] = useState(1);
 
     let PageSize = 16;
@@ -16,8 +17,8 @@ const Heros = (prop) => {
     const currentTableData = useMemo(() => {
         const firstPageIndex = (currentPage - 1) * PageSize;
         const lastPageIndex = firstPageIndex + PageSize;
-        return filterHeros.slice(firstPageIndex, lastPageIndex);
-    }, [PageSize, currentPage, filterHeros]);
+        return data.slice(firstPageIndex, lastPageIndex);
+    }, [PageSize, currentPage, data]);
 
     return (
         <>
@@ -35,7 +36,7 @@ const Heros = (prop) => {
                                     <div>
                                         <picture>
                                             <img
-                                                src={findRole(hero.role)}
+                                                // src={findRole(hero.role)}
                                                 alt={hero.name}
                                             ></img>
                                         </picture>
@@ -45,7 +46,7 @@ const Heros = (prop) => {
                                         <Image
                                             width={23}
                                             height={23}
-                                            src={findElement(hero.attribute)}
+                                            // src={findElement(hero.attribute)}
                                             alt={hero.attribute}
                                             className="hero-attribute-img"
                                         ></Image>
@@ -53,7 +54,7 @@ const Heros = (prop) => {
                                             className={styles.star}
                                             key="stars"
                                         >
-                                            {rarity(hero.rarity, hero.name)}
+                                            {/* {rarity(hero.rarity, hero.name)} */}
                                         </div>
                                     </div>
                                 </div>
@@ -74,7 +75,7 @@ const Heros = (prop) => {
             <Pagination
                 className="pagination-bar"
                 currentPage={currentPage}
-                totalCount={filterHeros.length}
+                totalCount={data.length}
                 pageSize={PageSize}
                 onPageChange={(page) => setCurrentPage(page)}
             />

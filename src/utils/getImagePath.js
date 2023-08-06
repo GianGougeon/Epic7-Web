@@ -27,3 +27,5 @@ export const createGearObject = (gearType, gearItems) => {
         ),
     }));
 };
+// star
+export const getPathStar = () => `/assets/star.webp`;

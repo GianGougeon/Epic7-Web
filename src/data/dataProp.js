@@ -3,6 +3,7 @@ import {
     getImagePathRol,
     getImagePathSet,
     createGearObject,
+    getPathStar,
 } from "../utils/getImagePath";
 
 const element = [
@@ -22,7 +23,6 @@ const rol = [
     { name: "knight", img: getImagePathRol("Knight") },
 ];
 
-const star = { name: "star", img: getImagePathRol("star") }
 
 const sets = [
     { id: 1, name: "Speed", img: getImagePathSet("set_speed") },
@@ -76,5 +76,6 @@ const gear = {
     ]),
 };
 
+const star = getPathStar();
 
 export { element, rol, sets, gear, star };
