@@ -1,0 +1,23 @@
+.heroLoader {
+    background: linear-gradient(
+        90deg,
+        rgba(177, 10, 211, 0.02) 15%,
+        rgba(177, 10, 211, 0.05) 25%,
+        rgba(177, 10, 211, 0.2) 50%,
+        rgba(177, 10, 211, 0.02) 60%
+    );
+    background-size: 200% 100%;
+    height: 100%;
+    width: 100%;
+    animation: heros-loader 2.5s infinite linear;
+    border-radius: 10%;
+}
+
+@keyframes heros-loader {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
